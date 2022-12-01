@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/Pipfile
+/Pipfile.lock
+/elf_inventory.txt
+/workspace.code-workspace
