@@ -23,5 +23,18 @@ def solve():
     print("Find the Elf carrying the most Calories. How many total Calories is that Elf carrying?")
     print(f"Your puzzle answer was {elf_inventory_max}.\n")
 
+    # sort inventory totals (largest first)
+    elf_inventory_totals_sorted = list(elf_inventory_totals)
+    elf_inventory_totals_sorted.sort(reverse=True)
+
+    # split top 3 into seperate list
+    elf_inventory_totals_top3 = elf_inventory_totals_sorted[:3]
+
+    # sum top 3 totals
+    elf_inventory_totals_top3_sum = sum(elf_inventory_totals_top3)
+    print("Find the top three Elves carrying the most Calories. How many Calories are those Elves carrying in total?")
+    print(f"Your puzzle answer was {elf_inventory_totals_top3_sum}.\n")
+
+
 if __name__ == '__main__':
     solve()
