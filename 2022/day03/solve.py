@@ -17,10 +17,10 @@ def chunk_list(lst, n):
 
 def solve():
     # read in data file
+
     rucksack_file = open('rucksack.txt', 'r')
     rucksack_data = rucksack_file.read().splitlines()
 
-    # part 01
     common_list = []
     for rucksack in rucksack_data:
         compartment1 = rucksack[:len(rucksack) // 2]
@@ -43,7 +43,7 @@ def solve():
             group[1]).intersection(group[2]))
         badge_list.extend(badge)
 
-    badge_priority_list = [calc_priority(b) for b in badge_list]
+    badge_priority_list = [calc_priority(c) for c in badge_list]
     badge_priority_list_sum = sum(badge_priority_list)
     print(badge_priority_list_sum)
 

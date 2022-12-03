@@ -69,18 +69,12 @@ def solve():
     # read in data file
     strategy_data = np.genfromtxt('strategy.txt', dtype=str)
 
-<<<<<<< HEAD
     # part 01
-=======
->>>>>>> e2a63a7 (day02)
     scores_array = [calc_score_part01(row) for row in strategy_data]
     score = sum(scores_array)
     print(score)
 
-<<<<<<< HEAD
     # part 02
-=======
->>>>>>> e2a63a7 (day02)
     scores_array = [calc_score_part02(row) for row in strategy_data]
     score = sum(scores_array)
     print(score)

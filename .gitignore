@@ -131,3 +131,5 @@ dmypy.json
 /Pipfile.lock
 /elf_inventory.txt
 /workspace.code-workspace
+/2022/day02/strategy.txt
+/2022/day03/rucksack.txt
