@@ -129,7 +129,13 @@ dmypy.json
 .pyre/
 /Pipfile
 /Pipfile.lock
-/elf_inventory.txt
 /workspace.code-workspace
+/2021/day01/sonar_depth.txt
+/2021/day02/commands.txt
+/2021/day03/diagnostic_report.txt
+/2021/day25/cucumber_map.txt
+/2022/day01/inventory.txt
 /2022/day02/strategy.txt
 /2022/day03/rucksack.txt
+/input.txt
+/**/**/input.txt

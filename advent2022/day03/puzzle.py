@@ -3,6 +3,7 @@
 """
 Advent of Code 2022
 """
+import os
 
 
 def calc_priority(c):
@@ -15,11 +16,10 @@ def chunk_list(lst, n):
         yield lst[i:i + n]
 
 
-def solve():
-    # read in data file
-
-    rucksack_file = open('rucksack.txt', 'r')
-    rucksack_data = rucksack_file.read().splitlines()
+def solve(input_data_file):
+    # read input data from file
+    with open(input_data_file, 'r') as rucksack_file:
+        rucksack_data = rucksack_file.read().splitlines()
 
     common_list = []
     for rucksack in rucksack_data:
@@ -34,9 +34,10 @@ def solve():
     priority_list = [calc_priority(c) for c in common_list]
     priority_list_sum = sum(priority_list)
 
-    print(priority_list_sum)
-
     # part 02
+    rucksack_file = open(input_data_file, 'r')
+    rucksack_data = rucksack_file.read().splitlines()
+
     badge_list = []
     for group in chunk_list(rucksack_data, 3):
         badge = list(set(group[0]).intersection(
@@ -45,8 +46,14 @@ def solve():
 
     badge_priority_list = [calc_priority(c) for c in badge_list]
     badge_priority_list_sum = sum(badge_priority_list)
-    print(badge_priority_list_sum)
+
+    # return results
+    return (priority_list_sum, badge_priority_list_sum)
 
 
 if __name__ == '__main__':
-    solve()
+    input_data_file = os.path.join(os.path.dirname(__file__), 'input.txt')
+
+    answers = solve(input_data_file)
+    print(f"Sum of the item priorities = {answers[0]}")
+    print(f"Sum of the group badges item priorities = {answers[1]}")
