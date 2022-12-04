@@ -38,11 +38,11 @@ def solve(input_data_file):
     bingo_number_list = [int(n) for n in bingo_number_text.split(',')]
 
     # part 01
-    print(bingo_number_list)
+    # print(bingo_number_list)
 
     # part 02
     # return results
-    return (None, None)
+    return ('TBC', 'TBC')
 
 
 if __name__ == '__main__':

@@ -34,7 +34,7 @@ def solve(input_data_file):
     counts = rosta_pd[8].value_counts()
     overlapping_pairs = counts[True]
 
-    print(rosta_pd)
+    # print(rosta_pd)
     # return results
     return (contained_pairs, overlapping_pairs)
 

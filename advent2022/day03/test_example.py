@@ -6,7 +6,7 @@ Advent of Code 2021 - Test Case
 import os
 import unittest
 
-import puzzle
+import advent2022.day03.puzzle as puzzle
 
 
 class ExampleTest(unittest.TestCase):

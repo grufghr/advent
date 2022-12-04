@@ -31,7 +31,7 @@ def solve(input_data_file):
 
     ribbon_total = dimension_pd['ribbon'].sum()
 
-    print(dimension_pd)
+    # print(dimension_pd)
 
     # return results
     return (wrapping_paper_total, ribbon_total)
