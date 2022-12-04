@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/Pipfile
+/Pipfile.lock
+/workspace.code-workspace
+/**/**/input.txt
