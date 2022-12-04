@@ -35,8 +35,6 @@ def solve(input_data_file):
     priority_list_sum = sum(priority_list)
 
     # part 02
-    rucksack_file = open(input_data_file, 'r')
-    rucksack_data = rucksack_file.read().splitlines()
 
     badge_list = []
     for group in chunk_list(rucksack_data, 3):
