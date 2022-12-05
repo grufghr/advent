@@ -8,6 +8,7 @@ import unittest
 
 import advent2015.day02.puzzle as puzzle
 
+
 class ExampleTest(unittest.TestCase):
 
     def test_solve(self):
