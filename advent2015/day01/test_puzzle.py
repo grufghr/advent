@@ -9,9 +9,9 @@ import unittest
 import advent2015.day01.puzzle as puzzle
 
 
-class ExampleTest(unittest.TestCase):
+class PuzzleTest(unittest.TestCase):
 
-    def test_solve(self):
+    def test_input_example(self):
         input_data_file = os.path.join(
             os.path.dirname(__file__), 'input_example.txt')
 
@@ -31,7 +31,3 @@ class ExampleTest(unittest.TestCase):
         self.assertEqual(answers[1][10], 5)
 
         self.assertEqual(len(answers[0]), 11)
-
-
-if __name__ == '__main__':
-    unittest.main()
