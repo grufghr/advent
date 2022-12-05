@@ -18,7 +18,7 @@ class ExampleTest(unittest.TestCase):
         answers = puzzle.solve(input_data_file)
 
         self.assertEqual(answers[0], 4512)
-        self.assertEqual(answers[1], )
+        self.assertEqual(answers[1], 1924)
 
 
 if __name__ == '__main__':
