@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code 2022
+Advent of Code
 """
 import os
 import re
 import copy
-# import pandas as pd
 
 
 def solve(input_data_file):
@@ -29,12 +28,12 @@ def solve(input_data_file):
     for line in reversed(stack_text_list):
         for i in range(1, len(line), 4):
             stack_idx = (i // 4)
-            c = line[i]
-            if not c.isspace():
+            crate = line[i]
+            if not crate.isspace():
                 if (stack_idx > len(stack_list) - 1):
-                    stack_list.append(list([c]))
+                    stack_list.append(list([crate]))
                 else:
-                    stack_list[stack_idx].append(c)
+                    stack_list[stack_idx].append(crate)
 
     # preseve copy of stack list for part 2
     stack_list_0 = copy.deepcopy(stack_list)
@@ -87,8 +86,8 @@ def solve(input_data_file):
 
 if __name__ == '__main__':
     input_data_file = os.path.join(
-        os.path.dirname(__file__), 'input_example.txt')
+        os.path.dirname(__file__), 'input.txt')
 
     answers = solve(input_data_file)
-    print(f"Crates at top of stack with CrateMover 9000 = {answers[0]}")
-    print(f"Crates at top of stack with CrateMover 9001 = {answers[1]}")
+    print(f"Crates at top of stacks with CrateMover 9000 = {answers[0]}")
+    print(f"Crates at top of stacks with CrateMover 9001 = {answers[1]}")
