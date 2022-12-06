@@ -87,7 +87,7 @@ def solve(input_data_file):
 
 if __name__ == '__main__':
     input_data_file = os.path.join(
-        os.path.dirname(__file__), 'input.txt')
+        os.path.dirname(__file__), 'input_example.txt')
 
     answers = solve(input_data_file)
     print(f"Crates at top of stack with CrateMover 9000 = {answers[0]}")
