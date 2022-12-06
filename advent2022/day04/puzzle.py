@@ -7,9 +7,7 @@ import os
 import pandas as pd
 
 
-def solve(input_data_file):
-    # read input data from file
-    rosta_pd = pd.read_csv(input_data_file, header=None)
+def solve(rosta_pd):
 
     # part 01
     rosta_pd[2] = rosta_pd[0].map(lambda x: x.split('-'))
@@ -39,10 +37,18 @@ def solve(input_data_file):
     return (contained_pairs, overlapping_pairs)
 
 
-if __name__ == '__main__':
-    input_data_file = os.path.join(
-        os.path.dirname(__file__), 'input.txt')
+def input_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    answers = solve(input_data_file)
-    print(f"Wholly container pairs = {answers[0]}")
-    print(f"Overlapping assignment pairs = {answers[1]}")
+    # read input data from file
+    rosta_pd = pd.read_csv(input_data_file, header=None)
+
+    return rosta_pd
+
+
+if __name__ == '__main__':
+    input_data = input_data('input.txt')
+
+    answer = solve(input_data)
+    print(f"Wholly container pairs = {answer[0]}")
+    print(f"Overlapping assignment pairs = {answer[1]}")

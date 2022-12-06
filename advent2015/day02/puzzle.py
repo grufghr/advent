@@ -35,17 +35,17 @@ def solve(dimension_pd):
     return (wrapping_paper_total, ribbon_total)
 
 
-def input_file(filename):
-    input_txt_file = os.path.join(os.path.dirname(__file__), filename)
+def input_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
-    dimension_pd = pd.read_csv(input_txt_file, header=None, delimiter='x')
+    dimension_pd = pd.read_csv(input_data_file, header=None, delimiter='x')
 
     return dimension_pd
 
 
 if __name__ == '__main__':
-    input_data = input_file('input.txt')
-    answers = solve(input_data)
-    print(f"Wrapping paper required = {answers[0]} sq feet")
-    print(f"Ribbon required = {answers[1]} feet")
+    input_data = input_data('input.txt')
+    answer = solve(input_data)
+    print(f"Wrapping paper required = {answer[0]} sq feet")
+    print(f"Ribbon required = {answer[1]} feet")

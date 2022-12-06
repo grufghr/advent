@@ -24,10 +24,10 @@ def solve(input_text, n):
     return lowest_positive_number
 
 
-def input_file(filename):
-    input_txt_file = os.path.join(os.path.dirname(__file__), filename)
+def input_data_iter(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_txt_file, 'r') as input_filehandle:
+    with open(input_data_file, 'r') as input_filehandle:
         input_txt_list = input_filehandle.read().splitlines()
 
     for input_txt in input_txt_list:
@@ -35,9 +35,9 @@ def input_file(filename):
 
 
 if __name__ == '__main__':
-    for secret_key in input_file('input.txt'):
-        answer = solve(secret_key, 5)
-        print(f"part01 - lowest_positive_number = {answer}")
+    secret_key = next(input_data_iter('input.txt'))
+    answer = solve(secret_key, 5)
+    print(f"part01 - lowest_positive_number = {answer}")
 
-        answer = solve(secret_key, 6)
-        print(f"part02 - lowest_positive_number = {answer}")
+    answer = solve(secret_key, 6)
+    print(f"part02 - lowest_positive_number = {answer}")

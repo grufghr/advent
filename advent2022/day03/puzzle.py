@@ -16,10 +16,7 @@ def chunk_list(lst, n):
         yield lst[i:i + n]
 
 
-def solve(input_data_file):
-    # read input data from file
-    with open(input_data_file, 'r') as rucksack_file:
-        rucksack_data = rucksack_file.read().splitlines()
+def solve(rucksack_data):
 
     common_list = []
     for rucksack in rucksack_data:
@@ -49,9 +46,19 @@ def solve(input_data_file):
     return (priority_list_sum, badge_priority_list_sum)
 
 
-if __name__ == '__main__':
-    input_data_file = os.path.join(os.path.dirname(__file__), 'input.txt')
+def input_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    answers = solve(input_data_file)
-    print(f"Sum of the item priorities = {answers[0]}")
-    print(f"Sum of the group badges item priorities = {answers[1]}")
+    # read input data from file
+    with open(input_data_file, 'r') as filehandle:
+        rucksack_data = filehandle.read().splitlines()
+
+    return rucksack_data
+
+
+if __name__ == '__main__':
+    input_data = input_data('input.txt')
+
+    answer = solve(input_data)
+    print(f"Sum of the item priorities = {answer[0]}")
+    print(f"Sum of the group badges item priorities = {answer[1]}")

@@ -28,10 +28,10 @@ def solve(instruction_set):
     return (floor, basement_step)
 
 
-def input_file(filename):
-    input_txt_file = os.path.join(os.path.dirname(__file__), filename)
+def input_data_iter(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_txt_file, 'r') as input_filehandle:
+    with open(input_data_file, 'r') as input_filehandle:
         input_txt_list = input_filehandle.read().splitlines()
 
     for input_txt in input_txt_list:
@@ -39,8 +39,9 @@ def input_file(filename):
 
 
 if __name__ == '__main__':
-    for instruction_set in input_file('input.txt'):
-        answer = solve(instruction_set)
-        print(f"Santa ends on floor = {answer[0]}")
+    instruction_set = next(input_data_iter('input.txt'))
 
-        print(f"Santa enters basement on instruction step = {answer[1]}")
+    answer = solve(instruction_set)
+
+    print(f"Santa ends on floor = {answer[0]}")
+    print(f"Santa enters basement on instruction step = {answer[1]}")

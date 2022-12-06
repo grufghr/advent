@@ -6,14 +6,11 @@ Advent of Code 2021
 import os
 
 
-def solve(input_data_file):
-    # read in data file
-    with open(input_data_file, 'r') as command_file:
-        command_file_text = command_file.read()
+def solve(input_data):
 
     # part 01
     command_data_list = []
-    for command in command_file_text.split('\n'):
+    for command in input_data.split('\n'):
         direction, unit = command.split(' ')
         command_data_list.append((direction, int(unit)))
 
@@ -50,9 +47,19 @@ def solve(input_data_file):
     return (distance1, distance2)
 
 
-if __name__ == '__main__':
-    input_data_file = os.path.join(os.path.dirname(__file__), 'input.txt')
+def input_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    answers = solve(input_data_file)
-    print(f"part 01 - Final horizontal position * final depth = {answers[0]}.")
-    print(f"part 02 - Final horizontal position * final depth = {answers[1]}.")
+    # read in data file
+    with open(input_data_file, 'r') as command_file:
+        command_file_text = command_file.read()
+
+    return command_file_text
+
+
+if __name__ == '__main__':
+    input_data = input_data('input.txt')
+
+    answer = solve(input_data)
+    print(f"part 01 - Final horizontal position * final depth = {answer[0]}.")
+    print(f"part 02 - Final horizontal position * final depth = {answer[1]}.")

@@ -6,47 +6,36 @@ Advent of Code
 import os
 
 
-def solve(input_data_file):
-    # read input data from file
-    with open(input_data_file, 'r') as input_filehandle:
-        test_case_list = input_filehandle.read().splitlines()
+def solve(datastream, marker_len):
+    marker_start = None
 
-    # part 01
-    marker_start_list = []
-
-    MARKER_LEN = 4
-
-    for datastream in test_case_list:
-        for s in range(0, len(datastream) - 1):
-            e = s + MARKER_LEN
-            tm = datastream[s:e]
-            if (len(set(tm)) == len(tm)):
-                # print(e, tm, datastream)
-                marker_start_list.append(e)
-                break
-
-    # part 02
-    message_start_list = []
-
-    MESSAGE_LEN = 14
-
-    for datastream in test_case_list:
-        for s in range(0, len(datastream) - 1):
-            e = s + MESSAGE_LEN
-            tm = datastream[s:e]
-            if (len(set(tm)) == len(tm)):
-                # print(e, tm, datastream)
-                message_start_list.append(e)
-                break
+    for s in range(0, len(datastream) - 1):
+        e = s + marker_len
+        text_marker = datastream[s:e]
+        if (len(set(text_marker)) == len(text_marker)):
+            # print(e, text_marker, datastream)
+            marker_start = e
+            break
 
     # return results
-    return (marker_start_list, message_start_list)
+    return marker_start
+
+
+def input_data_iter(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
+
+    with open(input_data_file, 'r') as input_filehandle:
+        input_txt_list = input_filehandle.read().splitlines()
+
+    for input_txt in input_txt_list:
+        yield (input_txt)
 
 
 if __name__ == '__main__':
-    input_data_file = os.path.join(
-        os.path.dirname(__file__), 'input.txt')
+    instruction_set = next(input_data_iter('input.txt'))
 
-    answers = solve(input_data_file)
-    print(f"Start of marker = {answers[0]}")
-    print(f"start of message = {answers[1]}")
+    answer = solve(instruction_set, 4)
+    print(f"Start of marker = {answer}")
+
+    answer = solve(instruction_set, 14)
+    print(f"Start of message = {answer}")

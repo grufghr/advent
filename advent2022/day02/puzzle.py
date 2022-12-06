@@ -66,10 +66,7 @@ def calc_score_part02(r):
     return score
 
 
-def solve(input_data_file):
-    # read input data from file
-    strategy_data = np.genfromtxt(input_data_file, dtype=str)
-
+def solve(strategy_data):
     # part 01
     startegy1_scores_array = [calc_score_part01(row) for row in strategy_data]
     startegy1_score = sum(startegy1_scores_array)
@@ -82,9 +79,18 @@ def solve(input_data_file):
     return (startegy1_score, startegy2_score)
 
 
-if __name__ == '__main__':
-    input_data_file = os.path.join(os.path.dirname(__file__), 'input.txt')
+def input_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    answers = solve(input_data_file)
-    print(f"Rock-Paper-Scissors score with part 01 strategy = {answers[0]}")
-    print(f"Rock-Paper-Scissors score with part 02 strategy = {answers[1]}")
+    # read input data from file
+    strategy_data = np.genfromtxt(input_data_file, dtype=str)
+
+    return strategy_data
+
+
+if __name__ == '__main__':
+    input_data = input_data('input.txt')
+
+    answer = solve(input_data)
+    print(f"Rock-Paper-Scissors score with part 01 strategy = {answer[0]}")
+    print(f"Rock-Paper-Scissors score with part 02 strategy = {answer[1]}")

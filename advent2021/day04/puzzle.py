@@ -38,26 +38,7 @@ class Board:
         return self.board.__repr__()
 
 
-def solve(input_data_file):
-    # read input data from file
-    with open(input_data_file, 'r') as bingo_file:
-        bingo_number_text = bingo_file.readline()
-        bingo_file.readline()  # skip line
-        board_text = bingo_file.readlines()
-
-    # parse input data file
-    board_count = board_text.count('\n') + 1
-    board_np = np.genfromtxt(input_data_file, dtype=int, skip_header=2)
-    board_np = np.array(np.array_split(board_np, board_count))
-
-    # create list of boards
-    board_list = []
-    for b in board_np:
-        board = Board(b)
-        board_list.append(board)
-
-    bingo_number_list = [int(n) for n in bingo_number_text.split(',')]
-    # print(bingo_number_list)
+def solve(bingo_number_list, board_list):
 
     # part 01 & 02
 
@@ -78,10 +59,34 @@ def solve(input_data_file):
     return (winner_score, last_winner_score)
 
 
-if __name__ == '__main__':
-    input_data_file = os.path.join(
-        os.path.dirname(__file__), 'input.txt')
+def input_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    answers = solve(input_data_file)
-    print(f"Winning bingo card score = {answers[0]}.")
-    print(f"Last winning card score = {answers[1]}.")
+    # read input data from file
+    with open(input_data_file, 'r') as bingo_file:
+        bingo_number_text = bingo_file.readline()
+        bingo_file.readline()  # skip line
+        board_text = bingo_file.readlines()
+
+    # parse input data file
+    board_count = board_text.count('\n') + 1
+    board_np = np.genfromtxt(input_data_file, dtype=int, skip_header=2)
+    board_np = np.array(np.array_split(board_np, board_count))
+
+    # create list of boards
+    board_list = []
+    for b in board_np:
+        board = Board(b)
+        board_list.append(board)
+
+    bingo_number_list = [int(n) for n in bingo_number_text.split(',')]
+
+    return (bingo_number_list, board_list)
+
+
+if __name__ == '__main__':
+    input_data = input_data('input.txt')
+
+    answer = solve(input_data[0], input_data[1])
+    print(f"Winning bingo card score = {answer[0]}.")
+    print(f"Last winning card score = {answer[1]}.")

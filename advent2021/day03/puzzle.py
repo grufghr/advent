@@ -7,16 +7,15 @@ import os
 import numpy as np
 
 
-def solve(input_data_file):
-    # read in data file
-    diag_report_data = np.genfromtxt(input_data_file, delimiter=1, dtype=str)
-    (r_size, c_size) = diag_report_data.shape
+def solve(diag_report_np):
+
+    (r_size, c_size) = diag_report_np.shape
 
     # part 01
     gamma_binary = ''
     epsilon_binary = ''
     for c in range(c_size):
-        col = list(diag_report_data[:, c])
+        col = list(diag_report_np[:, c])
         counts = np.bincount(col)
 
         gamma_bit = ('1' if counts[1] >= counts[0] else '0')
@@ -31,8 +30,8 @@ def solve(input_data_file):
     power_consumption = gamma * epsilon
 
     # part 02
-    ox_filter_list = diag_report_data.copy()
-    co_filter_list = diag_report_data.copy()
+    ox_filter_list = diag_report_np.copy()
+    co_filter_list = diag_report_np.copy()
     for c in range(c_size):
         if len(ox_filter_list) > 1:
             ox_counts = np.bincount(list(np.array(ox_filter_list)[:, c]))
@@ -60,9 +59,18 @@ def solve(input_data_file):
     return (power_consumption, life_support_rating)
 
 
-if __name__ == '__main__':
-    input_data_file = os.path.join(os.path.dirname(__file__), 'input.txt')
+def input_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    answers = solve(input_data_file)
-    print(f"Power consumption = {answers[0]}.")
-    print(f"Life support rating = {answers[1]}.")
+    # read in data file into numpy array
+    diag_report_np = np.genfromtxt(input_data_file, delimiter=1, dtype=str)
+
+    return diag_report_np
+
+
+if __name__ == '__main__':
+    input_data = input_data('input.txt')
+
+    answer = solve(input_data)
+    print(f"Power consumption = {answer[0]}.")
+    print(f"Life support rating = {answer[1]}.")
