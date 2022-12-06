@@ -35,7 +35,6 @@ def input_file(filename):
 
 
 if __name__ == '__main__':
-
     for secret_key in input_file('input.txt'):
         answer = solve(secret_key, 5)
         print(f"part01 - lowest_positive_number = {answer}")

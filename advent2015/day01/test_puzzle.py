@@ -1,9 +1,6 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Advent of Code - Test Case
 """
-import os
 import unittest
 
 import advent2015.day01.puzzle as puzzle
@@ -11,23 +8,28 @@ import advent2015.day01.puzzle as puzzle
 
 class PuzzleTest(unittest.TestCase):
 
+    example_answers_part01 = [0, 0, 3, 3, 3, -1, -1, -3, -3, -1, -1]
+    example_answers_part02 = [0, 0, 0, 0, 1, 3, 1, 1, 1, 1, 5]
+
+    answer_part01 = 280
+    answer_part02 = 1797
+
     def test_input_example(self):
-        input_data_file = os.path.join(
-            os.path.dirname(__file__), 'input_example.txt')
+        for test_case, input_text in enumerate(puzzle.input_file('input_example.txt')):
 
-        answers = puzzle.solve(input_data_file)
+            answer = puzzle.solve(input_text)
+            answer01 = answer[0]
+            self.assertEqual(answer01, self.example_answers_part01[test_case])
 
-        self.assertEqual(answers[0][0], 0)
-        self.assertEqual(answers[0][1], 0)
-        self.assertEqual(answers[0][2], 3)
-        self.assertEqual(answers[0][3], 3)
-        self.assertEqual(answers[0][4], 3)
-        self.assertEqual(answers[0][5], -1)
-        self.assertEqual(answers[0][6], -1)
-        self.assertEqual(answers[0][7], -3)
-        self.assertEqual(answers[0][8], -3)
+            answer02 = answer[1]
+            self.assertEqual(answer02, self.example_answers_part02[test_case])
 
-        self.assertEqual(answers[1][9], 1)
-        self.assertEqual(answers[1][10], 5)
+    def test_input(self):
+        input_text = next(puzzle.input_file('input.txt'))
 
-        self.assertEqual(len(answers[0]), 11)
+        answer = puzzle.solve(input_text)
+        answer01 = answer[0]
+        self.assertEqual(answer01, self.answer_part01)
+
+        answer02 = answer[1]
+        self.assertEqual(answer02, self.answer_part02)

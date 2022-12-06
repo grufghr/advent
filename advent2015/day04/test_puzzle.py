@@ -17,18 +17,17 @@ class PuzzleTest(unittest.TestCase):
     def test_input_example(self):
         for test_case, input_text in enumerate(puzzle.input_file('input_example.txt')):
 
-            answer = puzzle.solve(input_text, 5)
-            self.assertEqual(answer, self.example_answers_part01[test_case])
+            answer01 = puzzle.solve(input_text, 5)
+            self.assertEqual(answer01, self.example_answers_part01[test_case])
 
-            answer = puzzle.solve(input_text, 6)
-            self.assertEqual(answer, self.example_answers_part02[test_case])
+            answer02 = puzzle.solve(input_text, 6)
+            self.assertEqual(answer02, self.example_answers_part02[test_case])
 
     def test_input(self):
         input_text = next(puzzle.input_file('input.txt'))
 
-        answer = puzzle.solve(input_text, 5)
-        self.assertEqual(answer, self.answer_part01)
+        answer01 = puzzle.solve(input_text, 5)
+        self.assertEqual(answer01, self.answer_part01)
 
-        answer = puzzle.solve(input_text, 6)
-        self.assertEqual(answer, self.answer_part02)
-
+        answer02 = puzzle.solve(input_text, 6)
+        self.assertEqual(answer02, self.answer_part02)

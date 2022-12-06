@@ -7,7 +7,7 @@ import os
 import numpy as np
 
 
-def deliver_presents(instruction_set, delivery_num=1):
+def solve(instruction_set, delivery_num=1):
 
     # create basic 3x3 array (to start)
     present_np = np.zeros((3, 3), dtype=int)
@@ -54,38 +54,25 @@ def deliver_presents(instruction_set, delivery_num=1):
         # deliver present
         present_np[pos[p][0]][pos[p][1]] += 1
 
-    house_count = np.count_nonzero(present_np)
+    houses_visited_count = np.count_nonzero(present_np)
 
-    return house_count
+    return houses_visited_count
 
 
-def solve(input_data_file):
-    # read input data from file
-    with open(input_data_file, 'r') as instructions_file:
-        instructions_data = instructions_file.read().splitlines()
+def input_file(filename):
+    input_txt_file = os.path.join(os.path.dirname(__file__), filename)
 
-    # part 01
-    non_zero_count01 = []
+    with open(input_txt_file, 'r') as input_filehandle:
+        input_txt_list = input_filehandle.read().splitlines()
 
-    for idx, instruction_set in enumerate(instructions_data):
-        count = deliver_presents(instruction_set)
-        non_zero_count01.append(count)
-
-    # part 02
-    non_zero_count02 = []
-
-    for idx, instruction_set in enumerate(instructions_data):
-        count = deliver_presents(instruction_set, 2)
-        non_zero_count02.append(count)
-
-    # return results
-    return (non_zero_count01, non_zero_count02)
+    for input_txt in input_txt_list:
+        yield (input_txt)
 
 
 if __name__ == '__main__':
-    input_data_file = os.path.join(
-        os.path.dirname(__file__), 'input.txt')
+    for instruction_set in input_file('input.txt'):
+        answer = solve(instruction_set)
+        print(f"Houses visited with santa = {answers[0]}")
 
-    answers = solve(input_data_file)
-    print(f"Houses visited with santa = {answers[0]}")
-    print(f"Houses visited with santa & robot = {answers[1]}")
+        answer = solve(instruction_set, 2)
+        print(f"Houses visited with santa & robot = {answers[1]}")

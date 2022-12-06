@@ -8,9 +8,7 @@ import pandas as pd
 import numpy as np
 
 
-def solve(input_data_file):
-    # read input data from file
-    dimension_pd = pd.read_csv(input_data_file, header=None, delimiter='x')
+def solve(dimension_pd):
 
     # part 01
     dimension_pd[3], dimension_pd[4] = np.sort(
@@ -37,10 +35,17 @@ def solve(input_data_file):
     return (wrapping_paper_total, ribbon_total)
 
 
-if __name__ == '__main__':
-    input_data_file = os.path.join(
-        os.path.dirname(__file__), 'input.txt')
+def input_file(filename):
+    input_txt_file = os.path.join(os.path.dirname(__file__), filename)
 
-    answers = solve(input_data_file)
+    # read input data from file
+    dimension_pd = pd.read_csv(input_txt_file, header=None, delimiter='x')
+
+    return dimension_pd
+
+
+if __name__ == '__main__':
+    input_data = input_file('input.txt')
+    answers = solve(input_data)
     print(f"Wrapping paper required = {answers[0]} sq feet")
     print(f"Ribbon required = {answers[1]} feet")

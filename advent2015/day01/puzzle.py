@@ -6,39 +6,41 @@ Advent of Code 2021
 import os
 
 
-def solve(input_data_file):
-    # read input data from file
-    with open(input_data_file, 'r') as instructions_file:
-        instructions_data = instructions_file.read().splitlines()
+def solve(instruction_set):
 
-    # part 01
-    result_floor = []
-    result_basement = []
+    # part 01 - start on floor 0
+    floor = 0
+    # part 02 - step moved into based
+    basement_step = 0
 
-    for idx, instruction_set in enumerate(instructions_data):
-        result_floor.append(0)
-        result_basement.append(0)
+    for step, instruction in enumerate(instruction_set):
+        if instruction == '(':
+            floor += 1
+        elif instruction == ')':
+            floor -= 1
+        else:
+            exit(f"Unknown instructions {instruction}")
 
-        for i in range(len(instruction_set)):
-            instruction = instruction_set[i]
-            if instruction == '(':
-                result_floor[idx] += 1
-            elif instruction == ')':
-                result_floor[idx] -= 1
-            else:
-                exit(f"Unknown instructions {instruction}")
-
-            if (result_basement[idx] == 0) & (result_floor[idx] < 0):
-                result_basement[idx] = i + 1
+        if (basement_step == 0) & (floor < 0):
+            basement_step = step + 1
 
     # return results
-    return (result_floor, result_basement)
+    return (floor, basement_step)
+
+
+def input_file(filename):
+    input_txt_file = os.path.join(os.path.dirname(__file__), filename)
+
+    with open(input_txt_file, 'r') as input_filehandle:
+        input_txt_list = input_filehandle.read().splitlines()
+
+    for input_txt in input_txt_list:
+        yield (input_txt)
 
 
 if __name__ == '__main__':
-    input_data_file = os.path.join(
-        os.path.dirname(__file__), 'input.txt')
+    for instruction_set in input_file('input.txt'):
+        answer = solve(instruction_set)
+        print(f"Santa ends on floor = {answer[0]}")
 
-    answers = solve(input_data_file)
-    print(f"Santa floor = {answers[0][0]}")
-    print(f"Santa enters basement on instruction = {answers[1][0]}")
+        print(f"Santa enters basement on instruction step = {answer[1]}")
