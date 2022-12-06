@@ -8,6 +8,9 @@ import re
 import copy
 
 
+INSTRUCTION_REGEX = re.compile(r'move (\d+) from (\d+) to (\d+)')
+
+
 def solve(input_data_file):
     # read input data from file
     with open(input_data_file, 'r') as input_filehandle:
@@ -22,10 +25,11 @@ def solve(input_data_file):
     # parse stack
     stack_list = list([])
 
-    stack_text_list = [i for i in input_data_text_list
-                       if (i not in instruction_list)]
-    # invert stack so read heading line first
-    for line in reversed(stack_text_list):
+    stack_text_list = reversed([i for i in input_data_text_list
+                               if (i not in instruction_list)])
+    # invert(reversed) stack so read heading line first
+    # stack label is first item in each stack_list
+    for line in stack_text_list:
         for i in range(1, len(line), 4):
             stack_idx = (i // 4)
             crate = line[i]
@@ -42,12 +46,13 @@ def solve(input_data_file):
 
     # process instructions
     for instruction in instruction_list:
-        num_list = re.findall(r'\d+', instruction)
-        item_count = int(num_list[0])
-        stack_from_idx = int(num_list[1]) - 1
-        stack_to_idx = int(num_list[2]) - 1
+        instruction_parsed = INSTRUCTION_REGEX.search(instruction)
 
-        for moves in range(item_count):
+        move_count = int(instruction_parsed.group(1))
+        stack_from_idx = int(instruction_parsed.group(2)) - 1
+        stack_to_idx = int(instruction_parsed.group(3)) - 1
+
+        for moves in range(move_count):
             crate = stack_list[stack_from_idx].pop()
             stack_list[stack_to_idx].extend(crate)
 
@@ -61,19 +66,18 @@ def solve(input_data_file):
 
     # process instructions
     for instruction in instruction_list:
-        num_list = re.findall(r'\d+', instruction)
-        item_count = int(num_list[0])
-        stack_from_idx = int(num_list[1]) - 1
-        stack_to_idx = int(num_list[2]) - 1
+        instruction_parsed = INSTRUCTION_REGEX.search(instruction)
 
-        stack_split_idx = len(stack_list[stack_from_idx]) - item_count
+        move_count = int(instruction_parsed.group(1))
+        stack_from_idx = int(instruction_parsed.group(2)) - 1
+        stack_to_idx = int(instruction_parsed.group(3)) - 1
+
+        stack_split_idx = len(stack_list[stack_from_idx]) - move_count
 
         stack_from = stack_list[stack_from_idx]
-        stack_a = stack_from[:stack_split_idx]
-        stack_b = stack_from[stack_split_idx:]
 
-        stack_list[stack_from_idx] = stack_a
-        stack_list[stack_to_idx].extend(stack_b)
+        stack_list[stack_to_idx].extend(stack_from[stack_split_idx:])
+        stack_list[stack_from_idx] = stack_from[:stack_split_idx]
 
     # top of each stack
     top_of_stacks2 = ''
