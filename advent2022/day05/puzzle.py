@@ -25,14 +25,16 @@ def solve(input_data_file):
 
     stack_text_list = [i for i in input_data_text_list
                        if (i not in instruction_list)]
+    # invert stack so read heading line first
     for line in reversed(stack_text_list):
-        for i, c in enumerate(line):
-            dm = divmod(i + 1, 4)
-            if (dm[1] == 2) and (not c.isspace()):
-                if (dm[0] > len(stack_list) - 1):
+        for i in range(1, len(line), 4):
+            stack_idx = (i // 4)
+            c = line[i]
+            if not c.isspace():
+                if (stack_idx > len(stack_list) - 1):
                     stack_list.append(list([c]))
                 else:
-                    stack_list[dm[0]].append(c)
+                    stack_list[stack_idx].append(c)
 
     # preseve copy of stack list for part 2
     stack_list_0 = copy.deepcopy(stack_list)
@@ -85,7 +87,7 @@ def solve(input_data_file):
 
 if __name__ == '__main__':
     input_data_file = os.path.join(
-        os.path.dirname(__file__), 'input.txt')
+        os.path.dirname(__file__), 'input_example.txt')
 
     answers = solve(input_data_file)
     print(f"Crates at top of stack with CrateMover 9000 = {answers[0]}")
