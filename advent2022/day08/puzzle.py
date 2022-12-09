@@ -7,14 +7,15 @@ import os
 import numpy as np
 
 
-def calc_score(outlook, height):
+def calc_visible_score(outlook, height):
     score = 0
+    hidden = False
     if len(outlook) == 0:
         score = 1
     else:
         hidden = np.any(outlook >= height)
         if hidden:
-            blocked_distance = np.asarray(np.where(outlook >= height))
+            blocked_distance = np.where(outlook >= height)
             score = blocked_distance[0][0] + 1
         else:
             score = len(outlook)
@@ -23,7 +24,7 @@ def calc_score(outlook, height):
 
 def solve(tree_map_np):
 
-    # process terminal output
+    # process tree map
     num_r = tree_map_np.shape[0]
     num_c = tree_map_np.shape[1]
 
@@ -38,19 +39,19 @@ def solve(tree_map_np):
         for c in range(1, num_c - 1):
             height = tree_map_np[r][c]
 
-            outlook_n = np.flip(np.array(tree_map_np[:, c][0:r]))
-            view_n, score_n = calc_score(outlook_n, height)
+            outlook_n = np.flip(tree_map_np[:, c][0:r])
+            visible_n, score_n = calc_visible_score(outlook_n, height)
 
-            outlook_e = np.array(tree_map_np[r, :][c + 1:num_c])
-            view_e, score_e = calc_score(outlook_e, height)
+            outlook_e = tree_map_np[r, :][c + 1:num_c]
+            visible_e, score_e = calc_visible_score(outlook_e, height)
 
-            outlook_s = np.array(tree_map_np[:, c][r + 1:num_r])
-            view_s, score_s = calc_score(outlook_s, height)
+            outlook_s = tree_map_np[:, c][r + 1:num_r]
+            visible_s, score_s = calc_visible_score(outlook_s, height)
 
-            outlook_w = np.flip(np.array(tree_map_np[r, :][0:c]))
-            view_w, score_w = calc_score(outlook_w, height)
+            outlook_w = np.flip(tree_map_np[r, :][0:c])
+            visible_w, score_w = calc_visible_score(outlook_w, height)
 
-            visible_tree_np[r][c] = view_n or view_e or view_s or view_w
+            visible_tree_np[r][c] = visible_n or visible_e or visible_s or visible_w
             scenic_score_np[r][c] = score_n * score_e * score_s * score_w
 
     visible_trees = np.count_nonzero(visible_tree_np)
