@@ -31,17 +31,17 @@ class PuzzleTest(unittest.TestCase):
 
         answer = puzzle.solve(input_data)
         answer_part01 = answer[0]
-        self.assertEqual(answer_part01, self.example_answer_part01, 'a')
+        self.assertEqual(answer_part01, self.example_answer_part01)
 
         answer_part02 = answer[1]
-        self.assertEqual(answer_part02, self.example_answer_part02, 'b')
+        self.assertEqual(answer_part02, self.example_answer_part02)
 
     def test_input(self):
         input_data = puzzle.input_data('input.txt')
 
         answer = puzzle.solve(input_data)
         answer_part01 = answer[0]
-        self.assertEqual(answer_part01, self.answer_part01, 'c')
+        self.assertEqual(answer_part01, self.answer_part01)
 
         answer_part02 = answer[1]
-        self.assertEqual(answer_part02, self.answer_part02, 'd')
+        self.assertEqual(answer_part02, self.answer_part02)
