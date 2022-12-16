@@ -11,7 +11,7 @@ from matplotlib.animation import FuncAnimation
 
 COLOR_MAP = matplotlib.colors.LinearSegmentedColormap.from_list('height_gradient_map',
                                                                 ['white', 'black',
-                                                                 'yellow'],
+                                                                 'blue'],
                                                                 256)
 
 AIR = int(0)
@@ -93,7 +93,7 @@ class SandSimulator():
         self.loc_sand = self.loc_sand_entry
 
         if self.grid[self.loc_sand] == SAND:
-            print(f"Sand grain {self.sand_count} has blocked sand entry")
+            # print(f"Sand grain {self.sand_count} has blocked sand entry")
             self.sand_falling = False
             return
 
@@ -107,7 +107,7 @@ class SandSimulator():
             return
 
         if (self.loc_sand[0] + 1 >= self.grid.shape[0]):
-            print(f"Sand grain {self.sand_count} falling into the abyss")
+            # print(f"Sand grain {self.sand_count} falling into the abyss")
             self.sand_falling = False  # stop further sand falling
             self.sand_count -= 1  # remove last count as it fell into abyss
             return
@@ -145,7 +145,7 @@ class SandVisualiser():
         gsub.set_title("Sand Simulation")
         gsub.set_aspect('equal')
         gsub.axis('off')
-        self.animation = FuncAnimation(fig, self.update, frames=20, interval=1)
+        self.animation = FuncAnimation(fig, self.update, frames=20, interval=0)
         self.animation.pause()
         self.paused = True
         fig.canvas.mpl_connect('button_press_event', self.toggle_pause)
@@ -206,5 +206,5 @@ if __name__ == '__main__':
     answer = solve(input_data, False, False)
     print(f"part01 - Sand count thats falls into abyss = {answer}")
 
-    answer = solve(input_data, True, False)
+    answer = solve(input_data, True, True)
     print(f"part02 - Sand count when entry point block = {answer}")

@@ -109,25 +109,25 @@ def solve(sensor_text_list, check_row):
         known_list.append(known_x_slice)
 
     known_list.sort(key=lambda item: item[0])
-    print(check_row, 'known_list', known_list)
+    # print(check_row, 'known_list', known_list)
 
     # merge overlapping knowns
     known_list_merged = merge_overlaps(known_list)
-    print(check_row, 'merged', known_list_merged)
+    # print(check_row, 'merged', known_list_merged)
 
     # split by beacons
     beacon_split = [b[0] for b in beacon_list if b[1] == check_row]
     beacon_split = list(set(beacon_split))  # remove duplicates
-    print(check_row, 'beacon_split', beacon_split)
+    # print(check_row, 'beacon_split', beacon_split)
     known_list_split = split_intervals(known_list_merged, beacon_split)
 
     # split by sensors
     sensor_split = [s[0] for s in sensor_list if s[1] == check_row]
     known_list_split = split_intervals(known_list_split, sensor_split)
-    print(check_row, 'sensor_split', known_list_split)
+    # print(check_row, 'sensor_split', known_list_split)
 
     free_positions = sum([((t[1] - t[0]) + 1) for t in known_list_split])
-    print(free_positions)
+    # print(free_positions)
 
     return free_positions
 
@@ -145,7 +145,6 @@ def input_data(filename):
 if __name__ == '__main__':
     input_data = input_data('input.txt')
 
-    # for row in range(-3,18):
     row = 2000000
-    answer = solve(input_data, row)
+    answer = solve01(input_data, row)
     print(f"part01 - For row={row} positions without beacon = {answer}")
