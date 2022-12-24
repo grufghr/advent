@@ -1,0 +1,165 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Advent of Code
+"""
+import os
+import re
+import collections
+
+MONKEY_REGEX = re.compile(r"([a-z]{4}): (.*)")
+MONKEY_JOB_REGEX = re.compile(r"(?:(\d+)|([a-z]{4}) ([\+\-\*\/]) ([a-z]{4}))")
+
+
+def calc_yell(a, op, b):
+    if op == '+':
+        yell = a + b
+    elif op == '-':
+        yell = a - b
+    elif op == '*':
+        yell = a * b
+    elif op == '/':
+        yell = a / b
+    return int(yell)
+
+
+def inverse_calc(name, a, op, b):
+
+    r = None
+    if not isinstance(a, int):
+        if op == '+':
+            r = (a, (name, '-', b))
+        elif op == '-':
+            r = (a, (name, '+', b))
+        elif op == '*':
+            r = (a, (name, '/', b))
+        elif op == '/':
+            r = (a, (name, '*', b))
+    elif not isinstance(b, int):
+        if op == '+':
+            r = (b, (name, '-', a))
+        elif op == '-':
+            r = (b, (a, '-', name))
+        elif op == '*':
+            r = (b, (name, '/', a))
+        elif op == '/':
+            r = (b, (a, '/', name))
+
+    # input(f"Inverse {name} = ({a} {op} {b}) -> {r}")
+    return r
+
+
+def solve01(monkey_calc, monkey_yell):
+
+    q = collections.deque(monkey_calc)
+    while q:
+        name, calc = q.popleft()
+        a, op, b = calc
+
+        if a in monkey_yell:
+            a = monkey_yell[a]
+        if b in monkey_yell:
+            b = monkey_yell[b]
+
+        if isinstance(a, int) and isinstance(b, int):
+            monkey_yell[name] = calc_yell(a, op, b)
+        else:
+            q.append((name, (a, op, b)))
+
+    return monkey_yell['root']
+
+
+def solve02(monkey_calc, monkey_yell):
+
+    q = collections.deque(monkey_calc)
+    while q:
+        name, calc = q.popleft()
+        a, op, b = calc
+
+        if a in monkey_yell:
+            a = monkey_yell[a]
+        if b in monkey_yell:
+            b = monkey_yell[b]
+
+        if op == '=':
+            if isinstance(a, int) and not isinstance(b, int):
+                monkey_yell[b] = int(a)
+            elif isinstance(b, int) and not isinstance(a, int):
+                monkey_yell[a] = int(b)
+            else:
+                q.append((name, (a, op, b)))
+            continue
+
+        if isinstance(a, int) and isinstance(b, int):
+            monkey_yell[name] = calc_yell(a, op, b)
+            continue
+        elif name in monkey_yell:
+            calc_n = inverse_calc(name, a, op, b)
+            q.append(calc_n)
+            continue
+
+        # wait to resolve a and/or b
+        q.append((name, (a, op, b)))
+
+    return monkey_yell['humn']
+
+
+def solve(input_list):
+
+    # parse input file
+    monkey_calc = {}
+    monkey_yell = {}
+    for monkey_line in input_list:
+        match_m = MONKEY_REGEX.search(monkey_line)
+        monkey_name, monkey_job_text = match_m.groups()
+
+        match_j = MONKEY_JOB_REGEX.search(monkey_job_text)
+        monkey_job = match_j.groups()
+
+        # part 01
+        if monkey_job[0] is None:
+            monkey_calc[monkey_name] = (monkey_job[1],
+                                        monkey_job[2],
+                                        monkey_job[3])
+        else:
+            monkey_yell[monkey_name] = int(monkey_job[0])
+
+    # part 01 - determine what root monkey yells
+    monkey_calc_01 = [(k, v) for k, v in monkey_calc.items()]
+    monkey_yell_01 = monkey_yell.copy()
+
+    root_yells = solve01(monkey_calc_01, monkey_yell_01)
+
+    # part 02 - reversed,  determine what 'humn' shouts to solve root equation (a = b)
+
+    # correct root monkey operation
+    monkey_calc_02 = monkey_calc.copy()
+    root_a, root_op, root_b = monkey_calc_02['root']
+    monkey_calc_02['root'] = (root_a, '=', root_b)
+    monkey_calc_02 = [(k, v) for k, v in monkey_calc_02.items()]
+    # remove humn from monkey_yell
+    monkey_yell_02 = monkey_yell.copy()
+    del monkey_yell_02['humn']
+
+    humn_yells = solve02(monkey_calc_02, monkey_yell_02)
+
+    return (root_yells, humn_yells)
+
+
+def input_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
+
+    # read i[]nput data from file
+    with open(input_data_file, 'r') as input_filehandle:
+        input_data_text_list = input_filehandle.read().splitlines()
+
+    return input_data_text_list
+
+
+if __name__ == '__main__':
+    input_data = input_data('input.txt')
+
+    answer = solve(input_data)
+    print(f"part01 - root yells = {answer[0]}")
+
+    print(f"part02 - humn yells = {answer[1]}")
