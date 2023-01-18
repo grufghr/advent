@@ -4,7 +4,7 @@ Advent of Code - Performance test
 import unittest
 import time
 
-import advent2015.day02.puzzle as puzzle
+import advent2022.day01.puzzle as puzzle
 
 
 class PuzzleTest(unittest.TestCase):

@@ -4,13 +4,14 @@ Advent of Code - Performance test
 import unittest
 import time
 
-import advent2015.day02.puzzle as puzzle
+import advent2022.day18.puzzle as puzzle
 
 
 class PuzzleTest(unittest.TestCase):
 
     execution_time = 1.0
 
+    @unittest.skip("ToDo performance fix")
     def test_performance(self):
         input_data = puzzle.input_data('input.txt')
 

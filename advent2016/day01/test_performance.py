@@ -4,7 +4,7 @@ Advent of Code - Performance test
 import unittest
 import time
 
-import advent2015.day02.puzzle as puzzle
+import advent2016.day01.puzzle as puzzle
 
 
 class PuzzleTest(unittest.TestCase):
@@ -12,7 +12,7 @@ class PuzzleTest(unittest.TestCase):
     execution_time = 1.0
 
     def test_performance(self):
-        input_data = puzzle.input_data('input.txt')
+        input_data = next(puzzle.input_data_iter('input.txt'))
 
         ts = time.time()
         puzzle.solve(input_data)
