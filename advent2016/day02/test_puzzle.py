@@ -14,7 +14,7 @@ class PuzzleTest(unittest.TestCase):
     answer_part01 = '12578'
     answer_part02 = '516DD'
 
-    def test_input_example(self):
+    def test_001_input_example(self):
         input_text = puzzle.input_data('input_example.txt')
 
         answer = puzzle.solve(input_text)
@@ -22,7 +22,7 @@ class PuzzleTest(unittest.TestCase):
 
         self.assertEqual(answer[1], self.example_answer_part02)
 
-    def test_input(self):
+    def test_002_input(self):
         input_text = puzzle.input_data('input.txt')
 
         answer = puzzle.solve(input_text)

@@ -12,7 +12,7 @@ class PuzzleTest(unittest.TestCase):
 
     answer_part01 = 532
 
-    def test_input_example(self):
+    def test_001_input_example(self):
         input_data = puzzle.input_data('input_example.txt')
 
         answer = puzzle.solve(input_data)
@@ -20,7 +20,7 @@ class PuzzleTest(unittest.TestCase):
 
         # no part 02
 
-    def test_input(self):
+    def test_002_input(self):
         input_data = puzzle.input_data('input.txt')
 
         answer = puzzle.solve(input_data)

@@ -14,7 +14,7 @@ class PuzzleTest(unittest.TestCase):
     answer_part01 = 'FZCMJCRHZ'
     answer_part02 = 'JSDHQMZGF'
 
-    def test_input_example(self):
+    def test_001_input_example(self):
         input_data = puzzle.input_data('input_example.txt')
 
         answer_part01 = puzzle.solve(
@@ -25,7 +25,7 @@ class PuzzleTest(unittest.TestCase):
             input_data[0], input_data[1], puzzle.cratemover9001)
         self.assertEqual(answer_part02, self.example_answer_part02)
 
-    def test_input(self):
+    def test_002_input(self):
         input_data = puzzle.input_data('input.txt')
 
         answer_part01 = puzzle.solve(
