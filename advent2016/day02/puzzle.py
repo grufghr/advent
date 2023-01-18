@@ -4,18 +4,21 @@
 Advent of Code
 """
 import os
+import numpy as np
+from operator import add
 
-KEYPAD01 = [['1', '2', '3'],
-            ['4', '5', '6'],
-            ['7', '8', '9'],
-            ]
 
-KEYPAD02 = [[' ', ' ', '1', ' ', ' '],
-            [' ', '2', '3', '4', ' '],
-            ['5', '6', '7', '8', '9'],
-            [' ', 'A', 'B', 'C', ' '],
-            [' ', ' ', 'D', ' ', ' '],
-            ]
+KEYPAD01 = np.array([['1', '2', '3'],
+                     ['4', '5', '6'],
+                     ['7', '8', '9'],
+                     ])
+
+KEYPAD02 = np.array([[' ', ' ', '1', ' ', ' '],
+                     [' ', '2', '3', '4', ' '],
+                     ['5', '6', '7', '8', '9'],
+                     [' ', 'A', 'B', 'C', ' '],
+                     [' ', ' ', 'D', ' ', ' '],
+                     ])
 
 INSTR = {"U": (-1, 0),
          "D": (1, 0),
@@ -34,19 +37,21 @@ def solve(instruction_text_list):
     pos02 = (2, 0)
 
     for code_instruction in instruction_text_list:
-        for finger_move in code_instruction:
-            pos01_n = (max(0, min(pos01[0] + INSTR[finger_move][0], 2)),
-                       max(0, min(pos01[1] + INSTR[finger_move][1], 2)))
+        for move in code_instruction:
+            pos01_n = tuple(map(add, pos01, INSTR[move]))
+            pos01_n = (max(0, min(pos01_n[0], 2)),
+                       max(0, min(pos01_n[1], 2)))
             pos01 = pos01_n
 
-            pos02_n = (max(0, min(pos02[0] + INSTR[finger_move][0], 4)),
-                       max(0, min(pos02[1] + INSTR[finger_move][1], 4)))
+            pos02_n = tuple(map(add, pos02, INSTR[move]))
+            pos02_n = (max(0, min(pos02_n[0], 4)),
+                       max(0, min(pos02_n[1], 4)))
 
-            if KEYPAD02[pos02_n[0]][pos02_n[1]] != ' ':
+            if KEYPAD02[pos02_n] != ' ':
                 pos02 = pos02_n
 
-        code_list01.append(KEYPAD01[pos01[0]][pos01[1]])
-        code_list02.append(KEYPAD02[pos02[0]][pos02[1]])
+        code_list01.append(KEYPAD01[pos01])
+        code_list02.append(KEYPAD02[pos02])
 
     # part 01 - code for KEYPAD 01
     code01 = ''.join([str(x) for x in code_list01])
