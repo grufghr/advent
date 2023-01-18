@@ -15,7 +15,7 @@ def solve(instruction_text):
     # part 01 - start at 0,0 facing North
     pos = (0, 0)
     compass = ['N', 'E', 'S', 'W']
-    #compass = [(0, -1), (1, 0), (0, 1), (-1, 0)]
+    # compass = [(0, -1), (1, 0), (0, 1), (-1, 0)]
 
     # part 02
     visited = set()
