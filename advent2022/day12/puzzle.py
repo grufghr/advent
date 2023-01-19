@@ -127,7 +127,7 @@ def solve(height_map_text):
     # Find shortest distance to end for all possible stating places
     distance_l = list()
     for loc_n in possible_s:
-        distance_s = grid_map.calc_distance_to_end(loc_n)
+        distance_s = grid_map.calc_distance_to_end(loc_s=loc_n)
         if distance_s:
             distance_l.append(distance_s)
     distance_s = min(distance_l)
