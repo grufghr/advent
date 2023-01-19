@@ -3,22 +3,9 @@
 """
 Advent of Code 2021
 """
-from matplotlib import pyplot
-import matplotlib as mpl
 import os
+from collections import deque
 import numpy as np
-
-# Visualisations
-# make a color map of fixed colors
-COLOR_MAP1 = mpl.colors.LinearSegmentedColormap.from_list('height_gradient_map',
-                                                          ['green', 'blue',
-                                                              'white'],
-                                                          256)
-COLOR_MAP2 = mpl.colors.LinearSegmentedColormap.from_list('height_gradient_map',
-                                                          ['white', 'black'],
-                                                          256)
-
-DEAD_END = 999
 
 
 class GridMap():
@@ -45,12 +32,6 @@ class GridMap():
         el = list(zip(e[0], e[1]))
         end = el[0]
         return end
-
-    def distance_map_init(self, loc_s):
-        # create and initialise distance map
-        self.distance_map = np.zeros(self.height_map.shape, dtype=int,)
-        self.distance_map[:] = DEAD_END
-        self.distance_map[loc_s] = 0
 
     def next_moves(self, loc_c):
         # find all valid next move (N,E,S,W)
@@ -96,42 +77,27 @@ class GridMap():
         if not loc_e:
             loc_e = self.find_end_loc()
 
-        self.distance_map_init(loc_s)
-
-        q = []  # queue of locations & distances
+        q = deque()  # queue of locations & distances
         q.append((loc_s, 0))  # initial with start location
+        visited = set()
 
         # walk map to find shortest distance
-        while len(q) > 0:
-            loc_c, distance_c = q.pop()
+        while q:
+            loc_c, distance_c = q.popleft()
 
-            for loc_n in self.next_moves(loc_c):
+            if (loc_c not in visited):
+                visited.add(loc_c)
+
+                # reached end (stop searching)
+                if loc_c == loc_e:
+                    return distance_c
+
+                # search next steps
                 distance_n = distance_c + 1
-                if (self.distance_map[loc_n] > distance_n):
-                    self.distance_map[loc_n] = distance_n
+                for loc_n in self.next_moves(loc_c):
                     q.append((loc_n, distance_n))
 
-        return self.distance_map[self.end]
-
-    def visualise(self):
-        fig, (map1, map2) = pyplot.subplots(1, 2)
-        fig.suptitle('Grid Maps')
-
-        m1 = map1.imshow(self.height_map,
-                         interpolation='nearest',
-                         cmap=COLOR_MAP1)
-        map1.set_title('Height Map')
-        map1.axis('off')
-
-        m2 = map2.imshow(self.distance_map,
-                         interpolation='nearest',
-                         cmap=COLOR_MAP2)
-        map2.set_title('Distance Map')
-        map2.axis('off')
-
-        pyplot.colorbar(m1, cmap=COLOR_MAP1, orientation='horizontal')
-        pyplot.colorbar(m2, cmap=COLOR_MAP2, orientation='horizontal')
-        pyplot.show()
+        return None
 
 
 def convert_height(hc):
@@ -150,52 +116,23 @@ def solve(height_map_text):
                         for i in height_map_text.split("\n")])
 
     # part 01
-
     part01 = grid_map.calc_distance_to_end()
-    # grid_map.visualise()
 
     # part 02
 
-    # Brute force starting place
-    # need to revisit calc_distance_to_end
+    # Brute force all possible start places
     hm = grid_map.height_map
-
-    # produce map with levels 1 & 2
-    level = 1
-    lm = np.where(hm <= (level + 1), hm, 0)
-
-    # Create filter for dead-ends
-    for ir, ic in np.ndindex(lm.shape):
-        if lm[ir, ic] != level:
-            continue
-        if (ir > 0) and (lm[ir - 1, ic] == (level + 1)):
-            continue
-        if (ic > 0) and (lm[ir, ic - 1] == (level + 1)):
-            continue
-        if (ir < (lm.shape[0] - 1)) and (lm[ir + 1, ic] == (level + 1)):
-            continue
-        if (ic < (lm.shape[1] - 1)) and (lm[ir, ic + 1] == (level + 1)):
-            continue
-        lm[ir, ic] = 0
-    lm = np.where(lm == level, lm, 0)
-
-    # All possible start places
-    possible_s = list(zip(*np.where(lm == 1)))
+    possible_s = list(zip(*np.where(hm == 1)))
 
     # Find shortest distance to end for all possible stating places
-    loc_s = None
-    distance_s = DEAD_END
+    distance_l = list()
     for loc_n in possible_s:
-        distance_n = grid_map.calc_distance_to_end(loc_n)
-        if distance_n < distance_s:
-            distance_s = distance_n
-            loc_s = loc_n
-        # print(f"distance starting at {loc_n} took {distance_n}")
-
-    # print(f"Shortest distance starts at {loc_s} took {distance_s}")
+        distance_s = grid_map.calc_distance_to_end(loc_n)
+        if distance_s:
+            distance_l.append(distance_s)
+    distance_s = min(distance_l)
 
     part02 = distance_s
-    # grid_map.visualise()
 
     # return results
     return (part01, part02)
