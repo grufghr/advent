@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code 2021
+Advent of Code 2022
 """
 import os
 from collections import deque
