@@ -6,18 +6,12 @@ Advent of Code 2021
 import os
 
 
-def solve(input_data):
-
-    # part 01
-    command_data_list = []
-    for command in input_data.split('\n'):
-        direction, unit = command.split(' ')
-        command_data_list.append((direction, int(unit)))
-
+def solve01(command_list):
+    # part 01 -
     horizontal = 0
     depth = 0
 
-    for (direction, unit) in command_data_list:
+    for (direction, unit) in command_list:
         if direction == 'forward':
             horizontal += unit
         elif direction == 'down':
@@ -25,14 +19,18 @@ def solve(input_data):
         elif direction == 'up':
             depth -= unit
 
-    distance1 = horizontal * depth
+    distance = horizontal * depth
 
-    # part 02
+    return distance
+
+
+def solve02(command_list):
+    # part 02 -
     aim = 0
     horizontal = 0
     depth = 0
 
-    for (direction, unit) in command_data_list:
+    for (direction, unit) in command_list:
         if direction == 'forward':
             horizontal += unit
             depth += (aim * unit)
@@ -41,25 +39,32 @@ def solve(input_data):
         elif direction == 'up':
             aim -= unit
 
-    distance2 = horizontal * depth
+    distance = horizontal * depth
 
-    # return results
-    return (distance1, distance2)
+    return distance
 
 
-def input_data(filename):
+def parse_data(input_data):
+    command_list = []
+    for command in input_data.split('\n'):
+        direction, unit = command.split(' ')
+        command_list.append((direction, int(unit)))
+    return command_list
+
+
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    # read in data file
-    with open(input_data_file, 'r') as command_file:
-        command_file_text = command_file.read()
+    with open(input_data_file, 'r') as filehandle:
+        input_data = filehandle.read()
 
-    return command_file_text
+    return parse_data(input_data)
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data)
-    print(f"part 01 - Final horizontal position * final depth = {answer[0]}.")
-    print(f"part 02 - Final horizontal position * final depth = {answer[1]}.")
+    answer01 = solve01(input_data)
+    print(f"part01 - Final horizontal position * final depth = {answer01}")
+    answer02 = solve02(input_data)
+    print(f"part02 - Final horizontal position * final depth = {answer02}")

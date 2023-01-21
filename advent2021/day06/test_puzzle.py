@@ -2,32 +2,39 @@
 Advent of Code - Test Case
 """
 import unittest
+import time
 
 import advent2021.day06.puzzle as puzzle
 
 
 class PuzzleTest(unittest.TestCase):
 
-    example_answer_part01 = 5934
-    example_answer_part02 = 26984457539
+    example_answer01 = 5934
+    example_answer02 = 26984457539
 
-    answer_part01 = 380243
-    answer_part02 = 1708791884591
+    answer01 = 380243
+    answer02 = 1708791884591
+
+    execution_time = 1.0
 
     def test_001_input_example(self):
-        input_data = puzzle.parse_data(puzzle.load_data('input_example.txt'))
+        input_data = puzzle.load_data('input_example.txt')
 
-        answer = puzzle.solve(input_data, 80)
-        self.assertEqual(answer, self.example_answer_part01)
+        answer01 = puzzle.solve01(input_data)
+        self.assertEqual(answer01, self.example_answer01)
 
-        answer = puzzle.solve(input_data, 256)
-        self.assertEqual(answer, self.example_answer_part02)
+        answer02 = puzzle.solve02(input_data)
+        self.assertEqual(answer02, self.example_answer02)
 
     def test_002_input(self):
-        input_data = puzzle.parse_data(puzzle.load_data('input.txt'))
+        input_data = puzzle.load_data('input.txt')
 
-        answer = puzzle.solve(input_data, 80)
-        self.assertEqual(answer, self.answer_part01)
+        answer01 = puzzle.solve01(input_data)
+        self.assertEqual(answer01, self.answer01)
 
-        answer = puzzle.solve(input_data, 256)
-        self.assertEqual(answer, self.answer_part02)
+        ts = time.time()
+        answer02 = puzzle.solve02(input_data)
+        t = time.time() - ts
+        self.assertEqual(answer02, self.answer02)
+        self.assertLess(t, self.execution_time, f"part02 {t:2.5f} secs")
+        print(f"execution_time {t:2.5f} secs")

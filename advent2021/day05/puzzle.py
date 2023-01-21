@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code 2021
 """
 import os
 import numpy as np
+
+
+def solve01(coord_np):
+    return solve(coord_np)
+
+
+def solve02(coord_np):
+    return solve(coord_np, True)
 
 
 def solve(coord_np, include_diag=False):
@@ -29,7 +37,7 @@ def solve(coord_np, include_diag=False):
         elif sc == ec:
             vent_map_np[sr:er + 1, sc] += 1
 
-        # part 02
+        # part 02 -
         if include_diag and (sr != er) and (sc != ec):
             r = coord[1]
             c = coord[0]
@@ -48,11 +56,10 @@ def solve(coord_np, include_diag=False):
 
     num_overlapping_vents = len(np.where(vent_map_np > 1)[0])
 
-    # return results
     return num_overlapping_vents
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
@@ -65,10 +72,10 @@ def input_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data)
-    print(f"Overlapping air vents = {answer}")
+    answer01 = solve01(input_data)
+    print(f"part01 - Overlapping air vents = {answer}")
 
-    answer = solve(input_data, True)
-    print(f"Overlapping air vents (diagonals included) = {answer}")
+    answer01 = solve02(input_data)
+    print(f"part02 - Overlapping air vents (diagonals included) = {answer}")

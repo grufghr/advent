@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code 2021
 """
 import os
 import numpy as np
@@ -14,6 +14,7 @@ class Board:
         self.match = np.zeros(self.shape)
         self.done = False
 
+    # TODO - improve performance function
     def dab(self, num):
         board_flat = self.board.flatten()
         board_match_num = np.where(board_flat == num)
@@ -38,9 +39,22 @@ class Board:
         return self.board.__repr__()
 
 
-def solve(bingo_number_list, board_list):
+def solve01(input_data):
+    answers = solve(input_data[0], input_data[1])
+    return answers[0]
 
-    # part 01 & 02
+
+def solve02(input_data):
+    answers = solve(input_data[0], input_data[1])
+    return answers[1]
+
+
+def solve(bingo_number_list, board_np):
+    # create list of boards
+    board_list = []
+    for b in board_np:
+        board = Board(b)
+        board_list.append(board)
 
     # play bingo
     winner_score = None
@@ -59,7 +73,7 @@ def solve(bingo_number_list, board_list):
     return (winner_score, last_winner_score)
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
@@ -73,20 +87,16 @@ def input_data(filename):
     board_np = np.genfromtxt(input_data_file, dtype=int, skip_header=2)
     board_np = np.array(np.array_split(board_np, board_count))
 
-    # create list of boards
-    board_list = []
-    for b in board_np:
-        board = Board(b)
-        board_list.append(board)
-
     bingo_number_list = [int(n) for n in bingo_number_text.split(',')]
 
-    return (bingo_number_list, board_list)
+    return (bingo_number_list, board_np)
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data[0], input_data[1])
-    print(f"Winning bingo card score = {answer[0]}.")
-    print(f"Last winning card score = {answer[1]}.")
+    answer01 = solve01(input_data)
+    print(f"Winning bingo card score = {answer01}.")
+
+    answer02 = solve02(input_data)
+    print(f"Last winning card score = {answer02}.")

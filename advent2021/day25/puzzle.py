@@ -7,12 +7,7 @@ import os
 import numpy as np
 
 
-def solve(cucumber_map_text):
-
-    # split data into 2d array
-    cucumber_map_text = [list(i) for i in cucumber_map_text.split("\n")]
-    # convert into numpy array
-    cucumber_grid = np.array(cucumber_map_text)
+def solve01(cucumber_grid):
 
     # create new empty grid
     r_size, c_size = cucumber_grid.shape
@@ -54,22 +49,29 @@ def solve(cucumber_map_text):
         cucumber_grid = cucumber_grid_n.copy()
         step += 1
 
-    # return results
     return step
 
 
-def input_data(filename):
+def parse_data(input_data):
+    # split data into 2d array
+    cucumber_map_text = [list(i) for i in input_data.split("\n")]
+    # convert into numpy array
+    cucumber_grid = np.array(cucumber_map_text)
+
+    return cucumber_grid
+
+
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    # read in data file
     with open(input_data_file, 'r') as filehandle:
-        input_data_text = filehandle.read()
+        input_data = filehandle.read()
 
-    return input_data_text
+    return parse_data(input_data)
 
 
 if __name__ == '__main__':
     input_data = input_data('input.txt')
 
-    answer = solve(input_data)
-    print(f"First step on which no sea cucumbers moved = {answer}.\n")
+    answer01 = solve01(input_data)
+    print(f"part01 - First step on which no sea cucumbers moved = {answer01}")

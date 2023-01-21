@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code 2021
 """
 import os
+
+
+def solve01(input_data):
+    return solve(input_data, 80)
+
+
+def solve02(input_data):
+    return solve(input_data, 256)
 
 
 def solve(fish_age_list, days):
@@ -34,17 +42,17 @@ def parse_data(input_data):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_data_file, 'r') as input_filehandle:
-        input_data = input_filehandle.read()
+    with open(input_data_file, 'r') as filehandle:
+        input_data = filehandle.read()
 
-    return input_data
+    return parse_data(input_data)
 
 
 if __name__ == '__main__':
-    input_data = parse_data(load_data('input.txt'))
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data, 80)
+    answer = solve01(input_data)
     print(f"part01 - fish population after 80 days = {answer}")
 
-    answer = solve(input_data, 256)
+    answer = solve02(input_data)
     print(f"part02 - fish population after 256 days = {answer}")
