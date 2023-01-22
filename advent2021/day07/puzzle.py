@@ -8,13 +8,14 @@ import math
 
 
 def solve01(input_data):
+    # part 01 - find min cost when cost calculated with calc_cost
     def calc_cost(x, i):
         return abs(x - i)
-
     return solve(input_data, calc_cost)
 
 
 def solve02(input_data):
+    # part 02 - find min cost when cost calculated with calc_cost
     def calc_cost(x, i):
         n = abs(x - i)
         return int((n * (n + 1)) / 2)
@@ -22,8 +23,6 @@ def solve02(input_data):
 
 
 def solve(pos_list, cost_func):
-
-    # part 01 - find best position
     s = min(pos_list)
     e = max(pos_list) + 1
     min_cost = math.inf
@@ -48,7 +47,7 @@ def load_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
     print(f"part01 - least fuel to align = {answer01}")
