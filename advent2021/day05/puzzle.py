@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code 2021
+Advent of Code - Solve Puzzle
 """
 import os
 import numpy as np
@@ -75,7 +75,7 @@ if __name__ == '__main__':
     input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - Overlapping air vents = {answer}")
+    print(f"part01 - Overlapping air vents = {answer01}")
 
     answer01 = solve02(input_data)
-    print(f"part02 - Overlapping air vents (diagonals included) = {answer}")
+    print(f"part02 - Overlapping air vents (diagonals included) = {answer02}")

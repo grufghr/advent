@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle
 """
 import os
 import hashlib
@@ -56,21 +56,20 @@ def solve02(door_id):
     return door_pwd
 
 
-def input_data_iter(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     with open(input_data_file, 'r') as input_filehandle:
-        input_txt_list = input_filehandle.read().splitlines()
+        input_data = input_filehandle.read()
 
-    for input_txt in input_txt_list:
-        yield (input_txt)
+    return input_data
 
 
 if __name__ == '__main__':
-    door_id = next(input_data_iter('input.txt'))
+    input_data = load_data('input.txt')
 
-    answer = solve01(door_id)
-    print(f"part01 - door password = {answer}")
+    answer01 = solve01(input_data)
+    print(f"part01 - door password = {answer01}")
 
-    answer = solve02(door_id)
-    print(f"part02 - door password = {answer}")
+    answer02 = solve02(input_data)
+    print(f"part02 - door password = {answer02}")

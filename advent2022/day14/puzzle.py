@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle
 """
 import os
 import numpy as np
@@ -174,6 +174,16 @@ class SandVisualiser():
         pyplot.draw()
 
 
+def solve01(input_data):
+    answer = solve(input_data, False, False)
+    return answer
+
+
+def solve02(input_data):
+    answer = solve(input_data, True, False)
+    return answer
+
+
 def solve(input_text_rock_drawing, infinite_floor, visualise=False):
 
     simulator = SandSimulator(input_text_rock_drawing, infinite_floor)
@@ -190,7 +200,7 @@ def solve(input_text_rock_drawing, infinite_floor, visualise=False):
     return units_of_sand
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
@@ -201,10 +211,10 @@ def input_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data, False, False)
-    print(f"part01 - Sand count thats falls into abyss = {answer}")
+    answer01 = solve01(input_data)
+    print(f"part01 - Sand count thats falls into abyss = {answer01}")
 
-    answer = solve(input_data, True, True)
-    print(f"part02 - Sand count when entry point block = {answer}")
+    answer02 = solve02(input_data)
+    print(f"part02 - Sand count when entry point block = {answer02}")

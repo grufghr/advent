@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code 2015
+Advent of Code - Solve Puzzle
 """
 import os
 import numpy as np
+
+
+def solve01(input_data):
+    return solve(input_data)
+
+
+def solve02(input_data):
+    return solve(input_data, 2)
 
 
 def solve(instruction_set, delivery_num=1):
@@ -59,21 +67,25 @@ def solve(instruction_set, delivery_num=1):
     return houses_visited_count
 
 
-def input_data_iter(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     with open(input_data_file, 'r') as input_filehandle:
-        input_txt_list = input_filehandle.read().splitlines()
+        input_data = input_filehandle.read()
 
-    for input_txt in input_txt_list:
-        yield (input_txt)
+    return input_data
+
+
+def input_data_iter(input_data):
+    for tc, input_data_tc in enumerate(input_data.splitlines()):
+        yield tc, input_data_tc
 
 
 if __name__ == '__main__':
-    instruction_set = next(input_data_iter('input.txt'))
+    input_data = load_data('input.txt')
 
-    answer = solve(instruction_set)
-    print(f"Houses visited with santa = {answer}")
+    answer01 = solve01(input_data)
+    print(f"part01 - Houses visited with santa = {answer01}")
 
-    answer = solve(instruction_set, 2)
-    print(f"Houses visited with santa & robot = {answer}")
+    answer02 = solve02(input_data)
+    print(f"part02 - Houses visited with santa & robot = {answer02}")

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code 2021
+Advent of Code - Solve Puzzle
 """
 import os
 import math
@@ -35,19 +35,16 @@ def solve(pos_list, cost_func):
     return min_cost
 
 
-def parse_data(input_data):
-    pos_text_list = list(input_data.split(","))
-    pos_list = list(map(int, pos_text_list))
-    return pos_list
-
-
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
-    return parse_data(input_data)
+    # parse data
+    pos_text_list = list(input_data.split(","))
+    pos_list = list(map(int, pos_text_list))
+    return pos_list
 
 
 if __name__ == '__main__':

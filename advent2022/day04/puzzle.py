@@ -1,10 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle
 """
 import os
 import pandas as pd
+
+
+def solve01(input_data):
+    answer = solve(input_data)
+    return answer[0]
+
+
+def solve02(input_data):
+    answer = solve(input_data)
+    return answer[1]
 
 
 def solve(rosta_pd):
@@ -33,11 +43,10 @@ def solve(rosta_pd):
     overlapping_pairs = counts[True]
 
     # print(rosta_pd)
-    # return results
     return (contained_pairs, overlapping_pairs)
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
@@ -47,8 +56,10 @@ def input_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data)
-    print(f"Wholly container pairs = {answer[0]}")
-    print(f"Overlapping assignment pairs = {answer[1]}")
+    answer01 = solve01(input_data)
+    print(f"part01 - Wholly container pairs = {answer01}")
+
+    answer02 = solve02(input_data)
+    print(f"part02 - Overlapping assignment pairs = {answer02}")

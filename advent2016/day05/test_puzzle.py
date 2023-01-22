@@ -1,33 +1,42 @@
 """
-Advent of Code - Test Case
+Advent of Code - Test
 """
 import unittest
+import time
 
 import advent2016.day05.puzzle as puzzle
 
 
 class PuzzleTest(unittest.TestCase):
 
-    example_answer_part01 = ['18f47a30']
-    example_answer_part02 = ['05ace8e3']
+    example_answer01 = '18f47a30'
+    example_answer02 = '05ace8e3'
 
-    answer_part01 = 'f97c354d'
-    answer_part02 = '863dde27'
+    answer01 = 'f97c354d'
+    answer02 = '863dde27'
 
-    def test_001_input_example(self):
-        for test_case, input_data in enumerate(puzzle.input_data_iter('input_example.txt')):
+    execution_time = 45.0
 
-            answer01 = puzzle.solve01(input_data)
-            self.assertEqual(answer01, self.example_answer_part01[test_case])
-
-            answer02 = puzzle.solve02(input_data)
-            self.assertEqual(answer02, self.example_answer_part02[test_case])
-
-    def test_002_input(self):
-        input_data = next(puzzle.input_data_iter('input.txt'))
-
+    def test_001_01_input_example(self):
+        input_data = puzzle.load_data('input_example.txt')
         answer01 = puzzle.solve01(input_data)
-        self.assertEqual(answer01, self.answer_part01)
+        self.assertEqual(answer01, self.example_answer01)
 
+    def test_002_02_input_example(self):
+        input_data = puzzle.load_data('input_example.txt')
         answer02 = puzzle.solve02(input_data)
-        self.assertEqual(answer02, self.answer_part02)
+        self.assertEqual(answer02, self.example_answer02)
+
+    def test_003_01_input(self):
+        input_data = puzzle.load_data('input.txt')
+        answer01 = puzzle.solve01(input_data)
+        self.assertEqual(answer01, self.answer01)
+
+    def test_004_02_input(self):
+        input_data = puzzle.load_data('input.txt')
+        ts = time.time()
+        answer02 = puzzle.solve02(input_data)
+        t = time.time() - ts
+        self.assertEqual(answer02, self.answer02)
+        self.assertLess(t, self.execution_time, f"part02 {t:2.5f} secs")
+        print(f"execution_time {t:2.5f} secs")

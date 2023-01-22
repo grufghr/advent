@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle
 """
 import os
 import numpy as np
@@ -66,20 +66,22 @@ def calc_score_part02(r):
     return score
 
 
-def solve(strategy_data):
+def solve01(strategy_data):
     # part 01
-    startegy1_scores_array = [calc_score_part01(row) for row in strategy_data]
-    startegy1_score = sum(startegy1_scores_array)
+    startegy_scores_array = [calc_score_part01(row) for row in strategy_data]
+    startegy_score = sum(startegy_scores_array)
+    return startegy_score
 
+
+def solve02(strategy_data):
     # part 02
-    startegy2_scores_array = [calc_score_part02(row) for row in strategy_data]
-    startegy2_score = sum(startegy2_scores_array)
+    startegy_scores_array = [calc_score_part02(row) for row in strategy_data]
+    startegy_score = sum(startegy_scores_array)
 
-    # return results
-    return (startegy1_score, startegy2_score)
+    return startegy_score
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
@@ -89,8 +91,10 @@ def input_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data)
-    print(f"Rock-Paper-Scissors score with part 01 strategy = {answer[0]}")
-    print(f"Rock-Paper-Scissors score with part 02 strategy = {answer[1]}")
+    answer01 = solve01(input_data)
+    print(f"part01 - Rock-Paper-Scissors score = {answer01}")
+
+    answer02 = solve02(input_data)
+    print(f"part02 - Rock-Paper-Scissors score = {answer02}")

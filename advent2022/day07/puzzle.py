@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle
 """
 import os
 import re
@@ -50,6 +50,16 @@ class Folder():
         return size
 
 
+def solve01(input_data):
+    answer = solve(input_data)
+    return answer[0]
+
+
+def solve02(input_data):
+    answer = solve(input_data)
+    return answer[1]
+
+
 def solve(terminal_output):
 
     # process terminal output
@@ -95,11 +105,10 @@ def solve(terminal_output):
     shortest_folder = folder_list_sorted.pop(0)
     part02_folder_size = shortest_folder[1]
 
-    # return results
     return (part01_folder_sum, part02_folder_size)
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
@@ -110,10 +119,11 @@ def input_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
     answer = solve(input_data)
-    print(f"Total sizes of those directories less than 100000 is {answer[0]}")
+    print(
+        f"part01 - Total sizes of those directories less than 100000 is {answer01}")
 
     answer = solve(input_data)
-    print(f"Size of smallest directory to free space = {answer[1]}")
+    print(f"part02 - Size of smallest directory to free space = {answer02}")

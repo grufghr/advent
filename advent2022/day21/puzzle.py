@@ -49,8 +49,12 @@ def inverse_calc(name, a, op, b):
     return r
 
 
-def solve01(monkey_calc, monkey_yell):
+def solve01(input_data):
+    # part 01 - determine what root monkey yells
+    monkey_calc = [(k, v) for k, v in input_data[0].items()]
+    monkey_yell = input_data[1].copy()
 
+    # evaluate monkey equations
     q = collections.deque(monkey_calc)
     while q:
         name, calc = q.popleft()
@@ -69,8 +73,19 @@ def solve01(monkey_calc, monkey_yell):
     return monkey_yell['root']
 
 
-def solve02(monkey_calc, monkey_yell):
+def solve02(input_data):
+    # part 02 - reversed,  determine what 'humn' shouts to solve root equation (a = b)
+    monkey_calc = input_data[0]
+    monkey_yell = input_data[1]
 
+    # correct root monkey operation
+    root_a, root_op, root_b = monkey_calc['root']
+    monkey_calc['root'] = (root_a, '=', root_b)
+    monkey_calc = [(k, v) for k, v in monkey_calc.items()]
+    # remove humn from monkey_yell
+    del monkey_yell['humn']
+
+    # evaluate monkey equations
     q = collections.deque(monkey_calc)
     while q:
         name, calc = q.popleft()
@@ -104,12 +119,17 @@ def solve02(monkey_calc, monkey_yell):
     return monkey_yell['humn']
 
 
-def solve(input_list):
+def load_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
+
+    # read i[]nput data from file
+    with open(input_data_file, 'r') as input_filehandle:
+        input_data_text_list = input_filehandle.read().splitlines()
 
     # parse input file
     monkey_calc = {}
     monkey_yell = {}
-    for monkey_line in input_list:
+    for monkey_line in input_data_text_list:
         match_m = MONKEY_REGEX.search(monkey_line)
         monkey_name, monkey_job_text = match_m.groups()
 
@@ -124,42 +144,14 @@ def solve(input_list):
         else:
             monkey_yell[monkey_name] = int(monkey_job[0])
 
-    # part 01 - determine what root monkey yells
-    monkey_calc_01 = [(k, v) for k, v in monkey_calc.items()]
-    monkey_yell_01 = monkey_yell.copy()
-
-    root_yells = solve01(monkey_calc_01, monkey_yell_01)
-
-    # part 02 - reversed,  determine what 'humn' shouts to solve root equation (a = b)
-
-    # correct root monkey operation
-    monkey_calc_02 = monkey_calc.copy()
-    root_a, root_op, root_b = monkey_calc_02['root']
-    monkey_calc_02['root'] = (root_a, '=', root_b)
-    monkey_calc_02 = [(k, v) for k, v in monkey_calc_02.items()]
-    # remove humn from monkey_yell
-    monkey_yell_02 = monkey_yell.copy()
-    del monkey_yell_02['humn']
-
-    humn_yells = solve02(monkey_calc_02, monkey_yell_02)
-
-    return (root_yells, humn_yells)
-
-
-def input_data(filename):
-    input_data_file = os.path.join(os.path.dirname(__file__), filename)
-
-    # read i[]nput data from file
-    with open(input_data_file, 'r') as input_filehandle:
-        input_data_text_list = input_filehandle.read().splitlines()
-
-    return input_data_text_list
+    return (monkey_calc, monkey_yell)
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data)
-    print(f"part01 - root yells = {answer[0]}")
+    answer01 = solve01(input_data)
+    print(f"part01 - root yells = {answer01}")
 
-    print(f"part02 - humn yells = {answer[1]}")
+    answer02 = solve02(input_data)
+    print(f"part02 - humn yells = {answer02}")

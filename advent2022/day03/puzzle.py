@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle
 """
 import os
 
@@ -16,7 +16,7 @@ def chunk_list(lst, n):
         yield lst[i:i + n]
 
 
-def solve(rucksack_data):
+def solve01(rucksack_data):
 
     common_list = []
     for rucksack in rucksack_data:
@@ -31,8 +31,11 @@ def solve(rucksack_data):
     priority_list = [calc_priority(c) for c in common_list]
     priority_list_sum = sum(priority_list)
 
-    # part 02
+    return priority_list_sum
 
+
+def solve02(rucksack_data):
+    # part 02
     badge_list = []
     for group in chunk_list(rucksack_data, 3):
         badge = list(set(group[0]).intersection(
@@ -42,11 +45,10 @@ def solve(rucksack_data):
     badge_priority_list = [calc_priority(c) for c in badge_list]
     badge_priority_list_sum = sum(badge_priority_list)
 
-    # return results
-    return (priority_list_sum, badge_priority_list_sum)
+    return badge_priority_list_sum
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
@@ -57,8 +59,10 @@ def input_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data)
-    print(f"Sum of the item priorities = {answer[0]}")
-    print(f"Sum of the group badges item priorities = {answer[1]}")
+    answer01 = solve01(input_data)
+    print(f"part01 - Sum of the item priorities = {answer01}")
+
+    answer02 = solve02(input_data)
+    print(f"part02 - Sum of the group badges item priorities = {answer02}")

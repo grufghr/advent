@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle
 """
 import os
 import re
@@ -22,6 +22,16 @@ def update_crt(crt, cycle, x):
         r = cycle // 40
         crt[r][c] = '#'
     return crt
+
+
+def solve01(input_data):
+    answer = solve(input_data)
+    return answer[0]
+
+
+def solve02(input_data):
+    answer = solve(input_data)
+    return answer[1]
 
 
 def solve(instruction_list):
@@ -67,7 +77,7 @@ def solve(instruction_list):
     return (sum_signal_strength, crt)
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
@@ -78,10 +88,10 @@ def input_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data)
-    print(f"part01 - sum of signal strengths = {answer[0]}")
+    answer01 = solve01(input_data)
+    print(f"part01 - sum of signal strengths = {answer01}")
 
-    answer_part02 = '\n'.join(answer[1])
-    print(f"part02 - crt = \n{answer_part02}")
+    answer02 = '\n'.join(solve02(input_data))
+    print(f"part02 - crt = \n{answer02}")

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle
 """
 import os
 import re
@@ -9,6 +9,16 @@ import copy
 
 
 INSTRUCTION_REGEX = re.compile(r'move (\d+) from (\d+) to (\d+)')
+
+
+def solve01(input_data):
+    answer = solve(input_data[0], input_data[1], cratemover9000)
+    return answer
+
+
+def solve02(input_data):
+    answer = solve(input_data[0], input_data[1], cratemover9001)
+    return answer
 
 
 def solve(stack_list_immutable, instruction_list, cratemover):
@@ -35,7 +45,6 @@ def solve(stack_list_immutable, instruction_list, cratemover):
     for stack in stack_list:
         top_crates += stack[-1]
 
-    # return results
     return top_crates
 
 
@@ -53,7 +62,7 @@ def cratemover9001(move_count, stack_from, stack_to):
         stack_from.pop()
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
@@ -87,10 +96,10 @@ def input_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data[0], input_data[1], cratemover9000)
-    print(f"Crates at top of stacks with CrateMover 9000 = {answer}")
+    answer01 = solve01(input_data)
+    print(f"part01 - Stack top Crates with CrateMover 9000 = {answer}")
 
-    answer = solve(input_data[0], input_data[1], cratemover9001)
-    print(f"Crates at top of stacks with CrateMover 9001 = {answer}")
+    answer02 = solve02(input_data)
+    print(f"part01 - Stack top Crates with CrateMover 9001 = {answer}")

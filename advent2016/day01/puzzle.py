@@ -1,13 +1,23 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code 2016
+Advent of Code - Solve Puzzle
 """
 import os
 import re
 
 
 INSTRUCTION_REGEX = re.compile(r"(L|R)(\d+)")
+
+
+def solve01(input_data):
+    answer = solve(input_data)
+    return answer[0]
+
+
+def solve02(input_data):
+    answer = solve(input_data)
+    return answer[1]
 
 
 def solve(instruction_text):
@@ -57,24 +67,28 @@ def solve(instruction_text):
     else:
         distance02 = None
 
-    # return results
     return (distance01, distance02)
 
 
-def input_data_iter(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     with open(input_data_file, 'r') as input_filehandle:
-        input_txt_list = input_filehandle.read().splitlines()
+        input_data = input_filehandle.read()
 
-    for input_txt in input_txt_list:
-        yield (input_txt)
+    return input_data
+
+
+def input_data_iter(input_data):
+    for tc, test_input_data in enumerate(input_data.splitlines()):
+        yield tc, test_input_data
 
 
 if __name__ == '__main__':
-    instruction_set = next(input_data_iter('input.txt'))
+    input_data = load_data('input.txt')
 
-    answer = solve(instruction_set)
+    answer01 = solve01(input_data)
+    print(f"part01 - Easter Bunny HQ = {answer01} blocks")
 
-    print(f"Easter Bunny HQ = {answer[0]} blocks")
-    print(f"first location you visit twice = {answer[1]} blocks")
+    answer02 = solve02(input_data)
+    print(f"part02 - First location visited twice = {answer02} blocks")

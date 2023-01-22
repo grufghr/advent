@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle
 """
 import os
 from collections import deque
@@ -36,7 +36,7 @@ def floodfill(matrix, start_coords):
                 q.append((x, y, z + 1))
 
 
-def exposed_surface(cube_list):
+def calc_exposed_surface(cube_list):
     area = len(cube_list) * 6
     for i, cube_i in enumerate(cube_list[:-1]):
         for cube_j in cube_list[i + 1:]:
@@ -48,17 +48,15 @@ def exposed_surface(cube_list):
     return area
 
 
-def solve(cube_text_list):
-
-    # parse input file
-    cube_list = []
-    for cube_text in cube_text_list:
-        cube = tuple([int(c) for c in cube_text.split(',')])
-        cube_list.append(cube)
-
+def solve01(cube_list):
     # part 01 - total area exposed
-    exposed_surface_part01 = exposed_surface(cube_list)
 
+    exposed_surface = calc_exposed_surface(cube_list)
+
+    return exposed_surface
+
+
+def solve02(cube_list):
     # part 02 - deduct trapped space
 
     # create 3d array
@@ -80,26 +78,33 @@ def solve(cube_text_list):
     cube_np[cube_np == FLOOD] = SPACE
 
     # create list of cubes
-    cube_list_02 = np.argwhere(cube_np == CUBE)
-    exposed_surface_part_02 = exposed_surface(cube_list_02)
+    cube_list = np.argwhere(cube_np == CUBE)
+    exposed_surface = calc_exposed_surface(cube_list)
 
-    return (exposed_surface_part01, exposed_surface_part_02)
+    return exposed_surface
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read i[]nput data from file
     with open(input_data_file, 'r') as input_filehandle:
         input_data_text_list = input_filehandle.read().splitlines()
 
-    return input_data_text_list
+    # parse input file
+    cube_list = []
+    for cube_text in input_data_text_list:
+        cube = tuple([int(c) for c in cube_text.split(',')])
+        cube_list.append(cube)
+
+    return cube_list
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data)
-    print(f"part01 - scanned lava droplet surface area  = {answer[0]}")
+    answer01 = solve01(input_data)
+    print(f"part01 - scanned lava droplet surface area  = {answer01}")
 
-    print(f"part02 - exterior surface area  = {answer[1]}")
+    answer02 = solve02(input_data)
+    print(f"part02 - exterior surface area  = {answer02}")

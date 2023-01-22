@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code 2021
+Advent of Code - Solve Puzzle
 """
 import os
 import numpy as np
@@ -69,7 +69,6 @@ def solve(bingo_number_list, board_np):
                         last_winner_score = board.score(num)
                     board.done = True
 
-    # return results
     return (winner_score, last_winner_score)
 
 
@@ -96,7 +95,7 @@ if __name__ == '__main__':
     input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"Winning bingo card score = {answer01}.")
+    print(f"part01 - Winning bingo card score = {answer01}.")
 
     answer02 = solve02(input_data)
-    print(f"Last winning card score = {answer02}.")
+    print(f"part02 - Last winning card score = {answer02}.")

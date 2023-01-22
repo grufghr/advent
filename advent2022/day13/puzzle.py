@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle
 """
 import os
 import json
@@ -51,14 +51,14 @@ def check_order_comparator(check_order):
     return compare
 
 
-def solve(packet_pair_text_list):
+def solve01(input_data):
+    # Part 01 - Test Comparator
 
     # create list from first and second line in every three lines
-    pair_l_lol = [json.loads(t) for t in packet_pair_text_list[0::3]]
-    pair_r_lol = [json.loads(t) for t in packet_pair_text_list[1::3]]
+    pair_l_lol = [json.loads(t) for t in input_data[0::3]]
+    pair_r_lol = [json.loads(t) for t in input_data[1::3]]
     # ignore third line
 
-    # Part 01 - Test Comparator
     correct_pair_idx = []
     pair_idx = 0
     for pair_l, pair_r in zip(pair_l_lol, pair_r_lol):
@@ -69,7 +69,16 @@ def solve(packet_pair_text_list):
 
     correct_pair_idx_sum = sum(correct_pair_idx)
 
+    return correct_pair_idx_sum
+
+
+def solve02(input_data):
     # Part 02 - Use Comparator to find decoder key in message
+
+    # create list from first and second line in every three lines
+    pair_l_lol = [json.loads(t) for t in input_data[0::3]]
+    pair_r_lol = [json.loads(t) for t in input_data[1::3]]
+    # ignore third line
 
     decoder_key_start = [[2]]
     decoder_key_end = [[6]]
@@ -89,10 +98,10 @@ def solve(packet_pair_text_list):
     # calculate decoder key
     decoder_key = decoder_key_sidx * decoder_key_eidx
 
-    return (correct_pair_idx_sum, decoder_key)
+    return decoder_key
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
@@ -103,9 +112,10 @@ def input_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data)
-    print(f"part01 = sum of the indices of correct pairs = {answer[0]}")
+    answer01 = solve01(input_data)
+    print(f"part01 = sum of the indices of correct pairs = {answer01}")
 
-    print(f"part02 = distress signal decoder key = {answer[1]}")
+    answer02 = solve02(input_data)
+    print(f"part02 = distress signal decoder key = {answer02}")

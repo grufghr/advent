@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle
 """
 import os
 import re
@@ -13,6 +13,16 @@ LINE_NUMBER_LIST = re.compile(r'(\d+)')
 LINE_OPERATION = re.compile(r'Operation: new = (.+) (.+) (.+)')
 LINE_TEST = re.compile(r'Test: divisible by (\d+)')
 LINE_IF = re.compile(r'If (true|false): throw to monkey (\d+)')
+
+
+def solve01(input_data):
+    answer = solve(input_data, 20)
+    return answer
+
+
+def solve02(input_data):
+    answer = solve(input_data, 10000, True)
+    return answer
 
 
 def solve(note_list, rounds_to_complete=20, manage_worry_level=False):
@@ -121,7 +131,7 @@ def solve(note_list, rounds_to_complete=20, manage_worry_level=False):
     return m_business
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
@@ -132,10 +142,10 @@ def input_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data, 20)
-    print(f"part01 - level of monkey business after 20 rounds = {answer}")
+    answer01 = solve(input_data)
+    print(f"part01 - level of monkey business after 20 rounds = {answer01}")
 
-    answer = solve(input_data, 10000, True)
-    print(f"part02 - level of monkey business after 10000 rounds = {answer}")
+    answer01 = solve(input_data)
+    print(f"part02 - level of monkey business after 10000 rounds = {answer02}")

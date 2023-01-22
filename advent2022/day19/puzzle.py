@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle
 """
 import os
 import re
@@ -133,11 +133,45 @@ def best_geodes(blueprint, end_cycle):
     return state.best_geodes[end_cycle]
 
 
-def solve(input_list):
+def solve01(blueprints_map):
+    # part 01 - Description
+    minutes = 24
+
+    blueprint_quality_list = []
+    for idx, blueprint in blueprints_map.items():
+        blueprint_best = best_geodes(blueprint, minutes)
+        blueprint_quality = idx * blueprint_best
+        blueprint_quality_list.append(blueprint_quality)
+
+    quality_sum = sum(blueprint_quality_list)
+
+    return quality_sum
+
+
+def solve02(blueprints_map):
+    # part 02 - Description
+    minutes = 32
+
+    blueprints_first3 = list(blueprints_map.values())[:3]
+
+    quality_first_n = 1
+    for blueprint in blueprints_first3:
+        blueprint_best = best_geodes(blueprint, minutes)
+        quality_first_n = quality_first_n * blueprint_best
+
+    return quality_first_n
+
+
+def load_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
+
+    # read i[]nput data from file
+    with open(input_data_file, 'r') as input_filehandle:
+        input_data_text_list = input_filehandle.read().splitlines()
 
     # parse input file
     blueprints_map = {}
-    for blueprint_line in input_list:
+    for blueprint_line in input_data_text_list:
         match_b = LINE_BLUEPRINT_REGEX.search(blueprint_line)
         idx, robot_blueprints_text = match_b.groups()
 
@@ -152,44 +186,14 @@ def solve(input_list):
 
         blueprints_map[int(idx)] = robot_blueprint_map
 
-    # part 01 - Description
-
-    blueprint_quality_list = []
-    for idx, blueprint in blueprints_map.items():
-        blueprint_best = best_geodes(blueprint, 24)
-        blueprint_quality = idx * blueprint_best
-        blueprint_quality_list.append(blueprint_quality)
-
-    quality_sum = sum(blueprint_quality_list)
-
-    # part 02 - Description
-
-    blueprint_quality_list = []
-
-    remaining_blueprints = list(blueprints_map.values())[:3]
-
-    quality_first_n = 1
-    for blueprint in remaining_blueprints:
-        blueprint_best = best_geodes(blueprint, 32)
-        quality_first_n = quality_first_n * blueprint_best
-
-    return (quality_sum, quality_first_n)
-
-
-def input_data(filename):
-    input_data_file = os.path.join(os.path.dirname(__file__), filename)
-
-    # read i[]nput data from file
-    with open(input_data_file, 'r') as input_filehandle:
-        input_data_text_list = input_filehandle.read().splitlines()
-
-    return input_data_text_list
+    return blueprints_map
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data)
-    print(f"part01 - sum of all blueprints quality level (after 24 mins) = {answer[0]}")
+    answer01 = solve01(input_data)
+    print(f"part01 - Blueprint quality sum (24 mins) = {answer01}")
 
-    print(f"part02 - first three blueprints quality level (after 32 mins) = {answer[1]}")
+    answer02 = solve02(input_data)
+    print(f"part02 - Top 3 Blueprint quality sum (32 mins) = {answer02}")

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle
 """
 import os
 import re
@@ -76,6 +76,16 @@ def split_tuple(tup, x):
     return result
 
 
+def solve01(input_data):
+    answer = solve(input_data, 2000000)
+    return answer
+
+
+def solve02(input_data):
+    answer = solve(input_data, 2000000)
+    return answer
+
+
 def solve(sensor_text_list, check_row):
 
     # process input file
@@ -132,7 +142,7 @@ def solve(sensor_text_list, check_row):
     return free_positions
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
@@ -143,8 +153,7 @@ def input_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    row = 2000000
-    answer = solve01(input_data, row)
-    print(f"part01 - For row={row} positions without beacon = {answer}")
+    answer01 = solve01(input_data)
+    print(f"part01 - Positions without beacon = {answer01}")

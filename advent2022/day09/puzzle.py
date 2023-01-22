@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle
 """
 import os
 import math
@@ -51,6 +51,16 @@ def move_rope(head, rope):
     return rope_n
 
 
+def solve01(input_data):
+    answer = solve(input_data, 2)
+    return answer
+
+
+def solve02(input_data):
+    answer = solve(input_data, 10)
+    return answer
+
+
 def solve(instruction_list, rope_knots=2):
 
     head = (0, 0)
@@ -76,11 +86,10 @@ def solve(instruction_list, rope_knots=2):
 
     positions_tail_visited = len(set(tail_pos))
 
-    # return results
     return positions_tail_visited
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
@@ -91,10 +100,10 @@ def input_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data)
-    print(f"part01 - Positions tail visited = {answer}")
+    answer01 = solve01(input_data)
+    print(f"part01 - Positions tail visited = {answer01}")
 
-    answer = solve(input_data, 10)
-    print(f"part02 - Positions tail visited = {answer}")
+    answer01 = solve02(input_data)
+    print(f"part02 - Positions tail visited = {answer02}")

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code 2022
+Advent of Code - Solve Puzzle
 """
 import os
 from collections import deque
@@ -109,16 +109,23 @@ def convert_height(hc):
         return ord(hc) - ord('a') + 1
 
 
-def solve(height_map_text):
+def solve01(height_map_text):
+    # part 01
 
     # convert map into 2d array on heights (int)
     grid_map = GridMap([list(map(convert_height, i))
                         for i in height_map_text.split("\n")])
 
-    # part 01
-    part01 = grid_map.calc_distance_to_end()
+    distance = grid_map.calc_distance_to_end()
+    return distance
 
+
+def solve02(height_map_text):
     # part 02
+
+    # convert map into 2d array on heights (int)
+    grid_map = GridMap([list(map(convert_height, i))
+                        for i in height_map_text.split("\n")])
 
     # Brute force all possible start places
     hm = grid_map.height_map
@@ -132,13 +139,10 @@ def solve(height_map_text):
             distance_l.append(distance_s)
     distance_s = min(distance_l)
 
-    part02 = distance_s
-
-    # return results
-    return (part01, part02)
+    return distance_s
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read in data file
@@ -149,8 +153,10 @@ def input_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data)
-    print(f"part01 - Path reaches the goal in {answer[0]} move.\n")
-    print(f"part02 - Shortest path from elevation 'a' is {answer[1]} move.\n")
+    answer01 = solve01(input_data)
+    print(f"part01 - Path reaches the goal in {answer01} move.\n")
+
+    answer02 = solve02(input_data)
+    print(f"part02 - Shortest path from elevation 'a' is {answer02} move.\n")

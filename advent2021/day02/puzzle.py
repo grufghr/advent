@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code 2021
+Advent of Code - Solve Puzzle
 """
 import os
 
@@ -44,7 +44,13 @@ def solve02(command_list):
     return distance
 
 
-def parse_data(input_data):
+def load_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
+
+    with open(input_data_file, 'r') as filehandle:
+        input_data = filehandle.read()
+
+    # parse data
     command_list = []
     for command in input_data.split('\n'):
         direction, unit = command.split(' ')
@@ -52,19 +58,11 @@ def parse_data(input_data):
     return command_list
 
 
-def load_data(filename):
-    input_data_file = os.path.join(os.path.dirname(__file__), filename)
-
-    with open(input_data_file, 'r') as filehandle:
-        input_data = filehandle.read()
-
-    return parse_data(input_data)
-
-
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
     print(f"part01 - Final horizontal position * final depth = {answer01}")
+
     answer02 = solve02(input_data)
     print(f"part02 - Final horizontal position * final depth = {answer02}")

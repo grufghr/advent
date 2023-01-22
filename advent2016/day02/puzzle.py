@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle
 """
 import os
 import numpy as np
@@ -27,55 +27,54 @@ INSTR = {"U": (-1, 0),
          }
 
 
-def solve(instruction_text_list):
+def solve01(input_data):
+    start_pos = (1, 1)
 
-    # parse input file
-    code_list01 = []
-    code_list02 = []
+    answer = solve(input_data, start_pos, KEYPAD01)
+    return answer
 
-    pos01 = (1, 1)
-    pos02 = (2, 0)
+
+def solve02(input_data):
+    start_pos = (2, 0)
+    answer = solve(input_data, start_pos, KEYPAD02)
+    return answer
+
+
+def solve(instruction_text_list, pos, keypad):
+
+    keypad_size_r = len(keypad) - 1
+    keypad_size_c = len(keypad[0]) - 1
+    code_list = []
 
     for code_instruction in instruction_text_list:
         for move in code_instruction:
-            pos01_n = tuple(map(add, pos01, INSTR[move]))
-            pos01_n = (max(0, min(pos01_n[0], 2)),
-                       max(0, min(pos01_n[1], 2)))
-            pos01 = pos01_n
+            pos_n = tuple(map(add, pos, INSTR[move]))
+            pos_n = (max(0, min(pos_n[0], keypad_size_r)),
+                     max(0, min(pos_n[1], keypad_size_c)))
+            if keypad[pos_n] != ' ':
+                pos = pos_n
 
-            pos02_n = tuple(map(add, pos02, INSTR[move]))
-            pos02_n = (max(0, min(pos02_n[0], 4)),
-                       max(0, min(pos02_n[1], 4)))
+        code_list.append(keypad[pos])
 
-            if KEYPAD02[pos02_n] != ' ':
-                pos02 = pos02_n
+    code = ''.join([str(x) for x in code_list])
 
-        code_list01.append(KEYPAD01[pos01])
-        code_list02.append(KEYPAD02[pos02])
-
-    # part 01 - code for KEYPAD 01
-    code01 = ''.join([str(x) for x in code_list01])
-
-    # part 02 - code for KEYPAD 02
-    code02 = ''.join([str(x) for x in code_list02])
-
-    return (code01, code02)
+    return code
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    # read input data from file
     with open(input_data_file, 'r') as input_filehandle:
-        input_data_text_list = input_filehandle.read().splitlines()
+        input_data = input_filehandle.read().splitlines()
 
-    return input_data_text_list
+    return input_data
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data)
-    print(f"part01 - bathroom code = {answer[0]}")
+    answer01 = solve01(input_data)
+    print(f"part01 - bathroom code = {answer01}")
 
-    print(f"part02 - bathroom code = {answer[1]}")
+    answer02 = solve02(input_data)
+    print(f"part02 - bathroom code = {answer02}")

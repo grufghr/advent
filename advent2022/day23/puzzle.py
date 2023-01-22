@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle
 """
 import os
 import operator
@@ -29,6 +29,16 @@ def visualise_grove(elves_list):
             else:
                 line += '.'
         print(line)
+
+
+def solve01(grove_map_list):
+    answer = solve(grove_map_list, 10)
+    return answer[0]
+
+
+def solve02(grove_map_list):
+    answer = solve(grove_map_list, 1500)
+    return answer[1]
 
 
 def solve(grove_map_list, max_rounds):
@@ -97,7 +107,7 @@ def solve(grove_map_list, max_rounds):
     return (empty_grids, round_num)
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read i[]nput data from file
@@ -108,10 +118,10 @@ def input_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data, 10)
-    print(f"part01 - empty ground = {answer[0]}")
+    answer01 = solve01(input_data)
+    print(f"part01 - empty ground = {answer01}")
 
-    answer = solve(input_data, 1500)
-    print(f"part02 - round nothing moved = {answer[1]}")
+    answer02 = solve02(input_data)
+    print(f"part02 - round nothing moved = {answer02}")

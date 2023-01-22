@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code 2021
+Advent of Code - Solve Puzzle
 """
 import os
 
@@ -33,26 +33,23 @@ def solve(fish_age_list, days):
     return fish_pop
 
 
-def parse_data(input_data):
-    fish_text_list = list(input_data.split(","))
-    fish_age_list = list(map(int, fish_text_list))
-    return fish_age_list
-
-
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
-    return parse_data(input_data)
+    # parse data
+    fish_text_list = list(input_data.split(","))
+    fish_age_list = list(map(int, fish_text_list))
+    return fish_age_list
 
 
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer = solve01(input_data)
-    print(f"part01 - fish population after 80 days = {answer}")
+    answer01 = solve01(input_data)
+    print(f"part01 - fish population after 80 days = {answer01}")
 
-    answer = solve02(input_data)
-    print(f"part02 - fish population after 256 days = {answer}")
+    answer02 = solve02(input_data)
+    print(f"part02 - fish population after 256 days = {answer02}")

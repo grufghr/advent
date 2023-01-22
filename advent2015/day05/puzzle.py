@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code 2015
+Advent of Code - Solve Puzzle
 """
 import os
 
@@ -9,7 +9,7 @@ VOWELS = 'aeiou'
 PAIR_LIST = ['ab', 'cd', 'pq', 'xy']
 
 
-def solve_part01(input_data_list):
+def solve01(input_data_list):
     nice_count = 0
 
     for text in input_data_list:
@@ -35,7 +35,7 @@ def solve_part01(input_data_list):
     return nice_count
 
 
-def solve_part02(input_data_list):
+def solve02(input_data_list):
     nice_count = 0
 
     for text in input_data_list:
@@ -62,21 +62,21 @@ def solve_part02(input_data_list):
     return nice_count
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read in data file
     with open(input_data_file, 'r') as filehandle:
-        input_data_list = filehandle.readlines()
+        input_data = filehandle.readlines()
 
-    return input_data_list
+    return input_data
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve_part01(input_data)
-    print(f"part01 - Nice string count = {answer}")
+    answer01 = solve01(input_data)
+    print(f"part01 - Nice string count = {answer01}")
 
-    answer = solve_part02(input_data)
-    print(f"part02 - Nice string count = {answer}")
+    answer02 = solve02(input_data)
+    print(f"part02 - Nice string count = {answer02}")

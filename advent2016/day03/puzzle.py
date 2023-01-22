@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle
 """
 import os
 
@@ -13,18 +13,21 @@ def is_triangle(edge_list):
     return sum(shortest) > longest
 
 
-def solve(edges_text_list):
-
+def solve01(edges_text_list):
     # part 01 - count triangles by row
-    triangle_count01 = 0
+    triangle_count = 0
     for edges in edges_text_list:
         # convert all array elements to int
         edge_list = list(map(int, list(edges.split())))
         if is_triangle(edge_list):
-            triangle_count01 += 1
+            triangle_count += 1
 
+    return triangle_count
+
+
+def solve02(edges_text_list):
     # part 02 - count triangles by col
-    triangle_count02 = 0
+    triangle_count = 0
     step = 3
     end = len(edges_text_list)
     for i in range(0, end, step):
@@ -40,25 +43,25 @@ def solve(edges_text_list):
         # map is_triangle onto list
         triangle_list = list(map(is_triangle, edge_list_transpose))
         # count True(=1) in triangle list
-        triangle_count02 += sum(triangle_list)
+        triangle_count += sum(triangle_list)
 
-    return (triangle_count01, triangle_count02)
+    return triangle_count
 
 
-def input_data(filename):
+def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    # read input data from file
     with open(input_data_file, 'r') as input_filehandle:
-        input_data_text_list = input_filehandle.read().splitlines()
+        input_data = input_filehandle.read().splitlines()
 
-    return input_data_text_list
+    return input_data
 
 
 if __name__ == '__main__':
-    input_data = input_data('input_example.txt')
+    input_data = load_data('input.txt')
 
-    answer = solve(input_data)
-    print(f"part01 - triangle count = {answer[0]}")
+    answer01 = solve01(input_data)
+    print(f"part01 - triangle count = {answer01}")
 
-    print(f"part02 - triangle count = {answer[1]}")
+    answer02 = solve02(input_data)
+    print(f"part02 - triangle count = {answer02}")
