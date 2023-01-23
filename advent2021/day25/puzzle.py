@@ -68,7 +68,7 @@ def load_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = input_data('input.txt')
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
     print(f"part01 - First step on which no sea cucumbers moved = {answer01}")
