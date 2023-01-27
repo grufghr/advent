@@ -92,6 +92,7 @@ def solve02(input_data):
 
         correct_scores.append(line_score)
 
+    # find middle score
     correct_scores.sort()
     middle_score = correct_scores[(len(correct_scores) // 2)]
 
