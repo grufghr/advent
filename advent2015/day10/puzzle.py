@@ -31,11 +31,6 @@ def solve02(input_data):
     return len(number)
 
 
-def look_and_say(number):
-
-    return result
-
-
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
