@@ -25,13 +25,6 @@ class RobotFactoryState():
     def __init__(self, blueprint):
         self.blueprint = blueprint
 
-        # start robot fleet with 1 ore collector
-        self.robots_s = {m: 0 for m in blueprint.keys()}
-        self.robots_s['ore'] = 1
-
-        # start resources collected (with collect = 0)
-        self.resources_s = {m: 0 for m in blueprint.keys()}
-
         # calculate maximum robots required for each type
         self.robot_max = {m: 0 for m in self.blueprint.keys()}
         self.robot_max['geode'] = math.inf  # geode most valuable (infinite)
@@ -39,10 +32,13 @@ class RobotFactoryState():
             for mineral, qty in costs.items():
                 self.robot_max[mineral] = max(self.robot_max[mineral], qty)
 
-        # initialise state variables
+        # init state variables
         self.t = 0
-        self.robots = self.robots_s.copy()
-        self.resources = self.resources_s.copy()
+        # init robot fleet with 1 ore collector
+        self.robots = {m: 0 for m in blueprint.keys()}
+        self.robots['ore'] = 1
+        # init resources collected (with collect = 0)
+        self.resources = {m: 0 for m in blueprint.keys()}
 
     def __repr__(self):
         return f"{self.t} {self.robots} {self.resources}"
