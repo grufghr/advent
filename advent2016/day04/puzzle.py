@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - Solve Puzzle
+Advent of Code - Solve Puzzle 2016 Day 04: Security Through Obscurity
 """
 import os
 import re

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - Solve Puzzle
+Advent of Code - Solve Puzzle 2022 Day 01: Calorie Counting
 """
 import os
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - visualisation
+Advent of Code - Visualisation
 """
 from matplotlib import pyplot
 import matplotlib as mpl

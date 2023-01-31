@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code
+Advent of Code - Solve Puzzle 2015 Day 07: Some Assembly Required
 """
 import os
 import re

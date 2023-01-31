@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - Solve Puzzle
+Advent of Code - Solve Puzzle 2015 Day 06: Probably a Fire Hazard
 """
 import os
 import re
