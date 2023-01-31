@@ -144,8 +144,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve(input_data)
+    answer01 = solve01(input_data)
     print(f"part01 - level of monkey business after 20 rounds = {answer01}")
 
-    answer01 = solve(input_data)
+    answer02 = solve02(input_data)
     print(f"part02 - level of monkey business after 10000 rounds = {answer02}")

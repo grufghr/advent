@@ -44,7 +44,7 @@ def load_data(filename):
         input_data_text = filehandle.read()
 
     # split data into list of lists (ints)
-    inventory_text = [i.split("\n") for i in input_data_text.split("\n\n")]
+    inventory_text = [i.splitlines() for i in input_data_text.split("\n\n")]
     inventory = [list(map(int, i)) for i in inventory_text]
 
     return inventory

@@ -52,7 +52,7 @@ def load_data(filename):
 
     # parse data
     command_list = []
-    for command in input_data.split('\n'):
+    for command in input_data.splitlines():
         direction, unit = command.split(' ')
         command_list.append((direction, int(unit)))
     return command_list

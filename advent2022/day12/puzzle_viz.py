@@ -20,10 +20,10 @@ COLOR_MAP2 = mpl.colors.LinearSegmentedColormap.from_list('height_gradient_map',
 
 
 if __name__ == '__main__':
-    input_data = puzzle.input_data('input.txt')
+    input_data = puzzle.load_data('input.txt')
 
     grid_map = puzzle.GridMap([list(map(puzzle.convert_height, i))
-                               for i in input_data.split("\n")])
+                               for i in input_data.splitlines()])
 
     fig, map1 = pyplot.subplots(1, 1)
     fig.suptitle('Grid Maps')

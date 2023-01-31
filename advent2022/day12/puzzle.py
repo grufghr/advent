@@ -114,7 +114,7 @@ def solve01(height_map_text):
 
     # convert map into 2d array on heights (int)
     grid_map = GridMap([list(map(convert_height, i))
-                        for i in height_map_text.split("\n")])
+                        for i in height_map_text.splitlines()])
 
     distance = grid_map.calc_distance_to_end()
     return distance
@@ -125,7 +125,7 @@ def solve02(height_map_text):
 
     # convert map into 2d array on heights (int)
     grid_map = GridMap([list(map(convert_height, i))
-                        for i in height_map_text.split("\n")])
+                        for i in height_map_text.splitlines()])
 
     # Brute force all possible start places
     hm = grid_map.height_map
@@ -156,7 +156,7 @@ if __name__ == '__main__':
     input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - Path reaches the goal in {answer01} move.\n")
+    print(f"part01 - Path reaches the goal in {answer01} move.")
 
     answer02 = solve02(input_data)
-    print(f"part02 - Shortest path from elevation 'a' is {answer02} move.\n")
+    print(f"part02 - Shortest path from elevation 'a' is {answer02} move.")

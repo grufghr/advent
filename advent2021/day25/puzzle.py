@@ -60,7 +60,7 @@ def load_data(filename):
 
     # parse data
     # split data into 2d array
-    cucumber_map_text = [list(i) for i in input_data.split("\n")]
+    cucumber_map_text = [list(i) for i in input_data.splitlines()]
     # convert into numpy array
     cucumber_grid = np.array(cucumber_map_text)
 
