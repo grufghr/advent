@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - Solve Puzzle 2019 Day 0Day 1: The Tyranny of the Rocket Equation
+Advent of Code - Solve Puzzle 2019 Day 01: The Tyranny of the Rocket Equation
 """
 import os
 
