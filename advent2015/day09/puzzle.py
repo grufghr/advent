@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - Solve Puzzle 2015 Day 09: All in a Single Night
+Advent of Code 2015 Day 09: All in a Single Night
 """
 import os
 import re

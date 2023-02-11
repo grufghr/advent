@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - Solve Puzzle 2018 Day 02: Inventory Management System
+Advent of Code 2018 Day 02: Inventory Management System
 """
 import os
 from collections import Counter

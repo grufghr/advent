@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - Solve Puzzle 2015 Day 04: The Ideal Stocking Stuffer
+Advent of Code 2015 Day 04: The Ideal Stocking Stuffer
 """
 import os
 import hashlib

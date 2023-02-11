@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - Solve Puzzle 2018 Day 01: Chronal Calibration
+Advent of Code 2018 Day 01: Chronal Calibration
 """
 import os
 from itertools import cycle

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - Solve Puzzle 2015 Day 02: I Was Told There Would Be No Math
+Advent of Code 2015 Day 02: I Was Told There Would Be No Math
 """
 import os
 import pandas as pd

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - Solve Puzzle 2016 Day 05: How About a Nice Game of Chess?
+Advent of Code 2016 Day 05: How About a Nice Game of Chess?
 """
 import os
 import hashlib

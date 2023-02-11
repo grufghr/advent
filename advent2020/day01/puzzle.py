@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - Solve Puzzle 2020 Day 01: Report Repair
+Advent of Code 2020 Day 01: Report Repair
 """
 import os
 from itertools import product

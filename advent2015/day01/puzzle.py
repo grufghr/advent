@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - Solve Puzzle 2015 Day 01: Not Quite Lisp
+Advent of Code 2015 Day 01: Not Quite Lisp
 """
 import os
 

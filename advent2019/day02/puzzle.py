@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - Solve Puzzle 2019 Day 02: 1202 Program Alarm
+Advent of Code 2019 Day 02: 1202 Program Alarm
 """
 import os
 from collections import deque

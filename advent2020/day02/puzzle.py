@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - Solve Puzzle 2020 Day 02: Password Philosophy
+Advent of Code 2020 Day 02: Password Philosophy
 """
 import os
 import re

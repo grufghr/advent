@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - Solve Puzzle 2022 Day 15: Beacon Exclusion Zone
+Advent of Code 2022 Day 15: Beacon Exclusion Zone
 """
 import os
 import re

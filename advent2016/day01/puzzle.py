@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - Solve Puzzle 2016 Day 01: No Time for a Taxicab
+Advent of Code 2016 Day 01: No Time for a Taxicab
 """
 import os
 import re

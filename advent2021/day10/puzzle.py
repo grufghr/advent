@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code - Solve Puzzle 2021 Day 10: Syntax Scoring
+Advent of Code 2021 Day 10: Syntax Scoring
 """
 import os
 from collections import deque
