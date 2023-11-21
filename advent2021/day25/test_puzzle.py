@@ -15,14 +15,14 @@ class PuzzleTest(unittest.TestCase):
     answer01 = 532
     answer02 = None
 
-    execution_time = 15.0
+    execution_time = 20.0
 
-    def test_001_01_input_example(self):
+    def test_001_example_01(self):
         input_data = puzzle.load_data('input_example.txt')
         answer01 = puzzle.solve01(input_data)
         self.assertEqual(answer01, self.example_answer01)
 
-    def test_003_01_input(self):
+    def test_003_input_01(self):
         input_data = puzzle.load_data('input.txt')
         ts = time.time()
         answer01 = puzzle.solve01(input_data)

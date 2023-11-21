@@ -17,7 +17,7 @@ class PuzzleTest(unittest.TestCase):
 
     execution_time = 1.0
 
-    def test_001_examples(self):
+    def test_001_example_01(self):
         for input_data, expected_result in self.example_data:
             with self.subTest(input_data):
                 result = puzzle.solve01(input_data)
