@@ -27,8 +27,10 @@ class PuzzleTest(unittest.TestCase):
         answer01 = puzzle.solve01(self.puzzle_input)
         self.assertEqual(answer01, self.answer01)
 
+    def test_003_example_02(self):
+        pass
 
-    def test_003_solve_02(self):
+    def test_004_solve_02(self):
         ts = time.time()
         answer02 = puzzle.solve02(self.puzzle_input)
         t = time.time() - ts

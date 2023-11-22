@@ -22,7 +22,7 @@ class PuzzleTest(unittest.TestCase):
         answer01 = puzzle.solve01(input_data)
         self.assertEqual(answer01, self.example_answer01)
 
-    def test_003_solve_01(self):
+    def test_002_solve_01(self):
         input_data = puzzle.load_data('input.txt')
         ts = time.time()
         answer01 = puzzle.solve01(input_data)

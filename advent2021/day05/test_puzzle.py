@@ -24,15 +24,15 @@ class PuzzleTest(unittest.TestCase):
         answer01 = puzzle.solve01(input_data)
         self.assertEqual(answer01, self.example_answer01)
 
-    def test_002_example_02(self):
-        input_data = puzzle.load_data('input_example.txt')
-        answer02 = puzzle.solve02(input_data)
-        self.assertEqual(answer02, self.example_answer02)
-
-    def test_003_solve_01(self):
+    def test_002_solve_01(self):
         input_data = puzzle.load_data('input.txt')
         answer01 = puzzle.solve01(input_data)
         self.assertEqual(answer01, self.answer01)
+
+    def test_003_example_02(self):
+        input_data = puzzle.load_data('input_example.txt')
+        answer02 = puzzle.solve02(input_data)
+        self.assertEqual(answer02, self.example_answer02)
 
     def test_004_solve_02(self):
         input_data = puzzle.load_data('input.txt')

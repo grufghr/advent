@@ -32,18 +32,18 @@ class PuzzleTest(unittest.TestCase):
                 result = puzzle.policy01(input_data)
                 self.assertEqual(result, expected_result)
 
-    def test_002_examples_02(self):
+    def test_002_solve_01(self):
+        input_data = puzzle.load_data("input.txt")
+        answer01 = puzzle.solve01(input_data)
+        self.assertEqual(answer01, self.answer01)
+
+    def test_003_example_02(self):
         for input_data, expected_result in self.example_data_02:
             with self.subTest(input_data):
                 result = puzzle.policy02(input_data)
                 self.assertEqual(result, expected_result)
 
-    def test_003_puzzle_01(self):
-        input_data = puzzle.load_data("input.txt")
-        answer01 = puzzle.solve01(input_data)
-        self.assertEqual(answer01, self.answer01)
-
-    def test_004_puzzle_02(self):
+    def test_004_solve_02(self):
         input_data = puzzle.load_data("input.txt")
         ts = time.time()
         answer02 = puzzle.solve02(input_data)

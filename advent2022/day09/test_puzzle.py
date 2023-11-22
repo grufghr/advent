@@ -25,25 +25,25 @@ class PuzzleTest(unittest.TestCase):
         answer01 = puzzle.solve01(input_data)
         self.assertEqual(answer01, self.example01_answer01)
 
-    def test_002_example_021(self):
-        input_data = puzzle.load_data('input_example1.txt')
-        answer02 = puzzle.solve02(input_data)
-        self.assertEqual(answer02, self.example01_answer02)
-
     def test_001_example_012(self):
         input_data = puzzle.load_data('input_example2.txt')
         answer01 = puzzle.solve01(input_data)
         self.assertEqual(answer01, self.example02_answer01)
 
-    def test_002_example_022(self):
-        input_data = puzzle.load_data('input_example2.txt')
-        answer02 = puzzle.solve02(input_data)
-        self.assertEqual(answer02, self.example02_answer02)
-
-    def test_003_solve_01(self):
+    def test_002_solve_01(self):
         input_data = puzzle.load_data('input.txt')
         answer01 = puzzle.solve01(input_data)
         self.assertEqual(answer01, self.answer01)
+
+    def test_003_example_021(self):
+        input_data = puzzle.load_data('input_example1.txt')
+        answer02 = puzzle.solve02(input_data)
+        self.assertEqual(answer02, self.example01_answer02)
+
+    def test_003_example_022(self):
+        input_data = puzzle.load_data('input_example2.txt')
+        answer02 = puzzle.solve02(input_data)
+        self.assertEqual(answer02, self.example02_answer02)
 
     def test_004_solve_02(self):
         input_data = puzzle.load_data('input.txt')
