@@ -23,12 +23,12 @@ class PuzzleTest(unittest.TestCase):
                 result = puzzle.solve01(input_data)
                 self.assertEqual(result, expected_result)
 
-    def test_002_01_input(self):
-        answer02 = puzzle.solve02(self.puzzle_input)
-        self.assertEqual(answer02, self.answer02)
+    def test_002_solve_01(self):
+        answer01 = puzzle.solve01(self.puzzle_input)
+        self.assertEqual(answer01, self.answer01)
 
 
-    def test_003_02_input(self):
+    def test_003_solve_02(self):
         ts = time.time()
         answer02 = puzzle.solve02(self.puzzle_input)
         t = time.time() - ts

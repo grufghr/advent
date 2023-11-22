@@ -40,12 +40,12 @@ class PuzzleTest(unittest.TestCase):
         answer02 = puzzle.solve02(input_data)
         self.assertEqual(answer02, self.example2_answer02)
 
-    def test_003_input_01(self):
+    def test_003_solve_01(self):
         input_data = puzzle.load_data('input.txt')
         answer01 = puzzle.solve01(input_data)
         self.assertEqual(answer01, self.answer01)
 
-    def test_004_input_02(self):
+    def test_004_solve_02(self):
         input_data = puzzle.load_data('input.txt')
         ts = time.time()
         answer02 = puzzle.solve02(input_data)

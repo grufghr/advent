@@ -129,5 +129,9 @@ dmypy.json
 .pyre/
 /Pipfile
 /Pipfile.lock
+
+# codium
 /workspace.code-workspace
+
+# AOC
 /**/**/input.txt

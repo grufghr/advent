@@ -28,12 +28,14 @@ def policy01(passphrase):
         return True
     return False
 
+
 def policy02(passphrase):
     passphrase_words = passphrase.split()
-    passphrase_sorted = list(map(lambda x: ''.join(sorted(x)), passphrase_words))
+    passphrase_sorted = list(map(lambda x: "".join(sorted(x)), passphrase_words))
     if len(passphrase_sorted) == len(set(passphrase_sorted)):
         return True
     return False
+
 
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
