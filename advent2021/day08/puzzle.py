@@ -90,7 +90,7 @@ def flatten(lol):
 def parse_data(input_data):
     segment_list = []
     # segment = signal_patten (x10) | output_value (4 digit)
-    for segment_line in input_data:
+    for segment_line in input_data.splitlines():
         match_list = SEGMENT_REGEX.findall(segment_line)
         patterns = ["".join(sorted(x)) for x in match_list]
         segment_list.append(patterns)
@@ -102,7 +102,7 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     with open(input_data_file, "r") as filehandle:
-        input_data = filehandle.read().splitlines()
+        input_data = filehandle.read()
 
     return parse_data(input_data)
 

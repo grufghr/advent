@@ -49,7 +49,7 @@ def traverse_caves(cave_map, max_visits):
 
 def parse_input(input_data):
     graph = {}
-    for edge_txt in input_data:
+    for edge_txt in input_data.splitlines():
         edge = tuple(edge_txt.split("-"))
 
         nodeA = edge[0]
@@ -72,7 +72,7 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     with open(input_data_file, "r") as filehandle:
-        input_data = filehandle.read().splitlines()
+        input_data = filehandle.read()
 
     return parse_input(input_data)
 

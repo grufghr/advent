@@ -7,26 +7,26 @@ import os
 from collections import deque
 
 CHUNK_MAP = {
-    '(': ')',
-    '[': ']',
-    '{': '}',
-    '<': '>',
+    "(": ")",
+    "[": "]",
+    "{": "}",
+    "<": ">",
 }
 CHAR_OPEN = CHUNK_MAP.keys()
 CHAR_CLOSE = CHUNK_MAP.values()
 
 SCORE_TABLE_01 = {
-    ')': 3,
-    ']': 57,
-    '}': 1197,
-    '>': 25137,
+    ")": 3,
+    "]": 57,
+    "}": 1197,
+    ">": 25137,
 }
 
 SCORE_TABLE_02 = {
-    ')': 1,
-    ']': 2,
-    '}': 3,
-    '>': 4,
+    ")": 1,
+    "]": 2,
+    "}": 3,
+    ">": 4,
 }
 
 
@@ -99,17 +99,22 @@ def solve02(input_data):
     return middle_score
 
 
+def parse_data(input_data):
+    return input_data.splitlines()
+
+
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_data_file, 'r') as filehandle:
-        input_data = filehandle.read().splitlines()
+    # read in data file
+    with open(input_data_file, "r") as filehandle:
+        input_data = filehandle.read()
 
-    return input_data
+    return parse_data(input_data)
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - syntax error score = {answer01}")

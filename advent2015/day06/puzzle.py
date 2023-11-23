@@ -55,7 +55,7 @@ def solve(instruction_list):
 
 def parse_data(input_data):
     instruction_list = []
-    for line_text in input_data:
+    for line_text in input_data.splitlines():
         match_b = LIGHT_INSTRUCTIONS_REGEX.search(line_text)
         instruction, sr, sc, er, ec = match_b.groups()
         instruction_list.append((instruction, (int(sr), int(sc)), (int(er), int(ec))))
@@ -67,9 +67,9 @@ def load_data(filename):
 
     # read in data file
     with open(input_data_file, "r") as filehandle:
-        input_data_txt = filehandle.read().splitlines()
+        input_data = filehandle.read()
 
-    return parse_data(input_data_txt)
+    return parse_data(input_data)
 
 
 if __name__ == "__main__":

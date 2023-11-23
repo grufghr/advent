@@ -39,6 +39,7 @@ def decrypt(encrypted, dec_key, mix_repeat):
 
 
 def parse_data(input_data):
+    input_data = input_data.splitlines()
     return [int(x) for x in input_data]
 
 
@@ -46,7 +47,7 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     with open(input_data_file, "r") as filehandle:
-        input_data = filehandle.read().splitlines()
+        input_data = filehandle.read()
 
     return parse_data(input_data)
 

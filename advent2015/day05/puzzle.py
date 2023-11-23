@@ -5,8 +5,8 @@ Advent of Code 2015 Day 05: Doesn't He Have Intern-Elves For This?
 """
 import os
 
-VOWELS = 'aeiou'
-PAIR_LIST = ['ab', 'cd', 'pq', 'xy']
+VOWELS = "aeiou"
+PAIR_LIST = ["ab", "cd", "pq", "xy"]
 
 
 def solve01(input_data_list):
@@ -39,11 +39,10 @@ def solve02(input_data_list):
     nice_count = 0
 
     for text in input_data_list:
-
         # rule 1 - non-overlapping duplicate pairs (e.g. ...xy...xy...), but not 'aaa'
         has_duplicate = False
         for i in range(1, len(text)):
-            dup = text[(i - 1):(i + 1)]
+            dup = text[(i - 1) : (i + 1)]
             if text.find(dup, (i + 1)) > 0:
                 has_duplicate = True
                 break
@@ -62,18 +61,22 @@ def solve02(input_data_list):
     return nice_count
 
 
+def parse_data(input_data):
+    return input_data.splitlines()
+
+
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read in data file
-    with open(input_data_file, 'r') as filehandle:
-        input_data = filehandle.read().splitlines()
+    with open(input_data_file, "r") as filehandle:
+        input_data = filehandle.read()
 
-    return input_data
+    return parse_data(input_data)
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - Nice string count = {answer01}")

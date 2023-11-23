@@ -69,7 +69,7 @@ def _print_code(msg):
 def parse_input(input_data):
     grid_list = []
     fold_list = []
-    for instruction in input_data:
+    for instruction in input_data.splitlines():
         if match_m := COORD_REGEX.search(instruction):
             x, y = match_m.group(1), match_m.group(2)
             grid_list.append((int(x), int(y)))
@@ -84,9 +84,9 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     with open(input_data_file, "r") as filehandle:
-        input_data_list = filehandle.read().splitlines()
+        input_data = filehandle.read()
 
-    return parse_input(input_data_list)
+    return parse_input(input_data)
 
 
 if __name__ == "__main__":

@@ -73,6 +73,7 @@ def solve(bingo_number_list, board_np):
 
 
 def parse_data(input_data):
+    input_data = input_data.splitlines()
     bingo_number_text = input_data.pop(0)
     bingo_number_list = [int(n) for n in bingo_number_text.split(",")]
 
@@ -91,7 +92,7 @@ def load_data(filename):
 
     # read input data from file
     with open(input_data_file, "r") as filehandle:
-        input_data = filehandle.read().splitlines()
+        input_data = filehandle.read()
 
     return parse_data(input_data)
 

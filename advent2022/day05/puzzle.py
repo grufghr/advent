@@ -62,6 +62,8 @@ def cratemover9001(move_count, stack_from, stack_to):
 
 
 def parse_data(input_data):
+    input_data = input_data.splitlines()
+
     input_data = list(filter(None, input_data))
 
     # parse instruction list
@@ -91,7 +93,7 @@ def load_data(filename):
 
     # read input data from file
     with open(input_data_file, "r") as filehandle:
-        input_data = filehandle.read().splitlines()
+        input_data = filehandle.read()
 
     return parse_data(input_data)
 
@@ -100,7 +102,7 @@ if __name__ == "__main__":
     input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
-    print(f"part01 - Stack top Crates with CrateMover 9000 = {answer}")
+    print(f"part01 - Stack top Crates with CrateMover 9000 = {answer01}")
 
     answer02 = solve02(input_data)
-    print(f"part01 - Stack top Crates with CrateMover 9001 = {answer}")
+    print(f"part01 - Stack top Crates with CrateMover 9001 = {answer02}")

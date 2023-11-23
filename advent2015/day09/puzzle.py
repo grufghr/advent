@@ -59,7 +59,7 @@ def find_all_paths(distances):
 
 def parse_data(input_data):
     distances = dict()
-    for line_text in input_data:
+    for line_text in input_data.splitlines():
         match_b = LINE_REGEX.search(line_text)
         loc_a, loc_b, distance = match_b.groups()
 
@@ -78,7 +78,7 @@ def load_data(filename):
 
     # read in data file
     with open(input_data_file, "r") as filehandle:
-        input_data = filehandle.read().splitlines()
+        input_data = filehandle.read()
 
     return parse_data(input_data)
 

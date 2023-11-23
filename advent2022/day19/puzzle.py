@@ -159,7 +159,7 @@ def solve02(blueprints_map):
 
 def parse_data(input_data):
     blueprints_map = {}
-    for blueprint_line in input_data:
+    for blueprint_line in input_data.splitlines():
         match_b = LINE_BLUEPRINT_REGEX.search(blueprint_line)
         idx, robot_blueprints_text = match_b.groups()
 
@@ -182,7 +182,7 @@ def load_data(filename):
 
     # read i[]nput data from file
     with open(input_data_file, "r") as filehandle:
-        input_data = filehandle.read().splitlines()
+        input_data = filehandle.read()
 
     return parse_data(input_data)
 

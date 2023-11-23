@@ -29,7 +29,7 @@ def solve02(input_data):
     grid = np.array(input_data)
     step = 1
 
-    while (step < 250):
+    while step < 250:
         # increase energy
         grid += 1
 
@@ -69,8 +69,7 @@ def update_grid_flash(grid):
     return flash_count
 
 
-ADJ_MATRIX = [(-1, -1), (0, -1), (1, -1), (-1, 0),
-              (1, 0), (-1, 1), (0, 1), (1, 1)]
+ADJ_MATRIX = [(-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)]
 
 
 def get_adjacent(grid, loc):
@@ -91,20 +90,25 @@ def within_boundary(x, grid):
     return True
 
 
-def load_data(filename):
-    input_data_file = os.path.join(os.path.dirname(__file__), filename)
-
-    with open(input_data_file, 'r') as filehandle:
-        input_data_list = filehandle.read().splitlines()
-
-    grid_list = [list(map(int, [*x])) for x in input_data_list]
+def parse_data(input_data):
+    input_data = input_data.splitlines()
+    grid_list = [list(map(int, [*x])) for x in input_data]
 
     # 2d array of integers
     return grid_list
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+def load_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
+
+    with open(input_data_file, "r") as filehandle:
+        input_data = filehandle.read()
+
+    return parse_data(input_data)
+
+
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - flash count = {answer01}")

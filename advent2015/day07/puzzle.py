@@ -78,7 +78,7 @@ def solve_signals(input_data):
 def parse_data(input_data):
     # parse input file
     instruction_list = []
-    for instruction in input_data:
+    for instruction in input_data.splitlines():
         if match_m := TYPE1_REGEX.search(instruction):
             instr = (match_m.group(2), ("=", match_m.group(1), 0))
             instruction_list.append(instr)
@@ -102,7 +102,7 @@ def load_data(filename):
 
     # read i[]nput data from file
     with open(input_data_file, "r") as filehandle:
-        input_data = filehandle.read().splitlines()
+        input_data = filehandle.read()
 
     return parse_data(input_data)
 

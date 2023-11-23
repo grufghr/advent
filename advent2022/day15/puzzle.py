@@ -8,7 +8,8 @@ import re
 
 
 LINE_SENSOR_READING = re.compile(
-    r'Sensor at x=(-?\d+), y=(-?\d+)\: closest beacon is at x=(-?\d+), y=(-?\d+)')
+    r"Sensor at x=(-?\d+), y=(-?\d+)\: closest beacon is at x=(-?\d+), y=(-?\d+)"
+)
 
 
 def manhatten_distance(a, b):
@@ -56,7 +57,7 @@ def split_intervals(tup_list, interval_list):
             tup_n = split_tuple(tup_n, x)
             # extend result with all but last [:-1]
             split_list.extend(tup_n[:-1])
-            if (len(interval_list) > 0):
+            if len(interval_list) > 0:
                 x = interval_list.pop(0)
             # while loop to check split last [-1]
             tup_n = tup_n[-1]
@@ -87,7 +88,6 @@ def solve02(input_data):
 
 
 def solve(sensor_text_list, check_row):
-
     # process input file
     beacon_list = []
     sensor_list = []
@@ -103,12 +103,11 @@ def solve(sensor_text_list, check_row):
     # find manhatten distances
     known_list = []
     for sensor, beacon in zip(sensor_list, beacon_list):
-
         dist_sb = manhatten_distance(sensor, beacon)
         dist_sr = manhatten_distance(sensor, (sensor[0], check_row))
 
         # ignore sensors too far away from check_row
-        if (dist_sr > dist_sb):
+        if dist_sr > dist_sb:
             continue
 
         y = max(check_row, sensor[1]) - min(check_row, sensor[1])
@@ -142,18 +141,22 @@ def solve(sensor_text_list, check_row):
     return free_positions
 
 
+def parse_data(input_data):
+    return input_data.splitlines()
+
+
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    # read input data from file
-    with open(input_data_file, 'r') as filehandle:
-        input_data = filehandle.read().splitlines()
+    # read in data file
+    with open(input_data_file, "r") as filehandle:
+        input_data = filehandle.read()
 
-    return input_data
+    return parse_data(input_data)
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - Positions without beacon = {answer01}")

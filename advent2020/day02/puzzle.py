@@ -31,25 +31,30 @@ def solve02(input_data):
         regex_match = POLICY_REGEX.search(line)
         pos_a, pos_b, letter, pwd = regex_match.groups()
 
-        a = (pwd[int(pos_a) - 1] == letter)
-        b = (pwd[int(pos_b) - 1] == letter)
+        a = pwd[int(pos_a) - 1] == letter
+        b = pwd[int(pos_b) - 1] == letter
         if (a and not b) or (not a and b):
             valid_tot += 1
 
     return valid_tot
 
 
+def parse_data(input_data):
+    return input_data.splitlines()
+
+
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_data_file, 'r') as filehandle:
-        input_data = filehandle.read().splitlines()
+    # read in data file
+    with open(input_data_file, "r") as filehandle:
+        input_data = filehandle.read()
 
-    return input_data
+    return parse_data(input_data)
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - valid lines = {answer01}")

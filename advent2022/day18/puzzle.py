@@ -84,7 +84,7 @@ def solve02(cube_list):
 def parse_data(input_data):
     # parse input file
     cube_list = []
-    for cube_text in input_data:
+    for cube_text in input_data.splitlines():
         cube = tuple([int(c) for c in cube_text.split(",")])
         cube_list.append(cube)
 
@@ -96,7 +96,7 @@ def load_data(filename):
 
     # read input data from file
     with open(input_data_file, "r") as filehandle:
-        input_data = filehandle.read().splitlines()
+        input_data = filehandle.read()
 
     return parse_data(input_data)
 

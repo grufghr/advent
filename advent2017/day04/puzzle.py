@@ -37,14 +37,18 @@ def policy02(passphrase):
     return False
 
 
+def parse_data(input_data):
+    return input_data.splitlines()
+
+
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    # read input data from file
+    # read in data file
     with open(input_data_file, "r") as filehandle:
-        passphrase_data = filehandle.read().splitlines()
+        input_data = filehandle.read()
 
-    return passphrase_data
+    return parse_data(input_data)
 
 
 if __name__ == "__main__":

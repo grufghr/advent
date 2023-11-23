@@ -10,10 +10,10 @@ from functools import cmp_to_key
 
 def check_order(left, right):
     if isinstance(left, int) and isinstance(right, int):
-        if (left < right):
+        if left < right:
             # print(f"- Left side is smaller, so inputs are in the right order")
             return True
-        if (right < left):
+        if right < left:
             # print(f"- Right side is smaller, so inputs are not in the right order")
             return False
     elif isinstance(left, list) and isinstance(right, list):
@@ -48,6 +48,7 @@ def check_order_comparator(check_order):
             return 1
         else:
             return 0
+
     return compare
 
 
@@ -84,8 +85,7 @@ def solve02(input_data):
     decoder_key_end = [[6]]
 
     # use previous list instead of parsing input
-    complete_list = pair_l_lol + pair_r_lol + \
-        [decoder_key_start] + [decoder_key_end]
+    complete_list = pair_l_lol + pair_r_lol + [decoder_key_start] + [decoder_key_end]
 
     # Create a sort comparator and sort list
     key = cmp_to_key(check_order_comparator(check_order))
@@ -101,18 +101,22 @@ def solve02(input_data):
     return decoder_key
 
 
+def parse_data(input_data):
+    return input_data.splitlines()
+
+
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    # read input data from file
-    with open(input_data_file, 'r') as filehandle:
-        input_data = filehandle.read().splitlines()
+    # read in data file
+    with open(input_data_file, "r") as filehandle:
+        input_data = filehandle.read()
 
-    return input_data
+    return parse_data(input_data)
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 = sum of the indices of correct pairs = {answer01}")

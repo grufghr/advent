@@ -122,7 +122,7 @@ def parse_data(input_data):
     # parse input file
     monkey_calc = {}
     monkey_yell = {}
-    for monkey_line in input_data:
+    for monkey_line in input_data.splitlines():
         match_m = MONKEY_REGEX.search(monkey_line)
         monkey_name, monkey_job_text = match_m.groups()
 
@@ -143,7 +143,7 @@ def load_data(filename):
 
     # read i[]nput data from file
     with open(input_data_file, "r") as filehandle:
-        input_data = filehandle.read().splitlines()
+        input_data = filehandle.read()
 
     return parse_data(input_data)
 

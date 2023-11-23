@@ -36,22 +36,26 @@ def solve02(input_data):
     return inventory_totals_top3_sum
 
 
-def load_data(filename):
-    input_data_file = os.path.join(os.path.dirname(__file__), filename)
-
-    # read input data from file
-    with open(input_data_file, 'r') as filehandle:
-        input_data_text = filehandle.read()
-
+def parse_data(input_data):
     # split data into list of lists (ints)
-    inventory_text = [i.splitlines() for i in input_data_text.split("\n\n")]
+    inventory_text = [i.splitlines() for i in input_data.split("\n\n")]
     inventory = [list(map(int, i)) for i in inventory_text]
 
     return inventory
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+def load_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
+
+    # read input data from file
+    with open(input_data_file, "r") as filehandle:
+        input_data = filehandle.read()
+
+    return parse_data(input_data)
+
+
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - Total Calories strongest Elf = {answer01}")
