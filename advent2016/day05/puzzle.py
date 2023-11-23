@@ -59,8 +59,8 @@ def solve02(door_id):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_data_file, 'r') as input_filehandle:
-        input_data = input_filehandle.read()
+    with open(input_data_file, 'r') as filehandle:
+        input_data = filehandle.read()
 
     return input_data
 

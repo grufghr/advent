@@ -64,8 +64,8 @@ def solve(instruction_text_list, pos, keypad):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_data_file, 'r') as input_filehandle:
-        input_data = input_filehandle.read().splitlines()
+    with open(input_data_file, 'r') as filehandle:
+        input_data = filehandle.read().splitlines()
 
     return input_data
 
