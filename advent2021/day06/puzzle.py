@@ -15,12 +15,11 @@ def solve02(input_data):
 
 
 def solve(fish_age_list, days):
-
     # part 01&02 - fish population after n days
     day = 0
     population_data = [fish_age_list.count(age) for age in range(0, 9)]
 
-    while (day < days):
+    while day < days:
         day += 1
 
         population_data.append(population_data[0])
@@ -36,7 +35,7 @@ def solve(fish_age_list, days):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_data_file, 'r') as filehandle:
+    with open(input_data_file, "r") as filehandle:
         input_data = filehandle.read()
 
     # parse data
@@ -45,8 +44,8 @@ def load_data(filename):
     return fish_age_list
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - fish population after 80 days = {answer01}")

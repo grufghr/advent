@@ -10,8 +10,8 @@ from pstats import SortKey
 
 import advent2015.day05.puzzle as puzzle
 
-if __name__ == '__main__':
-    input_data = puzzle.load_data('input.txt')
+if __name__ == "__main__":
+    input_data = puzzle.load_data("input.txt")
 
     pr = cProfile.Profile()
     pr.enable()

@@ -23,9 +23,9 @@ def solve(instruction_set):
     basement_step = 0
 
     for step, instruction in enumerate(instruction_set):
-        if instruction == '(':
+        if instruction == "(":
             floor += 1
-        elif instruction == ')':
+        elif instruction == ")":
             floor -= 1
         else:
             exit(f"Unknown instructions {instruction}")
@@ -39,14 +39,14 @@ def solve(instruction_set):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_data_file, 'r') as filehandle:
+    with open(input_data_file, "r") as filehandle:
         input_data = filehandle.read()
 
     return input_data
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - Santa ends on floor = {answer01}")

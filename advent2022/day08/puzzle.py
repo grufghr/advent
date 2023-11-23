@@ -33,7 +33,6 @@ def solve02(input_data):
 
 
 def solve(tree_map_np):
-
     # process tree map
     num_r = tree_map_np.shape[0]
     num_c = tree_map_np.shape[1]
@@ -41,7 +40,7 @@ def solve(tree_map_np):
     # part 01 & 02
     visible_tree_np = np.ones(tree_map_np.shape)
     # set internal tree (i.e. except boundary) to all hidden
-    visible_tree_np[1:num_r - 1, 1:num_c - 1] = 0
+    visible_tree_np[1 : num_r - 1, 1 : num_c - 1] = 0
 
     scenic_score_np = np.zeros(tree_map_np.shape)
 
@@ -52,10 +51,10 @@ def solve(tree_map_np):
             outlook_n = np.flip(tree_map_np[:, c][0:r])
             visible_n, score_n = calc_visible_score(outlook_n, height)
 
-            outlook_e = tree_map_np[r, :][c + 1:num_c]
+            outlook_e = tree_map_np[r, :][c + 1 : num_c]
             visible_e, score_e = calc_visible_score(outlook_e, height)
 
-            outlook_s = tree_map_np[:, c][r + 1:num_r]
+            outlook_s = tree_map_np[:, c][r + 1 : num_r]
             visible_s, score_s = calc_visible_score(outlook_s, height)
 
             outlook_w = np.flip(tree_map_np[r, :][0:c])
@@ -79,8 +78,8 @@ def load_data(filename):
     return input_data
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - Total visible trees = {answer01}")

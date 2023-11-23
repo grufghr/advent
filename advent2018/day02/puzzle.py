@@ -25,14 +25,14 @@ def solve02(input_data):
     closest = 0
     common = None
     for sx, line_a in enumerate(input_data[:-1]):
-        for line_b in input_data[sx + 1:]:
+        for line_b in input_data[sx + 1 :]:
             count = sum(1 for a, b in zip(line_a, line_b) if a == b)
             if count > closest:
                 closest = count
                 common = (line_a, line_b)
 
     common_list = [a for a, b in zip(*common) if a == b]
-    common_str = ''.join(common_list)
+    common_str = "".join(common_list)
     return common_str
 
 
@@ -50,8 +50,8 @@ def load_data(filename):
     return parse_data(input_data)
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - box id list checksum = {answer01}")

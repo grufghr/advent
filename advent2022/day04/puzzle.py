@@ -18,21 +18,15 @@ def solve02(input_data):
 
 
 def solve(rosta_pd):
-
     # part 01
-    rosta_pd[2] = rosta_pd[0].map(lambda x: x.split('-'))
-    rosta_pd[3] = rosta_pd[1].map(lambda x: x.split('-'))
-    rosta_pd[4] = rosta_pd[2].map(lambda x:
-                                  set(range(int(x[0]), int(x[1]) + 1)))
-    rosta_pd[5] = rosta_pd[3].map(lambda x:
-                                  set(range(int(x[0]), int(x[1]) + 1)))
-    rosta_pd[6] = rosta_pd.apply(lambda row:
-                                 set(row[4]).intersection(row[5]),
-                                 axis=1)
-    rosta_pd[7] = rosta_pd.apply(lambda row:
-                                 (set(row[6]) == set(row[4])) or (
-                                     set(row[6]) == set(row[5])),
-                                 axis=1)
+    rosta_pd[2] = rosta_pd[0].map(lambda x: x.split("-"))
+    rosta_pd[3] = rosta_pd[1].map(lambda x: x.split("-"))
+    rosta_pd[4] = rosta_pd[2].map(lambda x: set(range(int(x[0]), int(x[1]) + 1)))
+    rosta_pd[5] = rosta_pd[3].map(lambda x: set(range(int(x[0]), int(x[1]) + 1)))
+    rosta_pd[6] = rosta_pd.apply(lambda row: set(row[4]).intersection(row[5]), axis=1)
+    rosta_pd[7] = rosta_pd.apply(
+        lambda row: (set(row[6]) == set(row[4])) or (set(row[6]) == set(row[5])), axis=1
+    )
 
     counts = rosta_pd[7].value_counts()
     contained_pairs = counts[True]
@@ -55,8 +49,8 @@ def load_data(filename):
     return rosta_pd
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - Wholly container pairs = {answer01}")

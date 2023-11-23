@@ -8,8 +8,7 @@ from collections import deque
 import numpy as np
 
 
-class GridMap():
-
+class GridMap:
     def __init__(self, height_map_array):
         self.height_map = np.array(height_map_array)
 
@@ -85,7 +84,7 @@ class GridMap():
         while q:
             loc_c, distance_c = q.popleft()
 
-            if (loc_c not in visited):
+            if loc_c not in visited:
                 visited.add(loc_c)
 
                 # reached end (stop searching)
@@ -101,20 +100,21 @@ class GridMap():
 
 
 def convert_height(hc):
-    if hc == 'S':
+    if hc == "S":
         return 0
-    elif hc == 'E':
-        return ord('z') - ord('a') + 2
+    elif hc == "E":
+        return ord("z") - ord("a") + 2
     else:
-        return ord(hc) - ord('a') + 1
+        return ord(hc) - ord("a") + 1
 
 
 def solve01(height_map_text):
     # part 01
 
     # convert map into 2d array on heights (int)
-    grid_map = GridMap([list(map(convert_height, i))
-                        for i in height_map_text.splitlines()])
+    grid_map = GridMap(
+        [list(map(convert_height, i)) for i in height_map_text.splitlines()]
+    )
 
     distance = grid_map.calc_distance_to_end()
     return distance
@@ -124,8 +124,9 @@ def solve02(height_map_text):
     # part 02
 
     # convert map into 2d array on heights (int)
-    grid_map = GridMap([list(map(convert_height, i))
-                        for i in height_map_text.splitlines()])
+    grid_map = GridMap(
+        [list(map(convert_height, i)) for i in height_map_text.splitlines()]
+    )
 
     # Brute force all possible start places
     hm = grid_map.height_map
@@ -146,14 +147,14 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read in data file
-    with open(input_data_file, 'r') as filehandle:
+    with open(input_data_file, "r") as filehandle:
         input_data = filehandle.read()
 
     return input_data
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - Path reaches the goal in {answer01} move.")
