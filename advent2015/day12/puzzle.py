@@ -61,4 +61,4 @@ if __name__ == "__main__":
     print(f"part01 - sum of numbers = {answer01}")
 
     answer02 = solve02(input_data)
-    print(f"part02 - santas next password = {answer02}")
+    print(f"part02 - sum of numbers (without red) = {answer02}")
