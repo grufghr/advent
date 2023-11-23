@@ -8,7 +8,7 @@ import advent2022.day10.puzzle as puzzle
 
 
 class PuzzleTest(unittest.TestCase):
-
+    # fmt: off
     example_answer01 = 13140
     example_answer02 = ['##..##..##..##..##..##..##..##..##..##..',
                         '###...###...###...###...###...###...###.',
@@ -26,6 +26,7 @@ class PuzzleTest(unittest.TestCase):
                 '#..#.#..#.#.#..#..#.#....#.#..#....#....',
                 '###...###.#..#.#..#.####.#..#.####.####.',
                 '........................................']
+    # fmt: off
 
     execution_time = 1.0
 

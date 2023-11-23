@@ -30,7 +30,6 @@ def sum_spiral():
                 grid[i, j] = sum(
                     grid.get((k, l), 0)
                     for k in range(i - 1, i + 2)
-                    # trunk-ignore(ruff/E741)
                     for l in range(j - 1, j + 2)
                 )
                 yield grid[i, j]
