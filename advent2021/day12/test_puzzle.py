@@ -9,14 +9,14 @@ import advent2021.day12.puzzle as puzzle
 
 class PuzzleTest(unittest.TestCase):
     example_01 = [
-        ("input_example1.txt", 10),
-        ("input_example2.txt", 19),
-        ("input_example3.txt", 226),
+        ("input_example01.txt", 10),
+        ("input_example02.txt", 19),
+        ("input_example03.txt", 226),
     ]
     example_02 = [
-        ("input_example1.txt", 36),
-        ("input_example2.txt", 103),
-        ("input_example3.txt", 3509),
+        ("input_example01.txt", 36),
+        ("input_example02.txt", 103),
+        ("input_example03.txt", 3509),
     ]
 
     answer01 = 5212

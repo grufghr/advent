@@ -9,7 +9,8 @@ import numpy as np
 
 
 LIGHT_INSTRUCTIONS_REGEX = re.compile(
-    r"(turn on|turn off|toggle) (\d+),(\d+) through (\d+),(\d+)")
+    r"(turn on|turn off|toggle) (\d+),(\d+) through (\d+),(\d+)"
+)
 
 
 def solve01(input_data):
@@ -23,7 +24,6 @@ def solve02(input_data):
 
 
 def solve(instruction_list):
-
     light_grid01 = np.zeros((1000, 1000), dtype=bool)
     light_grid02 = np.zeros((1000, 1000), dtype=int)
 
@@ -53,25 +53,27 @@ def solve(instruction_list):
     return (lights_on, brightness_sum)
 
 
-def load_data(filename):
-    input_data_file = os.path.join(os.path.dirname(__file__), filename)
-
-    # read in data file
-    with open(input_data_file, 'r') as filehandle:
-        input_data = filehandle.readlines()
-
-    # parse instruction list
+def parse_data(input_data):
     instruction_list = []
     for line_text in input_data:
         match_b = LIGHT_INSTRUCTIONS_REGEX.search(line_text)
         instruction, sr, sc, er, ec = match_b.groups()
-        instruction_list.append(
-            (instruction, (int(sr), int(sc)), (int(er), int(ec))))
+        instruction_list.append((instruction, (int(sr), int(sc)), (int(er), int(ec))))
     return instruction_list
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+def load_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
+
+    # read in data file
+    with open(input_data_file, "r") as filehandle:
+        input_data_txt = filehandle.read().splitlines()
+
+    return parse_data(input_data_txt)
+
+
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - lights on = {answer01}")

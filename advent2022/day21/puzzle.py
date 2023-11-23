@@ -12,38 +12,37 @@ MONKEY_JOB_REGEX = re.compile(r"(?:(\d+)|([a-z]{4}) ([\+\-\*\/]) ([a-z]{4}))")
 
 
 def calc_yell(a, op, b):
-    if op == '+':
+    if op == "+":
         yell = a + b
-    elif op == '-':
+    elif op == "-":
         yell = a - b
-    elif op == '*':
+    elif op == "*":
         yell = a * b
-    elif op == '/':
+    elif op == "/":
         yell = a / b
     return int(yell)
 
 
 def inverse_calc(name, a, op, b):
-
     r = None
     if not isinstance(a, int):
-        if op == '+':
-            r = (a, (name, '-', b))
-        elif op == '-':
-            r = (a, (name, '+', b))
-        elif op == '*':
-            r = (a, (name, '/', b))
-        elif op == '/':
-            r = (a, (name, '*', b))
+        if op == "+":
+            r = (a, (name, "-", b))
+        elif op == "-":
+            r = (a, (name, "+", b))
+        elif op == "*":
+            r = (a, (name, "/", b))
+        elif op == "/":
+            r = (a, (name, "*", b))
     elif not isinstance(b, int):
-        if op == '+':
-            r = (b, (name, '-', a))
-        elif op == '-':
-            r = (b, (a, '-', name))
-        elif op == '*':
-            r = (b, (name, '/', a))
-        elif op == '/':
-            r = (b, (a, '/', name))
+        if op == "+":
+            r = (b, (name, "-", a))
+        elif op == "-":
+            r = (b, (a, "-", name))
+        elif op == "*":
+            r = (b, (name, "/", a))
+        elif op == "/":
+            r = (b, (a, "/", name))
 
     # input(f"Inverse {name} = ({a} {op} {b}) -> {r}")
     return r
@@ -70,7 +69,7 @@ def solve01(input_data):
         else:
             q.append((name, (a, op, b)))
 
-    return monkey_yell['root']
+    return monkey_yell["root"]
 
 
 def solve02(input_data):
@@ -79,11 +78,11 @@ def solve02(input_data):
     monkey_yell = input_data[1]
 
     # correct root monkey operation
-    root_a, root_op, root_b = monkey_calc['root']
-    monkey_calc['root'] = (root_a, '=', root_b)
+    root_a, root_op, root_b = monkey_calc["root"]
+    monkey_calc["root"] = (root_a, "=", root_b)
     monkey_calc = [(k, v) for k, v in monkey_calc.items()]
     # remove humn from monkey_yell
-    del monkey_yell['humn']
+    del monkey_yell["humn"]
 
     # evaluate monkey equations
     q = collections.deque(monkey_calc)
@@ -96,7 +95,7 @@ def solve02(input_data):
         if b in monkey_yell:
             b = monkey_yell[b]
 
-        if op == '=':
+        if op == "=":
             if isinstance(a, int) and not isinstance(b, int):
                 monkey_yell[b] = int(a)
             elif isinstance(b, int) and not isinstance(a, int):
@@ -116,20 +115,14 @@ def solve02(input_data):
         # wait to resolve a and/or b
         q.append((name, (a, op, b)))
 
-    return monkey_yell['humn']
+    return monkey_yell["humn"]
 
 
-def load_data(filename):
-    input_data_file = os.path.join(os.path.dirname(__file__), filename)
-
-    # read i[]nput data from file
-    with open(input_data_file, 'r') as input_filehandle:
-        input_data_text_list = input_filehandle.read().splitlines()
-
+def parse_data(input_data):
     # parse input file
     monkey_calc = {}
     monkey_yell = {}
-    for monkey_line in input_data_text_list:
+    for monkey_line in input_data:
         match_m = MONKEY_REGEX.search(monkey_line)
         monkey_name, monkey_job_text = match_m.groups()
 
@@ -138,17 +131,25 @@ def load_data(filename):
 
         # part 01
         if monkey_job[0] is None:
-            monkey_calc[monkey_name] = (monkey_job[1],
-                                        monkey_job[2],
-                                        monkey_job[3])
+            monkey_calc[monkey_name] = (monkey_job[1], monkey_job[2], monkey_job[3])
         else:
             monkey_yell[monkey_name] = int(monkey_job[0])
 
     return (monkey_calc, monkey_yell)
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+def load_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
+
+    # read i[]nput data from file
+    with open(input_data_file, "r") as input_filehandle:
+        input_data = input_filehandle.read().splitlines()
+
+    return parse_data(input_data)
+
+
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - root yells = {answer01}")

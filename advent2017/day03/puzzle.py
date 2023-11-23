@@ -3,6 +3,7 @@
 """
 Advent of Code 2017 Day 03: Spiral Memory
 """
+import os
 from itertools import count
 
 
@@ -58,8 +59,17 @@ def walk_spiral(target):
     return None
 
 
+def load_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
+
+    with open(input_data_file, "r") as input_filehandle:
+        input_data = input_filehandle.read()
+
+    return int(input_data)
+
+
 if __name__ == "__main__":
-    input_data = 368078
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - manhatten distance for memory location {input_data} = {answer01}")

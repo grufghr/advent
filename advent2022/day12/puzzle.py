@@ -147,9 +147,9 @@ def load_data(filename):
 
     # read in data file
     with open(input_data_file, 'r') as filehandle:
-        input_data_text = filehandle.read()
+        input_data = filehandle.read()
 
-    return input_data_text
+    return input_data
 
 
 if __name__ == '__main__':

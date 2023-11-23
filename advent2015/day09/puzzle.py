@@ -58,14 +58,7 @@ def find_all_paths(distances):
     return path_all
 
 
-def load_data(filename):
-    input_data_file = os.path.join(os.path.dirname(__file__), filename)
-
-    # read in data file
-    with open(input_data_file, 'r') as filehandle:
-        input_data = filehandle.readlines()
-
-    # parse instruction list
+def parse_data(input_data):
     distances = dict()
     for line_text in input_data:
         match_b = LINE_REGEX.search(line_text)
@@ -79,6 +72,15 @@ def load_data(filename):
         distances[loc_b][loc_a] = int(distance)
 
     return distances
+
+def load_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
+
+    # read in data file
+    with open(input_data_file, 'r') as filehandle:
+        input_data = filehandle.read().splitlines()
+
+    return parse_data(input_data)
 
 
 if __name__ == '__main__':

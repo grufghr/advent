@@ -53,18 +53,22 @@ def run_program(input_data):
     return program[0]
 
 
+def parse_data(input_data):
+    input_data = input_data.split(",")
+    return [int(x) for x in input_data]
+
+
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_data_file, 'r') as input_filehandle:
-        input_data_text_list = input_filehandle.read().split(',')
+    with open(input_data_file, "r") as input_filehandle:
+        input_data = input_filehandle.read()
 
-    input_data = [int(x) for x in input_data_text_list]
-    return input_data
+    return parse_data(input_data)
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - value at position 0 = {answer01}")

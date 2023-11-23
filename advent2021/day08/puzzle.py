@@ -6,7 +6,7 @@ Advent of Code 2021 Day 08: Seven Segment Search
 import os
 import re
 
-SEGMENT_REGEX = re.compile(r'([a-g]+)')
+SEGMENT_REGEX = re.compile(r"([a-g]+)")
 
 
 def solve01(input_data):
@@ -34,11 +34,10 @@ def solve02(input_data):
 
 
 def unique_num(x):
-    return (len(x) in [2, 4, 3, 7])
+    return len(x) in [2, 4, 3, 7]
 
 
 def calc_output_value(patterns):
-
     patterns_ov = patterns[10:]
 
     digit = {}
@@ -75,38 +74,41 @@ def calc_output_value(patterns):
     digit_decode = dict((hash_v(v), k) for k, v in digit.items())
 
     output_value_list = [str(digit_decode[x]) for x in patterns_ov]
-    output_value = int(''.join(output_value_list))
+    output_value = int("".join(output_value_list))
 
     return output_value
 
 
 def hash_v(v):
-    return ''.join(sorted(''.join(v)))
+    return "".join(sorted("".join(v)))
 
 
 def flatten(lol):
     return set([x for sublist in lol for x in sublist])
 
 
-def load_data(filename):
-    input_data_file = os.path.join(os.path.dirname(__file__), filename)
-
-    with open(input_data_file, 'r') as filehandle:
-        input_data_list = filehandle.readlines()
-
-    # parse data
+def parse_data(input_data):
     segment_list = []
     # segment = signal_patten (x10) | output_value (4 digit)
-    for segment_line in input_data_list:
+    for segment_line in input_data:
         match_list = SEGMENT_REGEX.findall(segment_line)
-        patterns = [''.join(sorted(x)) for x in match_list]
+        patterns = ["".join(sorted(x)) for x in match_list]
         segment_list.append(patterns)
 
     return segment_list
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+def load_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
+
+    with open(input_data_file, "r") as filehandle:
+        input_data = filehandle.read().splitlines()
+
+    return parse_data(input_data)
+
+
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - times 1, 4, 7, or 8 appear in segments = {answer01}")

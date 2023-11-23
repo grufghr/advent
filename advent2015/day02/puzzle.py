@@ -43,9 +43,9 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
-    dimension_pd = pd.read_csv(input_data_file, header=None, delimiter='x')
+    input_data = pd.read_csv(input_data_file, header=None, delimiter='x')
 
-    return dimension_pd
+    return input_data
 
 
 if __name__ == '__main__':

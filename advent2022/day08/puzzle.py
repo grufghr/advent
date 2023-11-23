@@ -85,5 +85,5 @@ if __name__ == '__main__':
     answer01 = solve01(input_data)
     print(f"part01 - Total visible trees = {answer01}")
 
-    answer01 = solve01(input_data)
+    answer02 = solve02(input_data)
     print(f"part02 - Highest scenic score = {answer02}")

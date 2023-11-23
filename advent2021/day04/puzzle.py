@@ -72,27 +72,32 @@ def solve(bingo_number_list, board_np):
     return (winner_score, last_winner_score)
 
 
-def load_data(filename):
-    input_data_file = os.path.join(os.path.dirname(__file__), filename)
+def parse_data(input_data):
+    bingo_number_text = input_data.pop(0)
+    bingo_number_list = [int(n) for n in bingo_number_text.split(",")]
 
-    # read input data from file
-    with open(input_data_file, 'r') as bingo_file:
-        bingo_number_text = bingo_file.readline()
-        bingo_file.readline()  # skip line
-        board_text = bingo_file.readlines()
+    board_text_list = list(filter(None, input_data))
+    board_array = [list(map(int, i.split())) for i in board_text_list]
 
-    # parse input data file
-    board_count = board_text.count('\n') + 1
-    board_np = np.genfromtxt(input_data_file, dtype=int, skip_header=2)
+    board_count = len(board_array) // len(board_array[0])
+    board_np = np.array(board_array)
     board_np = np.array(np.array_split(board_np, board_count))
-
-    bingo_number_list = [int(n) for n in bingo_number_text.split(',')]
 
     return (bingo_number_list, board_np)
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+def load_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
+
+    # read input data from file
+    with open(input_data_file, "r") as filehandle:
+        input_data = filehandle.read().splitlines()
+
+    return parse_data(input_data)
+
+
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - Winning bingo card score = {answer01}.")

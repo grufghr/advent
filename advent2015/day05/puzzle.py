@@ -67,7 +67,7 @@ def load_data(filename):
 
     # read in data file
     with open(input_data_file, 'r') as filehandle:
-        input_data = filehandle.readlines()
+        input_data = filehandle.read().splitlines()
 
     return input_data
 

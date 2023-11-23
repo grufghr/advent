@@ -136,9 +136,9 @@ def load_data(filename):
 
     # read input data from file
     with open(input_data_file, 'r') as input_filehandle:
-        input_data_text_list = input_filehandle.read().splitlines()
+        input_data = input_filehandle.read().splitlines()
 
-    return input_data_text_list
+    return input_data
 
 
 if __name__ == '__main__':

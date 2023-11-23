@@ -13,7 +13,6 @@ FLOOD = 2
 
 
 def floodfill(matrix, start_coords):
-
     q = deque()
     q.append(start_coords)
     while q:
@@ -39,10 +38,8 @@ def floodfill(matrix, start_coords):
 def calc_exposed_surface(cube_list):
     area = len(cube_list) * 6
     for i, cube_i in enumerate(cube_list[:-1]):
-        for cube_j in cube_list[i + 1:]:
-
-            adjacent = sum(
-                list(map(lambda i: abs(i[0] - i[1]), zip(cube_i, cube_j))))
+        for cube_j in cube_list[i + 1 :]:
+            adjacent = sum(list(map(lambda i: abs(i[0] - i[1]), zip(cube_i, cube_j))))
             if adjacent == 1:
                 area -= 2
     return area
@@ -84,24 +81,28 @@ def solve02(cube_list):
     return exposed_surface
 
 
-def load_data(filename):
-    input_data_file = os.path.join(os.path.dirname(__file__), filename)
-
-    # read input data from file
-    with open(input_data_file, 'r') as input_filehandle:
-        input_data_text_list = input_filehandle.read().splitlines()
-
+def parse_data(input_data):
     # parse input file
     cube_list = []
-    for cube_text in input_data_text_list:
-        cube = tuple([int(c) for c in cube_text.split(',')])
+    for cube_text in input_data:
+        cube = tuple([int(c) for c in cube_text.split(",")])
         cube_list.append(cube)
 
     return cube_list
 
 
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+def load_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
+
+    # read input data from file
+    with open(input_data_file, "r") as input_filehandle:
+        input_data = input_filehandle.read().splitlines()
+
+    return parse_data(input_data)
+
+
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - scanned lava droplet surface area  = {answer01}")
