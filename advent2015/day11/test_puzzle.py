@@ -46,6 +46,12 @@ class PuzzleTest(unittest.TestCase):
         answer01 = puzzle.solve01(input_data)
         self.assertEqual(answer01, self.answer01)
 
+    @unittest.skip("No examples for part02")
+    def test_003_example_02(self):
+        input_data = puzzle.load_data('input_example.txt')
+        answer02 = puzzle.solve02(input_data)
+        self.assertEqual(answer02, self.example_answer02)
+
     def test_004_solve_02(self):
         # note: answer01 used as input to part02
         input_data = self.answer01
