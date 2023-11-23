@@ -21,10 +21,9 @@ def solve02(input_data):
 
 
 def solve(instruction_text):
-
     # part 01 - start at 0,0 facing North
     pos = (0, 0)
-    compass = ['N', 'E', 'S', 'W']
+    compass = ["N", "E", "S", "W"]
     # compass = [(0, -1), (1, 0), (0, 1), (-1, 0)]
 
     # part 02
@@ -32,26 +31,25 @@ def solve(instruction_text):
     visited.add(pos)
     bunny_hq = None
 
-    instruction_list = [x.strip() for x in instruction_text.split(',')]
+    instruction_list = [x.strip() for x in instruction_text.split(",")]
     for instruction in instruction_list:
         match_i = INSTRUCTION_REGEX.search(instruction)
         direction, steps = match_i.groups()
         steps = int(steps)
 
-        if direction == 'L':
+        if direction == "L":
             compass = compass[1:] + list(compass[0])
-        elif direction == 'R':
+        elif direction == "R":
             compass = list(compass[-1]) + compass[:-1]
 
         for s in range(0, steps):
-
-            if compass[0] == 'N':
+            if compass[0] == "N":
                 pos = (pos[0], pos[1] - 1)
-            elif compass[0] == 'E':
+            elif compass[0] == "E":
                 pos = (pos[0] + 1, pos[1])
-            elif compass[0] == 'S':
+            elif compass[0] == "S":
                 pos = (pos[0], pos[1] + 1)
-            elif compass[0] == 'W':
+            elif compass[0] == "W":
                 pos = (pos[0] - 1, pos[1])
 
             if not bunny_hq:
@@ -73,19 +71,14 @@ def solve(instruction_text):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_data_file, 'r') as filehandle:
+    with open(input_data_file, "r") as filehandle:
         input_data = filehandle.read()
 
     return input_data
 
 
-def input_data_iter(input_data):
-    for tc, test_input_data in enumerate(input_data.splitlines()):
-        yield tc, test_input_data
-
-
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - Easter Bunny HQ = {answer01} blocks")

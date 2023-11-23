@@ -31,19 +31,14 @@ def solve02(input_data):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_data_file, 'r') as filehandle:
+    with open(input_data_file, "r") as filehandle:
         input_data = filehandle.read()
 
     return input_data
 
 
-def input_data_iter(input_data):
-    for tc, input_data_tc in enumerate(input_data.splitlines()):
-        yield tc, input_data_tc
-
-
-if __name__ == '__main__':
-    input_data = load_data('input.txt')
+if __name__ == "__main__":
+    input_data = load_data("input.txt")
 
     answer01 = solve01(input_data)
     print(f"part01 - captcha solution = {answer01}")

@@ -17,9 +17,13 @@ class PuzzleTest(unittest.TestCase):
 
     execution_time = 1.0
 
+    def _input_data_iter(self, input_data):
+        for tc, input_data_tc in enumerate(input_data.splitlines()):
+            yield tc, input_data_tc
+
     def test_001_example_01(self):
         input_data = puzzle.load_data('input_example.txt')
-        for tc, input_data_tc in puzzle.input_data_iter(input_data):
+        for tc, input_data_tc in self._input_data_iter(input_data):
             answer01 = puzzle.solve01(input_data_tc)
             self.assertEqual(answer01, self.example_answer01[tc])
 
@@ -30,7 +34,7 @@ class PuzzleTest(unittest.TestCase):
 
     def test_003_example_02(self):
         input_data = puzzle.load_data('input_example.txt')
-        for tc, input_data_tc in puzzle.input_data_iter(input_data):
+        for tc, input_data_tc in self._input_data_iter(input_data):
             answer02 = puzzle.solve02(input_data_tc)
             self.assertEqual(answer02, self.example_answer02[tc])
 

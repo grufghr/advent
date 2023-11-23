@@ -76,11 +76,6 @@ def load_data(filename):
     return input_data
 
 
-def input_data_iter(input_data):
-    for tc, input_data_tc in enumerate(input_data.splitlines()):
-        yield tc, input_data_tc
-
-
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
