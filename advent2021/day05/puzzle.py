@@ -61,7 +61,6 @@ def solve(coord_np, include_diag=False):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    # read input data from file
     dt = [('sr', np.int64), ('sc', np.int64), ('er', np.int64), ('ec', np.int64)]
     coord_np = np.fromregex(input_data_file, r'(\d+)\,(\d+) \-\> (\d+)\,(\d+)', dtype=dt)
 

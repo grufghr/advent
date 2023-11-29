@@ -37,7 +37,6 @@ def solve02(dimension_pd):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    # read input data from file
     input_data = pd.read_csv(input_data_file, header=None, delimiter='x')
 
     return input_data

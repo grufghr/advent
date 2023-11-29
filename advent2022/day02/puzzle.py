@@ -84,7 +84,6 @@ def solve02(strategy_data):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    # read input data from file
     strategy_data = np.genfromtxt(input_data_file, dtype=str)
 
     return strategy_data

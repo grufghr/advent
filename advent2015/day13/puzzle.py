@@ -34,7 +34,7 @@ def solve01(input_data):
 
 def solve02(input_data):
     guest_pref = input_data.copy()
-    
+
     # add myself to guest list
     guests = list(set([x[0] for x in guest_pref]))
     for g in guests:

@@ -72,7 +72,6 @@ def solve(tree_map_np):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    # read input data from file
     input_data = np.genfromtxt(input_data_file, dtype=int, delimiter=1)
 
     return input_data
