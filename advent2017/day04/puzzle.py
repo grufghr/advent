@@ -31,7 +31,7 @@ def policy01(passphrase):
 
 def policy02(passphrase):
     passphrase_words = passphrase.split()
-    passphrase_sorted = list(map(lambda x: "".join(sorted(x)), passphrase_words))
+    passphrase_sorted = list(map(lambda x: ''.join(sorted(x)), passphrase_words))
     if len(passphrase_sorted) == len(set(passphrase_sorted)):
         return True
     return False
@@ -45,17 +45,17 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read in data file
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return parse_data(input_data)
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - valid passphrases (policy 01) = {answer01}")
+    print(f'part01 - valid passphrases (policy 01) = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - valid passphrases (policy 01 & 02) = {answer02}")
+    print(f'part02 - valid passphrases (policy 01 & 02) = {answer02}')

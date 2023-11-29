@@ -23,13 +23,11 @@ def solve02(sonar_depth_np):
     # part 02 -
 
     # rolling sum of 3 consecutive elements in list
-    sonar_depth_data_conseq3 = np.convolve(sonar_depth_np, np.ones(3), mode="valid")
+    sonar_depth_data_conseq3 = np.convolve(sonar_depth_np, np.ones(3), mode='valid')
     sonar_depth_data_conseq3_delta = np.diff(sonar_depth_data_conseq3)
 
     # count positive delta
-    sonar_depth_increase_count_conseq3 = len(
-        list(filter(lambda x: (x > 0), sonar_depth_data_conseq3_delta))
-    )
+    sonar_depth_increase_count_conseq3 = len(list(filter(lambda x: (x > 0), sonar_depth_data_conseq3_delta)))
 
     return sonar_depth_increase_count_conseq3
 
@@ -42,11 +40,11 @@ def load_data(filename):
     return sonar_depth_np
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - Measurements larger than previous = {answer01}")
+    print(f'part01 - Measurements larger than previous = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - Sums larger than previous (3 sliding) = {answer02}")
+    print(f'part02 - Sums larger than previous (3 sliding) = {answer02}')

@@ -61,8 +61,8 @@ def solve02(cube_list):
     size = (max(x) + 1, max(y) + 1, max(z) + 1)
     origin = (min(x), min(y), min(z))
     if len([i for i in list(origin) if i < 0]) > 0:
-        print(f"cubes exist in zero/negative space, origin = {origin}")
-        print("floodfill may not work, need to offset cubes")
+        print(f'cubes exist in zero/negative space, origin = {origin}')
+        print('floodfill may not work, need to offset cubes')
         exit()
     cube_np = np.zeros(size, dtype=int)
     cube_np[tuple(np.array(cube_list).T)] = CUBE
@@ -85,7 +85,7 @@ def parse_data(input_data):
     # parse input file
     cube_list = []
     for cube_text in input_data.splitlines():
-        cube = tuple([int(c) for c in cube_text.split(",")])
+        cube = tuple([int(c) for c in cube_text.split(',')])
         cube_list.append(cube)
 
     return cube_list
@@ -95,17 +95,17 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return parse_data(input_data)
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - scanned lava droplet surface area  = {answer01}")
+    print(f'part01 - scanned lava droplet surface area  = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - exterior surface area  = {answer02}")
+    print(f'part02 - exterior surface area  = {answer02}')

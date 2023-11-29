@@ -7,18 +7,16 @@ import os
 import re
 from collections import deque
 
-TYPE1_REGEX = re.compile(r"^(\d+|[a-z]+) -> ([a-z]+)")
-TYPE2_REGEX = re.compile(r"^(NOT) (\d+|[a-z]+) -> ([a-z]+)")
-TYPE3_REGEX = re.compile(
-    r"^(\d+|[a-z]+) (AND|OR|LSHIFT|RSHIFT) (\d+|[a-z]+) -> ([a-z]+)"
-)
+TYPE1_REGEX = re.compile(r'^(\d+|[a-z]+) -> ([a-z]+)')
+TYPE2_REGEX = re.compile(r'^(NOT) (\d+|[a-z]+) -> ([a-z]+)')
+TYPE3_REGEX = re.compile(r'^(\d+|[a-z]+) (AND|OR|LSHIFT|RSHIFT) (\d+|[a-z]+) -> ([a-z]+)')
 
 
 def solve01(input_data):
     # part 01 - find wire 'a' signal
 
     signals = solve_signals(input_data)
-    return signals["a"]
+    return signals['a']
 
 
 def solve02(input_data):
@@ -27,11 +25,11 @@ def solve02(input_data):
     signals = solve_signals(input_data)
 
     instructions_map = {k: v for (k, v) in input_data}
-    instructions_map["b"] = ("=", signals["a"], 0)
+    instructions_map['b'] = ('=', signals['a'], 0)
     input_data_n = [(k, v) for k, v in instructions_map.items()]
 
     signals = solve_signals(input_data_n)
-    return signals["a"]
+    return signals['a']
 
 
 def solve_signals(input_data):
@@ -55,20 +53,20 @@ def solve_signals(input_data):
                 b = signals[b]
 
         if isinstance(a, int) and isinstance(b, int):
-            if op == "=":
+            if op == '=':
                 signals[wire] = int(a)
-            elif op == "AND":
+            elif op == 'AND':
                 signals[wire] = a & b
-            elif op == "OR":
+            elif op == 'OR':
                 signals[wire] = a | b
-            elif op == "NOT":
+            elif op == 'NOT':
                 signals[wire] = ~a & 65535
-            elif op == "RSHIFT":
+            elif op == 'RSHIFT':
                 signals[wire] = a >> b
-            elif op == "LSHIFT":
+            elif op == 'LSHIFT':
                 signals[wire] = a << b
             else:
-                exit(f"unknown op {op}")
+                exit(f'unknown op {op}')
         else:
             q.append((wire, (op, a, b)))
 
@@ -80,7 +78,7 @@ def parse_data(input_data):
     instruction_list = []
     for instruction in input_data.splitlines():
         if match_m := TYPE1_REGEX.search(instruction):
-            instr = (match_m.group(2), ("=", match_m.group(1), 0))
+            instr = (match_m.group(2), ('=', match_m.group(1), 0))
             instruction_list.append(instr)
         elif match_m := TYPE2_REGEX.search(instruction):
             instr = (match_m.group(3), (match_m.group(1), match_m.group(2), 0))
@@ -101,17 +99,17 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read i[]nput data from file
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return parse_data(input_data)
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - a = {answer01}")
+    print(f'part01 - a = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - a = {answer02}")
+    print(f'part02 - a = {answer02}')

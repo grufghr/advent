@@ -8,7 +8,7 @@ import re
 import copy
 
 
-INSTRUCTION_REGEX = re.compile(r"move (\d+) from (\d+) to (\d+)")
+INSTRUCTION_REGEX = re.compile(r'move (\d+) from (\d+) to (\d+)')
 
 
 def solve01(input_data):
@@ -40,7 +40,7 @@ def solve(stack_list_immutable, instruction_list, cratemover):
         cratemover(move_count, stack_from, stack_to)
 
     # top of each stack
-    top_crates = ""
+    top_crates = ''
     for stack in stack_list:
         top_crates += stack[-1]
 
@@ -67,7 +67,7 @@ def parse_data(input_data):
     input_data = list(filter(None, input_data))
 
     # parse instruction list
-    instruction_list = [i for i in input_data if i.startswith("move")]
+    instruction_list = [i for i in input_data if i.startswith('move')]
 
     # parse stack
     stack_list = list([])
@@ -92,17 +92,17 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return parse_data(input_data)
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - Stack top Crates with CrateMover 9000 = {answer01}")
+    print(f'part01 - Stack top Crates with CrateMover 9000 = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part01 - Stack top Crates with CrateMover 9001 = {answer02}")
+    print(f'part01 - Stack top Crates with CrateMover 9001 = {answer02}')

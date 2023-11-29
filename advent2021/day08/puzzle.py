@@ -6,7 +6,7 @@ Advent of Code 2021 Day 08: Seven Segment Search
 import os
 import re
 
-SEGMENT_REGEX = re.compile(r"([a-g]+)")
+SEGMENT_REGEX = re.compile(r'([a-g]+)')
 
 
 def solve01(input_data):
@@ -74,13 +74,13 @@ def calc_output_value(patterns):
     digit_decode = dict((hash_v(v), k) for k, v in digit.items())
 
     output_value_list = [str(digit_decode[x]) for x in patterns_ov]
-    output_value = int("".join(output_value_list))
+    output_value = int(''.join(output_value_list))
 
     return output_value
 
 
 def hash_v(v):
-    return "".join(sorted("".join(v)))
+    return ''.join(sorted(''.join(v)))
 
 
 def flatten(lol):
@@ -92,7 +92,7 @@ def parse_data(input_data):
     # segment = signal_patten (x10) | output_value (4 digit)
     for segment_line in input_data.splitlines():
         match_list = SEGMENT_REGEX.findall(segment_line)
-        patterns = ["".join(sorted(x)) for x in match_list]
+        patterns = [''.join(sorted(x)) for x in match_list]
         segment_list.append(patterns)
 
     return segment_list
@@ -101,17 +101,17 @@ def parse_data(input_data):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return parse_data(input_data)
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - times 1, 4, 7, or 8 appear in segments = {answer01}")
+    print(f'part01 - times 1, 4, 7, or 8 appear in segments = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - output value sum = {answer02}")
+    print(f'part02 - output value sum = {answer02}')

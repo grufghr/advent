@@ -6,8 +6,8 @@ Advent of Code 2021 Day 12: Passage Pathing
 import os
 from collections import deque
 
-START = "start"
-END = "end"
+START = 'start'
+END = 'end'
 
 
 def solve01(input_data):
@@ -50,7 +50,7 @@ def traverse_caves(cave_map, max_visits):
 def parse_input(input_data):
     graph = {}
     for edge_txt in input_data.splitlines():
-        edge = tuple(edge_txt.split("-"))
+        edge = tuple(edge_txt.split('-'))
 
         nodeA = edge[0]
         nodeB = edge[1]
@@ -71,17 +71,17 @@ def parse_input(input_data):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return parse_input(input_data)
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - paths through cave system = {answer01}")
+    print(f'part01 - paths through cave system = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - paths through cave system = {answer02}")
+    print(f'part02 - paths through cave system = {answer02}')

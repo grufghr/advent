@@ -11,16 +11,16 @@ SQRT2 = math.sqrt(2)
 
 def move_head(head, direction):
     (hr, hc) = head
-    if direction == "R":
+    if direction == 'R':
         hc = hc + 1
-    elif direction == "L":
+    elif direction == 'L':
         hc = hc - 1
-    elif direction == "U":
+    elif direction == 'U':
         hr = hr - 1
-    elif direction == "D":
+    elif direction == 'D':
         hr = hr + 1
     else:
-        exit(f"unknown instruction {direction}")
+        exit(f'unknown instruction {direction}')
     head = (hr, hc)
     return head
 
@@ -70,7 +70,7 @@ def solve(instruction_list, rope_knots=2):
     tail_pos = [tuple(tail)]
 
     for instruction in instruction_list:
-        direction, steps = instruction.split(" ", 1)
+        direction, steps = instruction.split(' ', 1)
         # print(f"move {direction} for {steps} steps")
 
         for s in range(int(steps)):
@@ -94,17 +94,17 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read in data file
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return parse_data(input_data)
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - Positions tail visited = {answer01}")
+    print(f'part01 - Positions tail visited = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - Positions tail visited = {answer02}")
+    print(f'part02 - Positions tail visited = {answer02}')

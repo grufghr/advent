@@ -28,16 +28,16 @@ def solve(instruction_set, delivery_num=1):
     # each delivery person moves according to instruction
     for i, instruction in enumerate(instruction_set):
         p = i % delivery_num
-        if instruction == "v":
+        if instruction == 'v':
             pos[p][0] += 1
-        elif instruction == "^":
+        elif instruction == '^':
             pos[p][0] -= 1
-        elif instruction == ">":
+        elif instruction == '>':
             pos[p][1] += 1
-        elif instruction == "<":
+        elif instruction == '<':
             pos[p][1] -= 1
         else:
-            exit(f"Unknown instructions {instruction}")
+            exit(f'Unknown instructions {instruction}')
 
         # insert/append to present_np if delivery person is out of bounds
         shape = present_np.shape
@@ -69,17 +69,17 @@ def solve(instruction_set, delivery_num=1):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return input_data
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - Houses visited with santa = {answer01}")
+    print(f'part01 - Houses visited with santa = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - Houses visited with santa & robot = {answer02}")
+    print(f'part02 - Houses visited with santa & robot = {answer02}')

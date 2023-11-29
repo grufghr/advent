@@ -14,7 +14,7 @@ dirs = {
     "E": [(1, 0),  (1, 1),  (1, -1)],
 }
 # fmt: on
-direction_all = set(dirs["N"] + dirs["S"] + dirs["W"] + dirs["E"])
+direction_all = set(dirs['N'] + dirs['S'] + dirs['W'] + dirs['E'])
 
 
 def add(t1, t2):
@@ -26,12 +26,12 @@ def visualise_grove(elves_list):
     y_vals = [y for x, y in elves_list]
 
     for y in range(min(y_vals) - 1, max(y_vals) + 1):
-        line = ""
+        line = ''
         for x in range(min(x_vals) - 1, max(x_vals) + 1):
             if (x, y) in elves_list:
-                line += "#"
+                line += '#'
             else:
-                line += "."
+                line += '.'
         print(line)
 
 
@@ -46,13 +46,13 @@ def solve02(grove_map_list):
 
 
 def solve(grove_map_list, max_rounds):
-    direction_order = ["N", "S", "W", "E"]
+    direction_order = ['N', 'S', 'W', 'E']
 
     # parse input
     elves_list = []
     for y, line in enumerate(grove_map_list):
         for x, grid in enumerate(line):
-            if grid == "#":
+            if grid == '#':
                 elf = (x, y)
                 elves_list.append(elf)
 
@@ -79,9 +79,7 @@ def solve(grove_map_list, max_rounds):
                 continue
 
             for diro in direction_order:
-                if not any(
-                    add(elf, direction) in elves_set for direction in dirs[diro]
-                ):
+                if not any(add(elf, direction) in elves_set for direction in dirs[diro]):
                     elf_p = add(elf, dirs[diro][0])
                     if elf_p not in moves.keys():
                         moves[elf_p] = idx
@@ -119,17 +117,17 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read in data file
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return parse_data(input_data)
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - empty ground = {answer01}")
+    print(f'part01 - empty ground = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - round nothing moved = {answer02}")
+    print(f'part02 - round nothing moved = {answer02}')

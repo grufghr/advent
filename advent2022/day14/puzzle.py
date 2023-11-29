@@ -9,9 +9,7 @@ import matplotlib
 from matplotlib import pyplot
 from matplotlib.animation import FuncAnimation
 
-COLOR_MAP = matplotlib.colors.LinearSegmentedColormap.from_list(
-    "height_gradient_map", ["white", "black", "blue"], 256
-)
+COLOR_MAP = matplotlib.colors.LinearSegmentedColormap.from_list('height_gradient_map', ['white', 'black', 'blue'], 256)
 
 AIR = int(0)
 ROCK = 1
@@ -31,9 +29,9 @@ class SandSimulator:
 
     def _parse_rock_drawing(self, rock_drawing):
         # extract all points text '(nnn,nn)' into list
-        coord_text = [[t.strip() for t in line.split("->")] for line in rock_drawing]
+        coord_text = [[t.strip() for t in line.split('->')] for line in rock_drawing]
         # convert text into tuple
-        coord_list = [[tuple(map(int, t.split(","))) for t in x] for x in coord_text]
+        coord_list = [[tuple(map(int, t.split(','))) for t in x] for x in coord_text]
         # swap into (row, col) format
         coord_list = [[(c[1], c[0]) for c in x] for x in coord_list]
 
@@ -55,10 +53,7 @@ class SandSimulator:
         border_w = 1
         size_c = bounds_e - bounds_w + border_e + border_w
         size_r = bounds_s - bounds_n + border_n + border_s
-        coord_list = [
-            [(c[0] - bounds_n + border_n, c[1] - bounds_w + border_w) for c in x]
-            for x in coord_list
-        ]
+        coord_list = [[(c[0] - bounds_n + border_n, c[1] - bounds_w + border_w) for c in x] for x in coord_list]
 
         # create a numpy array canvas
         self.grid = np.array([[AIR] * size_c for i in range(size_r)])
@@ -134,17 +129,17 @@ class SandVisualiser:
 
     def show(self):
         fig, gsub = pyplot.subplots(1, 1)
-        self.g1 = gsub.imshow(self.sim.grid, interpolation="nearest", cmap=COLOR_MAP)
-        gsub.set_title("Sand Simulation")
-        gsub.set_aspect("equal")
-        gsub.axis("off")
+        self.g1 = gsub.imshow(self.sim.grid, interpolation='nearest', cmap=COLOR_MAP)
+        gsub.set_title('Sand Simulation')
+        gsub.set_aspect('equal')
+        gsub.axis('off')
         self.animation = FuncAnimation(fig, self.update, frames=20, interval=0)
         self.animation.pause()
         self.paused = True
-        fig.canvas.mpl_connect("button_press_event", self.toggle_pause)
-        pyplot.colorbar(self.g1, cmap=COLOR_MAP, orientation="horizontal")
+        fig.canvas.mpl_connect('button_press_event', self.toggle_pause)
+        pyplot.colorbar(self.g1, cmap=COLOR_MAP, orientation='horizontal')
         pyplot.show()
-        print("Starting paused - click on animation simulation window")
+        print('Starting paused - click on animation simulation window')
 
     def toggle_pause(self, *args, **kwargs):
         if self.paused:
@@ -199,17 +194,17 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read in data file
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return parse_data(input_data)
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - Sand count thats falls into abyss = {answer01}")
+    print(f'part01 - Sand count thats falls into abyss = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - Sand count when entry point block = {answer02}")
+    print(f'part02 - Sand count when entry point block = {answer02}')

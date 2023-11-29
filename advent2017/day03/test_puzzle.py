@@ -22,7 +22,7 @@ class PuzzleTest(unittest.TestCase):
                 self.assertEqual(result, expected_result)
 
     def test_002_solve_01(self):
-        input_data = puzzle.load_data("input.txt")
+        input_data = puzzle.load_data('input.txt')
         answer01 = puzzle.solve01(input_data)
         self.assertEqual(answer01, self.answer01)
 
@@ -30,10 +30,10 @@ class PuzzleTest(unittest.TestCase):
         pass
 
     def test_004_solve_02(self):
-        input_data = puzzle.load_data("input.txt")
+        input_data = puzzle.load_data('input.txt')
         ts = time.time()
         answer02 = puzzle.solve02(input_data)
         t = time.time() - ts
         self.assertEqual(answer02, self.answer02)
-        self.assertLess(t, self.execution_time, f"part02 {t:2.5f} secs")
-        print(f"execution_time {t:2.5f} secs")
+        self.assertLess(t, self.execution_time, f'part02 {t:2.5f} secs')
+        print(f'execution_time {t:2.5f} secs')

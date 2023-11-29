@@ -6,10 +6,10 @@ Advent of Code 2022 Day 07: No Space Left On Device
 import os
 import re
 
-COMMAND_CD = re.compile(r"\$ cd (.*)")
-COMMAND_LS = re.compile(r"\$ ls")
-LISTING_DIR = re.compile(r"dir (.*)")
-LISTING_FILE = re.compile(r"(\d+) (.*)")
+COMMAND_CD = re.compile(r'\$ cd (.*)')
+COMMAND_LS = re.compile(r'\$ ls')
+LISTING_DIR = re.compile(r'dir (.*)')
+LISTING_FILE = re.compile(r'(\d+) (.*)')
 
 
 class Folder:
@@ -34,7 +34,7 @@ class Folder:
         if name not in self.child_file.keys():
             self.child_file[name] = int(size)
         else:
-            exit("duplicate filename?")
+            exit('duplicate filename?')
         return name
 
     def size(self):
@@ -62,13 +62,13 @@ def solve02(input_data):
 def solve(terminal_output):
     # process terminal output
     folder_list = []
-    folder_root = Folder("#ROOT#", None)
+    folder_root = Folder('#ROOT#', None)
     folder_current = folder_root
 
     for line in terminal_output:
         if match := COMMAND_CD.search(line):
             name = match.group(1)
-            if name == "..":
+            if name == '..':
                 folder_current = folder_current.parent
             else:
                 folder_current = folder_current.add_child_folder(name)
@@ -96,9 +96,7 @@ def solve(terminal_output):
     space_unused = file_system_size - folder_root_size
     space_required = space_update - space_unused
 
-    folder_list_space = [
-        (f, f.size()) for f in folder_list if f.size() >= space_required
-    ]
+    folder_list_space = [(f, f.size()) for f in folder_list if f.size() >= space_required]
     folder_list_sorted = sorted(folder_list_space, key=lambda x: x[1])
     shortest_folder = folder_list_sorted.pop(0)
     part02_folder_size = shortest_folder[1]
@@ -114,17 +112,17 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read in data file
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return parse_data(input_data)
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer = solve(input_data)
-    print(f"part01 - Total sizes of those directories less than 100000 is {answer[0]}")
+    print(f'part01 - Total sizes of those directories less than 100000 is {answer[0]}')
 
-    #answer = solve(input_data)
-    print(f"part02 - Size of smallest directory to free space = {answer[1]}")
+    # answer = solve(input_data)
+    print(f'part02 - Size of smallest directory to free space = {answer[1]}')

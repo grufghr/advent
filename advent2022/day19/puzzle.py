@@ -9,11 +9,9 @@ import math
 from collections import deque, defaultdict
 
 
-LINE_BLUEPRINT_REGEX = re.compile(r"Blueprint (\d+): (.*)")
+LINE_BLUEPRINT_REGEX = re.compile(r'Blueprint (\d+): (.*)')
 
-LINE_ROBOT_REGEX = re.compile(
-    r"Each ([a-z]*) robot costs (\d+) ([a-z]*)(?: and (\d+) ([a-z]*))?."
-)
+LINE_ROBOT_REGEX = re.compile(r'Each ([a-z]*) robot costs (\d+) ([a-z]*)(?: and (\d+) ([a-z]*))?.')
 
 
 class RobotFactoryState:
@@ -26,7 +24,7 @@ class RobotFactoryState:
 
         # calculate maximum robots required for each type
         self.robot_max = {m: 0 for m in self.blueprint.keys()}
-        self.robot_max["geode"] = math.inf  # geode most valuable (infinite)
+        self.robot_max['geode'] = math.inf  # geode most valuable (infinite)
         for robot_type, costs in self.blueprint.items():
             for mineral, qty in costs.items():
                 self.robot_max[mineral] = max(self.robot_max[mineral], qty)
@@ -35,12 +33,12 @@ class RobotFactoryState:
         self.t = 0
         # init robot fleet with 1 ore collector
         self.robots = {m: 0 for m in blueprint.keys()}
-        self.robots["ore"] = 1
+        self.robots['ore'] = 1
         # init resources collected (with collect = 0)
         self.resources = {m: 0 for m in blueprint.keys()}
 
     def __repr__(self):
-        return f"{self.t} {self.robots} {self.resources}"
+        return f'{self.t} {self.robots} {self.resources}'
 
     def reinitiliase(self):
         # reset class variables
@@ -49,12 +47,12 @@ class RobotFactoryState:
 
     def calc_best_geodes(self):
         a = self.best_geodes[self.t]
-        b = self.resources["geode"]
+        b = self.resources['geode']
         self.best_geodes[self.t] = max(a, b)
 
     def continue_search(self, depth):
         # prune if more geodes produced by another state
-        not_pruned = self.best_geodes[self.t] == self.resources["geode"]
+        not_pruned = self.best_geodes[self.t] == self.resources['geode']
         return (self.t <= depth) and not_pruned
 
     def max_robots_built(self, robot_type):
@@ -66,13 +64,11 @@ class RobotFactoryState:
         # -> list('mineral')
         state_list = [False]  # add false to start to do harvest
         for mineral, cost_list in self.blueprint.items():
-            if all(
-                qty <= self.resources[mineral_c] for mineral_c, qty in cost_list.items()
-            ):
+            if all(qty <= self.resources[mineral_c] for mineral_c, qty in cost_list.items()):
                 state_list.append(mineral)
         # prune
-        if "geode" in state_list:
-            return ["geode"]
+        if 'geode' in state_list:
+            return ['geode']
         return state_list
 
     def build_robot(self, robot_type):
@@ -181,17 +177,17 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read i[]nput data from file
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return parse_data(input_data)
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - Blueprint quality sum (24 mins) = {answer01}")
+    print(f'part01 - Blueprint quality sum (24 mins) = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - Top 3 Blueprint quality sum (32 mins) = {answer02}")
+    print(f'part02 - Top 3 Blueprint quality sum (32 mins) = {answer02}')

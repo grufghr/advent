@@ -7,12 +7,12 @@ import os
 import re
 import math
 
-LINE_MONKEY = re.compile(r"Monkey (\d+):")
-LINE_STARTING_ITEM = re.compile(r"Starting items:")
-LINE_NUMBER_LIST = re.compile(r"(\d+)")
-LINE_OPERATION = re.compile(r"Operation: new = (.+) (.+) (.+)")
-LINE_TEST = re.compile(r"Test: divisible by (\d+)")
-LINE_IF = re.compile(r"If (true|false): throw to monkey (\d+)")
+LINE_MONKEY = re.compile(r'Monkey (\d+):')
+LINE_STARTING_ITEM = re.compile(r'Starting items:')
+LINE_NUMBER_LIST = re.compile(r'(\d+)')
+LINE_OPERATION = re.compile(r'Operation: new = (.+) (.+) (.+)')
+LINE_TEST = re.compile(r'Test: divisible by (\d+)')
+LINE_IF = re.compile(r'If (true|false): throw to monkey (\d+)')
 
 
 def solve01(input_data):
@@ -51,7 +51,7 @@ def solve(note_list, rounds_to_complete=20, manage_worry_level=False):
             m_div[monkey] = int(match.group(1))
             # print(f"  Test: divisible by { m_div[monkey]}")
         elif match := LINE_IF.search(note):
-            condition = True if match.group(1) == "true" else False
+            condition = True if match.group(1) == 'true' else False
             if condition:
                 m_target_true[monkey] = int(match.group(2))
             else:
@@ -60,7 +60,7 @@ def solve(note_list, rounds_to_complete=20, manage_worry_level=False):
         elif not note:
             continue
         else:
-            print("do something with ", note)
+            print('do something with ', note)
 
     mod_factor = math.prod([d for d in m_div.values()])
 
@@ -73,22 +73,22 @@ def solve(note_list, rounds_to_complete=20, manage_worry_level=False):
                 m_inspect_count[monkey] += 1
                 # print(f"  Monkey inspects an item with a worry level of {worry_level}.")
 
-                if m_ops[monkey][0] == "old":
+                if m_ops[monkey][0] == 'old':
                     a = worry_level
                 else:
                     a = int(m_ops[monkey][0])
 
-                if m_ops[monkey][2] == "old":
+                if m_ops[monkey][2] == 'old':
                     b = worry_level
                 else:
                     b = int(m_ops[monkey][2])
 
-                if m_ops[monkey][1] == "+":
+                if m_ops[monkey][1] == '+':
                     worry_level_n = a + b
-                elif m_ops[monkey][1] == "*":
+                elif m_ops[monkey][1] == '*':
                     worry_level_n = a * b
                 else:
-                    exit("unknown op ", m_ops[monkey][1])
+                    exit('unknown op ', m_ops[monkey][1])
 
                 # print(f"    Worry level is {a} {m_ops[monkey][1]} {b} = {worry_level_n}")
 
@@ -138,17 +138,17 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read in data file
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return parse_data(input_data)
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - level of monkey business after 20 rounds = {answer01}")
+    print(f'part01 - level of monkey business after 20 rounds = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - level of monkey business after 10000 rounds = {answer02}")
+    print(f'part02 - level of monkey business after 10000 rounds = {answer02}')

@@ -39,20 +39,20 @@ def solve(pos_list, cost_func):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     # parse data
-    pos_text_list = list(input_data.split(","))
+    pos_text_list = list(input_data.split(','))
     pos_list = list(map(int, pos_text_list))
     return pos_list
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - least fuel to align = {answer01}")
+    print(f'part01 - least fuel to align = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - least fuel to align = {answer02}")
+    print(f'part02 - least fuel to align = {answer02}')

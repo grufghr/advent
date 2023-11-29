@@ -8,7 +8,6 @@ import advent2021.day25.puzzle as puzzle
 
 
 class PuzzleTest(unittest.TestCase):
-
     example_answer01 = 58
     example_answer02 = None
 
@@ -28,5 +27,5 @@ class PuzzleTest(unittest.TestCase):
         answer01 = puzzle.solve01(input_data)
         t = time.time() - ts
         self.assertEqual(answer01, self.answer01)
-        self.assertLess(t, self.execution_time, f"part02 {t:2.5f} secs")
-        print(f"execution_time {t:2.5f} secs")
+        self.assertLess(t, self.execution_time, f'part02 {t:2.5f} secs')
+        print(f'execution_time {t:2.5f} secs')

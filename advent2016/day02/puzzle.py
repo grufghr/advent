@@ -10,27 +10,27 @@ from operator import add
 
 KEYPAD01 = np.array(
     [
-        ["1", "2", "3"],
-        ["4", "5", "6"],
-        ["7", "8", "9"],
+        ['1', '2', '3'],
+        ['4', '5', '6'],
+        ['7', '8', '9'],
     ]
 )
 
 KEYPAD02 = np.array(
     [
-        [" ", " ", "1", " ", " "],
-        [" ", "2", "3", "4", " "],
-        ["5", "6", "7", "8", "9"],
-        [" ", "A", "B", "C", " "],
-        [" ", " ", "D", " ", " "],
+        [' ', ' ', '1', ' ', ' '],
+        [' ', '2', '3', '4', ' '],
+        ['5', '6', '7', '8', '9'],
+        [' ', 'A', 'B', 'C', ' '],
+        [' ', ' ', 'D', ' ', ' '],
     ]
 )
 
 INSTR = {
-    "U": (-1, 0),
-    "D": (1, 0),
-    "L": (0, -1),
-    "R": (0, 1),
+    'U': (-1, 0),
+    'D': (1, 0),
+    'L': (0, -1),
+    'R': (0, 1),
 }
 
 
@@ -59,12 +59,12 @@ def solve(instruction_text_list, pos, keypad):
                 max(0, min(pos_n[0], keypad_size_r)),
                 max(0, min(pos_n[1], keypad_size_c)),
             )
-            if keypad[pos_n] != " ":
+            if keypad[pos_n] != ' ':
                 pos = pos_n
 
         code_list.append(keypad[pos])
 
-    code = "".join([str(x) for x in code_list])
+    code = ''.join([str(x) for x in code_list])
 
     return code
 
@@ -77,17 +77,17 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read in data file
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return parse_data(input_data)
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - bathroom code = {answer01}")
+    print(f'part01 - bathroom code = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - bathroom code = {answer02}")
+    print(f'part02 - bathroom code = {answer02}')

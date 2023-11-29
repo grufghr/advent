@@ -19,7 +19,7 @@ def solve02(input_data):
 
 def solve(input_text, n):
     lowest_positive_number = 0
-    n_zeroes = "0" * n
+    n_zeroes = '0' * n
 
     found = False
     while (not found) and (lowest_positive_number < 99999999):
@@ -27,7 +27,7 @@ def solve(input_text, n):
 
         text = input_text + str(lowest_positive_number)
 
-        hash_text = str(hashlib.md5(text.encode("utf-8")).hexdigest())
+        hash_text = str(hashlib.md5(text.encode('utf-8')).hexdigest())
         if hash_text.startswith(n_zeroes):
             found = True
 
@@ -37,17 +37,17 @@ def solve(input_text, n):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return input_data
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - lowest_positive_number = {answer01}")
+    print(f'part01 - lowest_positive_number = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - lowest_positive_number = {answer02}")
+    print(f'part02 - lowest_positive_number = {answer02}')

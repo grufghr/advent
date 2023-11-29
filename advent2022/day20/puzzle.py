@@ -31,9 +31,7 @@ def decrypt(encrypted, dec_key, mix_repeat):
 
     zero_tuple = (0, encrypted.index(0))
     zero_tuple_idx = decrypted.index(zero_tuple)
-    grove_coords = [
-        decrypted[(zero_tuple_idx + i) % len(encrypted)][0] for i in [1000, 2000, 3000]
-    ]
+    grove_coords = [decrypted[(zero_tuple_idx + i) % len(encrypted)][0] for i in [1000, 2000, 3000]]
     grove_coords_sum = sum(grove_coords)
     return grove_coords_sum
 
@@ -46,17 +44,17 @@ def parse_data(input_data):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return parse_data(input_data)
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - grove coordinates sum = {answer01}")
+    print(f'part01 - grove coordinates sum = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - answer = {answer02}")
+    print(f'part02 - answer = {answer02}')

@@ -17,8 +17,8 @@ def solve02(coord_np):
 
 def solve(coord_np, include_diag=False):
     # create map of zeros
-    num_r = max([*coord_np["sr"], *coord_np["er"]]) + 1
-    num_c = max([*coord_np["sc"], *coord_np["ec"]]) + 1
+    num_r = max([*coord_np['sr'], *coord_np['er']]) + 1
+    num_c = max([*coord_np['sc'], *coord_np['ec']]) + 1
     map_shape = (num_r, num_c)
 
     vent_map_np = np.asarray(np.zeros(map_shape, dtype=int))
@@ -62,19 +62,17 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
-    dt = [("sr", np.int64), ("sc", np.int64), ("er", np.int64), ("ec", np.int64)]
-    coord_np = np.fromregex(
-        input_data_file, r"(\d+)\,(\d+) \-\> (\d+)\,(\d+)", dtype=dt
-    )
+    dt = [('sr', np.int64), ('sc', np.int64), ('er', np.int64), ('ec', np.int64)]
+    coord_np = np.fromregex(input_data_file, r'(\d+)\,(\d+) \-\> (\d+)\,(\d+)', dtype=dt)
 
     return coord_np
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - Overlapping air vents = {answer01}")
+    print(f'part01 - Overlapping air vents = {answer01}')
 
     answer01 = solve02(input_data)
-    print(f"part02 - Overlapping air vents (diagonals included) = {answer02}")
+    print(f'part02 - Overlapping air vents (diagonals included) = {answer02}')

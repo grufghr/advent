@@ -7,7 +7,7 @@ import os
 
 
 def calc_priority(c):
-    return (ord(c) - ord("a") + 1) if c.islower() else (ord(c) - ord("A") + 27)
+    return (ord(c) - ord('a') + 1) if c.islower() else (ord(c) - ord('A') + 27)
 
 
 def chunk_list(lst, n):
@@ -21,9 +21,9 @@ def solve01(rucksack_data):
     for rucksack in rucksack_data:
         compartment1 = rucksack[: len(rucksack) // 2]
         compartment2 = rucksack[len(rucksack) // 2 :]
-        common = "".join(set(compartment1).intersection(compartment2))
+        common = ''.join(set(compartment1).intersection(compartment2))
         if len(common) > 1:
-            exit("Should there be more than 1 common character?")
+            exit('Should there be more than 1 common character?')
 
         common_list.append(common)
 
@@ -54,17 +54,17 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read in data file
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return parse_data(input_data)
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - Sum of the item priorities = {answer01}")
+    print(f'part01 - Sum of the item priorities = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - Sum of the group badges item priorities = {answer02}")
+    print(f'part02 - Sum of the group badges item priorities = {answer02}')

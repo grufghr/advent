@@ -75,7 +75,7 @@ def solve(bingo_number_list, board_np):
 def parse_data(input_data):
     input_data = input_data.splitlines()
     bingo_number_text = input_data.pop(0)
-    bingo_number_list = [int(n) for n in bingo_number_text.split(",")]
+    bingo_number_list = [int(n) for n in bingo_number_text.split(',')]
 
     board_text_list = list(filter(None, input_data))
     board_array = [list(map(int, i.split())) for i in board_text_list]
@@ -91,17 +91,17 @@ def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     # read input data from file
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return parse_data(input_data)
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - Winning bingo card score = {answer01}.")
+    print(f'part01 - Winning bingo card score = {answer01}.')
 
     answer02 = solve02(input_data)
-    print(f"part02 - Last winning card score = {answer02}.")
+    print(f'part02 - Last winning card score = {answer02}.')

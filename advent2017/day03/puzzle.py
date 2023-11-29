@@ -27,11 +27,7 @@ def sum_spiral():
             for _ in range(s + ds):
                 i += di
                 j += dj
-                grid[i, j] = sum(
-                    grid.get((k, l), 0)
-                    for k in range(i - 1, i + 2)
-                    for l in range(j - 1, j + 2)
-                )
+                grid[i, j] = sum(grid.get((k, l), 0) for k in range(i - 1, i + 2) for l in range(j - 1, j + 2))
                 yield grid[i, j]
 
 
@@ -61,17 +57,17 @@ def walk_spiral(target):
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
-    with open(input_data_file, "r") as filehandle:
+    with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
     return int(input_data)
 
 
-if __name__ == "__main__":
-    input_data = load_data("input.txt")
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
 
     answer01 = solve01(input_data)
-    print(f"part01 - manhatten distance for memory location {input_data} = {answer01}")
+    print(f'part01 - manhatten distance for memory location {input_data} = {answer01}')
 
     answer02 = solve02(input_data)
-    print(f"part02 - first value that is larger than puzzle input = {answer02}")
+    print(f'part02 - first value that is larger than puzzle input = {answer02}')
