@@ -10,137 +10,51 @@ import re
 LINE_SENSOR_READING = re.compile(r'Sensor at x=(-?\d+), y=(-?\d+)\: closest beacon is at x=(-?\d+), y=(-?\d+)')
 
 
+def solve01(sensor_data, row):
+    al = [x - abs(row - y) + md for (x, y), md in sensor_data.items()]
+    bl = [x + abs(row - y) - md for (x, y), md in sensor_data.items()]
+    free_positons = max(al) - min(bl)
+    return free_positons
+
+
+def solve02(sensor_data):
+    sensor_list = sensor_data.keys()
+
+    acoeffs, bcoeffs = set(), set()
+    for (x, y), md in sensor_data.items():
+        acoeffs.add(y - x + md + 1)
+        acoeffs.add(y - x - md - 1)
+        bcoeffs.add(x + y + md + 1)
+        bcoeffs.add(x + y - md - 1)
+
+    beacon = None
+    boundary = 4000000
+    for a in acoeffs:
+        for b in bcoeffs:
+            p = ((b - a) // 2, (a + b) // 2)
+            if all(0 < c < boundary for c in p):
+                if all(manhatten_distance(p, t) > sensor_data[t] for t in sensor_list):
+                    beacon = (p[0], p[1])
+
+    frequency = (boundary * beacon[0]) + beacon[1]
+    return frequency
+
+
 def manhatten_distance(a, b):
     # manhatten distance between two points a(x,y) and b(x,y)
-    x = max(a[0], b[0]) - min(a[0], b[0])
-    y = max(a[1], b[1]) - min(a[1], b[1])
-    # print('md', a, b, x + y)
-    return x + y
-
-
-def manhatten_x(y, d):
-    # find x where manhatten distance known i.e. x = d - y
-    return d - y
-
-
-def merge_overlaps(tup_list):
-    if len(tup_list) == 0:
-        return []
-
-    tup_list.sort(key=lambda item: item[0])
-    lol = [list(tup) for tup in tup_list]
-
-    merged_list = [lol[0]]
-    for tup_c in lol:
-        tup_p = merged_list[-1]
-        if (tup_p[1] + 1) >= tup_c[0]:
-            tup_p[1] = max(tup_p[1], tup_c[1])
-        else:
-            merged_list.append(tup_c)
-    return [(item[0], item[1]) for item in merged_list]
-
-
-def split_intervals(tup_list, interval_list):
-    if len(interval_list) == 0:
-        return tup_list
-
-    tup_list.sort(key=lambda item: item[0])
-    interval_list.sort()
-
-    split_list = []
-    x = interval_list.pop(0)
-    for tup_c in tup_list:
-        tup_n = tup_c
-        while tup_n[0] <= x <= tup_n[1]:
-            tup_n = split_tuple(tup_n, x)
-            # extend result with all but last [:-1]
-            split_list.extend(tup_n[:-1])
-            if len(interval_list) > 0:
-                x = interval_list.pop(0)
-            # while loop to check split last [-1]
-            tup_n = tup_n[-1]
-        split_list.append(tup_n)  # add last tup_n
-
-    return split_list
-
-
-def split_tuple(tup, x):
-    result = []
-    tup_l = (tup[0], x - 1)
-    tup_r = (x + 1, tup[1])
-    if tup_l[0] <= tup_l[1]:
-        result.append(tup_l)
-    if tup_r[0] <= tup_r[1]:
-        result.append(tup_r)
-    return result
-
-
-def solve01(input_data):
-    answer = solve(input_data, 2000000)
-    return answer
-
-
-def solve02(input_data):
-    answer = solve(input_data, 2000000)
-    return answer
-
-
-def solve(sensor_text_list, check_row):
-    # process input file
-    beacon_list = []
-    sensor_list = []
-    for sensor_reading in sensor_text_list:
-        if match := LINE_SENSOR_READING.search(sensor_reading):
-            loc_s = (int(match.group(1)), int(match.group(2)))
-            sensor_list.append(loc_s)
-            loc_b = (int(match.group(3)), int(match.group(4)))
-            beacon_list.append(loc_b)
-
-    # part 01 find all spaces (i.e. without beacon)
-
-    # find manhatten distances
-    known_list = []
-    for sensor, beacon in zip(sensor_list, beacon_list):
-        dist_sb = manhatten_distance(sensor, beacon)
-        dist_sr = manhatten_distance(sensor, (sensor[0], check_row))
-
-        # ignore sensors too far away from check_row
-        if dist_sr > dist_sb:
-            continue
-
-        y = max(check_row, sensor[1]) - min(check_row, sensor[1])
-        x = manhatten_x(y, dist_sb)
-        # print(f"s={sensor}, b={beacon}, sb={dist_sb}, sr={dist_sr} x={x} y={y}")
-        known_x_slice = (sensor[0] - x, sensor[0] + x)
-
-        known_list.append(known_x_slice)
-
-    known_list.sort(key=lambda item: item[0])
-    # print(check_row, 'known_list', known_list)
-
-    # merge overlapping knowns
-    known_list_merged = merge_overlaps(known_list)
-    # print(check_row, 'merged', known_list_merged)
-
-    # split by beacons
-    beacon_split = [b[0] for b in beacon_list if b[1] == check_row]
-    beacon_split = list(set(beacon_split))  # remove duplicates
-    # print(check_row, 'beacon_split', beacon_split)
-    known_list_split = split_intervals(known_list_merged, beacon_split)
-
-    # split by sensors
-    sensor_split = [s[0] for s in sensor_list if s[1] == check_row]
-    known_list_split = split_intervals(known_list_split, sensor_split)
-    # print(check_row, 'sensor_split', known_list_split)
-
-    free_positions = sum([((t[1] - t[0]) + 1) for t in known_list_split])
-    # print(free_positions)
-
-    return free_positions
+    md = abs(a[0] - b[0]) + abs(a[1] - b[1])
+    return md
 
 
 def parse_data(input_data):
-    return input_data.splitlines()
+    sensor_text = input_data.splitlines()
+    sensor_list = {}
+    for sensor_reading in sensor_text:
+        if match := LINE_SENSOR_READING.search(sensor_reading):
+            loc_s = (int(match.group(1)), int(match.group(2)))
+            loc_b = (int(match.group(3)), int(match.group(4)))
+            sensor_list[loc_s] = manhatten_distance(loc_s, loc_b)
+    return sensor_list
 
 
 def load_data(filename):
@@ -156,5 +70,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = solve01(input_data, 2000000)
     print(f'part01 - Positions without beacon = {answer01}')
+
+    answer02 = solve02(input_data)
+    print(f'part02 - Tuning frequency = {answer02}')
