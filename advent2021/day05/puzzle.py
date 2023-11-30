@@ -73,5 +73,5 @@ if __name__ == '__main__':
     answer01 = solve01(input_data)
     print(f'part01 - Overlapping air vents = {answer01}')
 
-    answer01 = solve02(input_data)
+    answer02 = solve02(input_data)
     print(f'part02 - Overlapping air vents (diagonals included) = {answer02}')

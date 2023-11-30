@@ -46,8 +46,8 @@ def solve02(input_data):
 
 def parse_data(input_data):
     guest_pref = {}
-    for instruction in input_data.splitlines():
-        match_m = re.findall(INPUT_REGEX, instruction)[0]
+    for line_text in input_data.splitlines():
+        match_m = re.findall(INPUT_REGEX, line_text)[0]
         if match_m[1] == 'gain':
             happiness = int(match_m[2])
         else:
