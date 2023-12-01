@@ -35,7 +35,7 @@ def load_data(filename):
     with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
-    return input_data
+    return parse_data(input_data)
 
 
 if __name__ == '__main__':
