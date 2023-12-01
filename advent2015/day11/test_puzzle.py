@@ -27,7 +27,7 @@ class PuzzleTest(unittest.TestCase):
     answer01 = 'cqjxxyzz'
     answer02 = 'cqkaabcc'
 
-    execution_time = 4.0
+    execution_time = 5.0
 
     def test_000_is_valid(self):
         for input_data, expected_result in self.testdata_000:

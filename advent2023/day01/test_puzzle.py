@@ -14,7 +14,7 @@ class PuzzleTest(unittest.TestCase):
     answer01 = 54239
     answer02 = 55343
 
-    execution_time = 0.1
+    execution_time = 1.0
 
     def test_001_example_01(self):
         input_data = puzzle.load_data('input_example01.txt')

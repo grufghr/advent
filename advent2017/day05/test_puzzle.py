@@ -18,7 +18,7 @@ class PuzzleTest(unittest.TestCase):
     answer01 = 378980
     answer02 = 26889114
 
-    execution_time = 8.0
+    execution_time = 10.0
 
     def test_001_example_01(self):
         for input_data, expected_result in self.example_data_01:

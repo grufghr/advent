@@ -1,11 +1,5 @@
-Regex
------
-
-find solutions that take more than second
-    execution_time = (?!1)
-
-unittesting
------------
+unit testing
+------------
 
 run test suite (disoverable tests)
 ```
@@ -17,3 +11,13 @@ run test case
     python -m unittest discover ./advent2015/day01 -v
     python -m unittest discover ./advent2022/day03 -v
 ```
+
+Performance
+-----------
+
+find solutions that take more than second, use regex
+```
+    execution_time = (?!1)
+```
+
+
