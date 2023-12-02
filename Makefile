@@ -2,23 +2,34 @@ ifndef VERBOSE
 .SILENT:
 endif
 
-# make puzzle year=2016 day=01
 puzzle:
 	test $(year)
 	test $(day)
 	./advent$(year)/day$(day)/puzzle.py
 
-# make test year=2016 day=01
-test:
+test-unit:
 	test $(year)
 	test $(day)
 	python -m unittest discover -v ./advent$(year)/day$(day)
 
-# make test year=2016
-test-year:
+test-unit-year:
 	test $(year)
 	python -m unittest discover -v ./advent$(year)
 
-# make test-all
-test-all:
+test-unit-all:
 	python -m unittest discover -v ./
+
+test-feature:
+	test $(year)
+	test $(day)
+	behave ./advent$(year)/day$(day)
+
+test-feature-year:
+	test $(year)
+	behave ./advent$(year)
+
+test-feature-all:
+	behave ./
+
+test-feature-no-slow:
+	behave ./ --tags=~@slow

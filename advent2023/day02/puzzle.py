@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Advent of Code 2023 Day 02: TBC
+Advent of Code 2023 Day 02: Cube Conundrum
 """
 import os
 import re
