@@ -19,8 +19,8 @@ Feature: AoC 2022 Day 23: Unstable Diffusion
      Then answer = 20
 
   @slow
-  Scenario: part02
+  Scenario: part02 (execution time ~25 secs)
     Given input in file "input.txt"
      When solve part02
      Then answer = 976
-      And performance < 25 seconds
+      And performance < 25 secs

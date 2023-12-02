@@ -1,25 +1,26 @@
-Feature: AoC 2022 Day 05: Supply Stacks
+Feature: AoC 2022 Day 12: Hill Climbing Algorithm
 
   Background: Regression testing
-    Given advent 2022 day 05 puzzle
+    Given advent 2022 day 12 puzzle
 
   Scenario: part01 examples
     Given example input in file "input_example.txt"
      When solve part01
-     Then answer = CMZ
+     Then answer = 31
 
   Scenario: part01
     Given input in file "input.txt"
      When solve part01
-     Then answer = FZCMJCRHZ
+     Then answer = 456
 
   Scenario: part02 examples
     Given example input in file "input_example.txt"
      When solve part02
-     Then answer = MCD
+     Then answer = 29
 
-  Scenario: part02
+  @slow
+  Scenario: part02 (execution time ~5 secs)
     Given input in file "input.txt"
      When solve part02
-     Then answer = JSDHQMZGF
-      And performance < 1 secs
+     Then answer = 454
+      And performance < 5 secs

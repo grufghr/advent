@@ -36,4 +36,4 @@ Feature: AoC 2022 Day 06: Tuning Trouble
     Given input in file "input.txt"
       When solve part02
       Then answer = 2518
-        And performance < 1 seconds
+        And performance < 1 secs

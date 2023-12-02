@@ -22,4 +22,4 @@ Feature: AoC 2022 Day 02: Rock Paper Scissors
     Given input in file "input.txt"
      When solve part02
      Then answer = 12881
-      And performance < 1 seconds
+      And performance < 1 secs

@@ -22,4 +22,4 @@ Feature: AoC 2023 Day 01: Trebuchet?!
     Given input in file "input.txt"
      When solve part02
      Then answer = 55343
-      And performance < 1 seconds
+      And performance < 1 secs

@@ -51,6 +51,6 @@ def then_solve01(context, answer):
     assert context.answer == answer, f'calculated answer {context.answer} != {answer}'
 
 
-@then('performance < {time} seconds')
+@then('performance < {time} secs')
 def then_performance(context, time):
-    assert context.time < float(time), f'puzzle took {time} seconds'
+    assert context.time < float(time), f'puzzle took {context.time} secs'

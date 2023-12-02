@@ -22,4 +22,4 @@ Feature: AoC 2022 Day 01: Calorie Counting
     Given input in file "input.txt"
      When solve part02
      Then answer = 204639
-      And performance < 1 seconds
+      And performance < 1 secs

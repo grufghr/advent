@@ -22,4 +22,4 @@ Feature: AoC 2022 Day 04: Camp Cleanup
     Given input in file "input.txt"
      When solve part02
      Then answer = 806
-      And performance < 1 seconds
+      And performance < 1 secs

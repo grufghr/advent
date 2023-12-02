@@ -22,4 +22,4 @@ Feature: AoC 2022 Day 02: Cube Conundrum
     Given input in file "input.txt"
      When solve part02
      Then answer = 72227
-      And performance < 1 seconds
+      And performance < 1 secs

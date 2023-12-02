@@ -1,7 +1,7 @@
-Feature: AoC 2022 Day 21: Monkey Math
-  
+Feature: AoC 2022 Day 09: Rope Bridge
+
   Background: Regression testing
-    Given advent 2022 day 21 puzzle
+    Given advent 2022 day 09 puzzle
 
   Scenario Outline: part01 examples
     Given example input in file <example input file>
@@ -9,13 +9,13 @@ Feature: AoC 2022 Day 21: Monkey Math
      Then answer = <answer>
     Examples:
         | example input file    | answer |
-        | "input_example01.txt" | 152    |
-        | "input_example02.txt" | 34     |
-        
+        | "input_example01.txt" | 13     |
+        | "input_example02.txt" | 88     |
+
   Scenario: part01
     Given input in file "input.txt"
      When solve part01
-     Then answer = 21120928600114
+     Then answer = 6175
 
   Scenario Outline: part02 examples
     Given example input in file <example input file>
@@ -23,11 +23,11 @@ Feature: AoC 2022 Day 21: Monkey Math
      Then answer = <answer>
     Examples:
         | example input file    | answer |
-        | "input_example01.txt" | 301    |
-        | "input_example02.txt" | 19     |
-        
+        | "input_example01.txt" | 1      |
+        | "input_example02.txt" | 36     |
+
   Scenario: part02
     Given input in file "input.txt"
      When solve part02
-     Then answer = 3453748220116
+     Then answer = 2578
       And performance < 1 secs
