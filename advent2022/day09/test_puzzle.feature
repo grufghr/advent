@@ -1,7 +1,8 @@
 Feature: AoC 2022 Day 09: Rope Bridge
 
   Background: Regression testing
-    Given advent 2022 day 09 puzzle
+    Given AoC puzzle
+     Then validate test feature name
 
   Scenario Outline: part01 examples
     Given example input in file <example input file>
@@ -30,4 +31,4 @@ Feature: AoC 2022 Day 09: Rope Bridge
     Given input in file "input.txt"
      When solve part02
      Then answer = 2578
-      And performance < 1 secs
+      And execution time < 1 secs

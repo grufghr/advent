@@ -14,7 +14,7 @@ def solve01(input_data, seconds):
 
     reindeer_dist = []
     for r, stats_r in reindeer_stats.items():
-        dist = calc_dist(stats_r, seconds)
+        dist = calc_dist(stats_r, int(seconds))
         reindeer_dist.append(dist)
 
     # max distance returned by a reindeer
@@ -27,7 +27,7 @@ def solve02(input_data, seconds):
     reindeer_dist = {r: 0 for r in reindeer_stats.keys()}
     reindeer_score = {r: 0 for r in reindeer_stats.keys()}
 
-    for s in range(1, seconds):
+    for s in range(1, int(seconds)):
         for r, stats_r in reindeer_stats.items():
             reindeer_dist[r] = calc_dist(stats_r, s)
 

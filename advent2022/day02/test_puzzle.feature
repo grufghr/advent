@@ -1,7 +1,8 @@
 Feature: AoC 2022 Day 02: Rock Paper Scissors
 
   Background: Regression testing
-    Given advent 2022 day 02 puzzle
+    Given AoC puzzle
+     Then validate test feature name
 
   Scenario: part01 examples
     Given example input in file "input_example.txt"
@@ -22,4 +23,4 @@ Feature: AoC 2022 Day 02: Rock Paper Scissors
     Given input in file "input.txt"
      When solve part02
      Then answer = 12881
-      And performance < 1 secs
+      And execution time < 1 secs

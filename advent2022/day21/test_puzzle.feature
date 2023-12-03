@@ -1,7 +1,8 @@
 Feature: AoC 2022 Day 21: Monkey Math
   
   Background: Regression testing
-    Given advent 2022 day 21 puzzle
+    Given AoC puzzle
+     Then validate test feature name
 
   Scenario Outline: part01 examples
     Given example input in file <example input file>
@@ -30,4 +31,4 @@ Feature: AoC 2022 Day 21: Monkey Math
     Given input in file "input.txt"
      When solve part02
      Then answer = 3453748220116
-      And performance < 1 secs
+      And execution time < 1 secs

@@ -1,7 +1,8 @@
 Feature: AoC 2022 Day 14: Regolith Reservoir
 
   Background: Regression testing
-    Given advent 2022 day 14 puzzle
+    Given AoC puzzle
+     Then validate test feature name
 
   Scenario: part01 examples
     Given example input in file "input_example.txt"
@@ -23,4 +24,4 @@ Feature: AoC 2022 Day 14: Regolith Reservoir
     Given input in file "input.txt"
      When solve part02
      Then answer = 30762
-      And performance < 5 secs
+      And execution time < 5 secs

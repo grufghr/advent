@@ -1,7 +1,8 @@
 Feature: AoC 2022 Day 12: Hill Climbing Algorithm
 
   Background: Regression testing
-    Given advent 2022 day 12 puzzle
+    Given AoC puzzle
+     Then validate test feature name
 
   Scenario: part01 examples
     Given example input in file "input_example.txt"
@@ -23,4 +24,4 @@ Feature: AoC 2022 Day 12: Hill Climbing Algorithm
     Given input in file "input.txt"
      When solve part02
      Then answer = 454
-      And performance < 5 secs
+      And execution time < 5 secs

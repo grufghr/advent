@@ -1,7 +1,8 @@
 Feature: AoC 2022 Day 06: Tuning Trouble
 
   Background: Regression testing
-    Given advent 2022 day 06 puzzle
+    Given AoC puzzle
+     Then validate test feature name
 
   Scenario Outline: part01 examples
     Given example input <example input>
@@ -36,4 +37,4 @@ Feature: AoC 2022 Day 06: Tuning Trouble
     Given input in file "input.txt"
       When solve part02
       Then answer = 2518
-        And performance < 1 secs
+        And execution time < 1 secs
