@@ -18,7 +18,7 @@ def solve01(dimension_pd):
 
     wrapping_paper_total = dimension_pd['paper'].sum()
 
-    return wrapping_paper_total
+    return int(wrapping_paper_total)
 
 
 def solve02(dimension_pd):
@@ -31,7 +31,7 @@ def solve02(dimension_pd):
 
     ribbon_total = dimension_pd['ribbon'].sum()
 
-    return ribbon_total
+    return int(ribbon_total)
 
 
 def load_data(filename):

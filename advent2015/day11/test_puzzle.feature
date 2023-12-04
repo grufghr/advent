@@ -4,6 +4,7 @@ Feature: AoC 2015 Day 11: Corporate Policy
     Given AoC puzzle
      Then validate test feature name
 
+  @slow
   Scenario Outline: part01 examples
     Given example input <example input>
      When solve part02
@@ -13,6 +14,7 @@ Feature: AoC 2015 Day 11: Corporate Policy
         | "abcdefgh"    | abcdffaa |
         | "ghijklmn"    | ghjaabcc |
 
+  @slow
   Scenario: part01
     Given input in file "input.txt"
      When solve part01

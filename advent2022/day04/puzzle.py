@@ -27,12 +27,12 @@ def solve(rosta_pd):
     rosta_pd[7] = rosta_pd.apply(lambda row: (set(row[6]) == set(row[4])) or (set(row[6]) == set(row[5])), axis=1)
 
     counts = rosta_pd[7].value_counts()
-    contained_pairs = counts[True]
+    contained_pairs = int(counts[True])
 
     # part 02
     rosta_pd[8] = rosta_pd.apply(lambda row: (len(set(row[6])) != 0), axis=1)
     counts = rosta_pd[8].value_counts()
-    overlapping_pairs = counts[True]
+    overlapping_pairs = int(counts[True])
 
     # print(rosta_pd)
     return (contained_pairs, overlapping_pairs)

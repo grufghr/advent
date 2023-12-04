@@ -46,7 +46,7 @@ def solve(instruction_list):
             exit(f"unknown instruction '{instruction}'")
 
     lights_on = np.count_nonzero(light_grid01)
-    brightness_sum = np.sum(light_grid02)
+    brightness_sum = int(np.sum(light_grid02))
 
     return (lights_on, brightness_sum)
 

@@ -8,14 +8,16 @@ from itertools import count
 
 
 def solve01(input_data):
-    coords = walk_spiral(input_data)
+    mem_pos = int(input_data)
+    coords = walk_spiral(mem_pos)
     manhatten_dist = sum(list(map(abs, coords)))
     return manhatten_dist
 
 
 def solve02(input_data):
+    mem_pos = int(input_data)
     for s in sum_spiral():
-        if s > input_data:
+        if s > mem_pos:
             return s
 
 
@@ -32,6 +34,7 @@ def sum_spiral():
 
 
 def walk_spiral(target):
+    target
     d = 1
     m = 1
     x = 0

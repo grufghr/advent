@@ -11,6 +11,7 @@ LINE_SENSOR_READING = re.compile(r'Sensor at x=(-?\d+), y=(-?\d+)\: closest beac
 
 
 def solve01(sensor_data, row):
+    row = int(row)
     al = [x - abs(row - y) + md for (x, y), md in sensor_data.items()]
     bl = [x + abs(row - y) - md for (x, y), md in sensor_data.items()]
     free_positons = max(al) - min(bl)
