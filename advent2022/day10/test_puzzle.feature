@@ -14,15 +14,31 @@ Feature: AoC 2022 Day 10: Cathode-Ray Tube
      When solve part01
      Then answer = 14360
 
-#  @skip('unittest, complex answer')
-#  Scenario: part02 examples
-#    Given example input in file "input_example.txt"
-#     When solve part02
-#     Then answer = "TBC"
+  Scenario: part02 examples
+    Given example input in file "input_example.txt"
+     When solve part02
+     Then expected answer is list
+      """
+      ["##..##..##..##..##..##..##..##..##..##..",
+       "###...###...###...###...###...###...###.",
+       "####....####....####....####....####....",
+       "#####.....#####.....#####.....#####.....",
+       "######......######......######......###.",
+       "#######.......#######.......#######....#",
+       "........................................"]
+      """
 
-#  @skip('unittest, complex answer')
-#  Scenario: part02
-#    Given input in file "input.txt"
-#     When solve part02
-#     Then answer = "TBC"
-#      And execution time < 1 secs
+  Scenario: part02
+    Given input in file "input.txt"
+     When solve part02
+     Then expected answer is list
+      """
+      ["###...##..#..#..##..####.###..####.####.",
+       "#..#.#..#.#.#..#..#.#....#..#.#.......#.",
+       "###..#....##...#..#.###..#..#.###....#..",
+       "#..#.#.##.#.#..####.#....###..#.....#...",
+       "#..#.#..#.#.#..#..#.#....#.#..#....#....",
+       "###...###.#..#.#..#.####.#..#.####.####.",
+       "........................................"]
+      """
+      And execution time < 1 secs
