@@ -41,12 +41,12 @@ class Board:
 
 def solve01(input_data):
     answers = solve(input_data[0], input_data[1])
-    return answers[0]
+    return int(answers[0])
 
 
 def solve02(input_data):
     answers = solve(input_data[0], input_data[1])
-    return answers[1]
+    return int(answers[1])
 
 
 def solve(bingo_number_list, board_np):

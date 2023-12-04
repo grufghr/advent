@@ -23,7 +23,7 @@ def solve01(input_data):
 
     risk_sum = sum(lowest_height_list)
 
-    return risk_sum
+    return int(risk_sum)
 
 
 def solve02(input_data):
