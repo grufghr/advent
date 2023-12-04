@@ -57,6 +57,7 @@ def given_input(context, input_data):
 
 @given('expected answer is list')
 def step_expected_as_list(context):
+    # ToDo: move to @Then
     expected = str(context.text).replace('\n', '').strip()
     context.expected = json.loads(expected)
 
@@ -117,12 +118,14 @@ def step_when_solve02_with_args(context):
 
 @then('answer = {answer}')
 def then_answer(context, answer):
+    if answer == 'None':
+        answer = None
+
     if isinstance(context.answer, int):
         answer = int(answer)
-    elif context.answer == 'None':
-        answer = None
     elif not isinstance(context.answer, str):
         print(f'answer is {type(context.answer)}')
+
     assert context.answer == answer, f'answer {context.answer} != {answer} (expected)'
 
 
