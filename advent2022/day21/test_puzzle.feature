@@ -7,28 +7,28 @@ Feature: AoC 2022 Day 21: Monkey Math
   Scenario Outline: part01 examples
     Given example input in file <example input file>
      When solve part01
-     Then answer = <answer>
+     Then expected answer = <expected>
     Examples:
-        | example input file    | answer |
-        | "input_example01.txt" | 152    |
-        | "input_example02.txt" | 34     |
+        | example input file    | expected |
+        | "input_example01.txt" | 152      |
+        | "input_example02.txt" | 34       |
         
   Scenario: part01
     Given input in file "input.txt"
      When solve part01
-     Then answer = 21120928600114
+     Then expected answer = 21120928600114
 
   Scenario Outline: part02 examples
     Given example input in file <example input file>
      When solve part02
-     Then answer = <answer>
+     Then expected answer = <expected>
     Examples:
-        | example input file    | answer |
-        | "input_example01.txt" | 301    |
-        | "input_example02.txt" | 19     |
+        | example input file    | expected |
+        | "input_example01.txt" | 301      |
+        | "input_example02.txt" | 19       |
         
   Scenario: part02
     Given input in file "input.txt"
      When solve part02
-     Then answer = 3453748220116
+     Then expected answer = 3453748220116
       And execution time < 1 secs

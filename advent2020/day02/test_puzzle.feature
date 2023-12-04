@@ -7,20 +7,20 @@ Feature: AoC 2020 Day 02: Password Philosophy
   Scenario: part01 examples
     Given example input in file "input_example.txt"
      When solve part01
-     Then answer = 2
+     Then expected answer = 2
   
   Scenario: part01
     Given input in file "input.txt"
      When solve part01
-     Then answer = 410
+     Then expected answer = 410
 
   Scenario: part02 examples
     Given example input in file "input_example.txt"
      When solve part02
-     Then answer = 1
+     Then expected answer = 1
 
   Scenario: part02
     Given input in file "input.txt"
      When solve part02
-     Then answer = 694
+     Then expected answer = 694
       And execution time < 1 secs

@@ -8,9 +8,9 @@ Feature: AoC 2015 Day 11: Corporate Policy
   Scenario Outline: part01 examples
     Given example input <example input>
      When solve part02
-     Then answer = <answer>
+     Then expected answer = <expected>
     Examples:
-        | example input | answer   |
+        | example input | expected |
         | "abcdefgh"    | abcdffaa |
         | "ghijklmn"    | ghjaabcc |
 
@@ -18,17 +18,17 @@ Feature: AoC 2015 Day 11: Corporate Policy
   Scenario: part01
     Given input in file "input.txt"
      When solve part01
-     Then answer = cqjxxyzz
+     Then expected answer = cqjxxyzz
 
 # @skip('No examples for part02')
 #  Scenario: part02 examples
 #    Given example input in file "input_example.txt"
 #     When solve part02
-#     Then answer = TBC
+#     Then expected answer = TBC
 
   @slow
   Scenario: part02 (execution time ~5 secs)
     Given input "cqjxxyzz"
      When solve part02
-     Then answer = cqkaabcc
+     Then expected answer = cqkaabcc
       And execution time < 5 secs

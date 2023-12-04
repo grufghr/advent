@@ -109,23 +109,24 @@ def step_when_solve02_with_args(context):
     context.time = time.time() - ts
 
 
-@then('answer = {answer}')
-def then_answer(context, answer):
-    if answer == 'None':
-        answer = None
+@then('expected answer = {expected}')
+def then_answer(context, expected):
+    if expected == 'None':
+        expected = None
 
     if isinstance(context.answer, int):
-        answer = int(answer)
+        expected = int(expected)
     elif not isinstance(context.answer, str):
         print(f'answer is {type(context.answer)}')
 
-    assert context.answer == answer, f'answer {context.answer} != {answer} (expected)'
+    answer = context.answer
+    assert type(answer) == type(expected), f'answer {type(answer)} != {type(expected)} (expected)'
+    assert answer == expected, f'answer {answer} != {expected} (expected)'
 
 
 @then('expected answer is list')
 def step_expected_as_list(context):
-    expected_text = str(context.text).replace('\n', '').strip()
-    expected = json.loads(expected_text)
+    expected = json.loads(str(context.text))
     answer = context.answer
     assert type(answer) == type(expected), f'answer {type(answer)} != {type(expected)} (expected)'
     assert answer == expected, f'answer {answer} != {expected} (expected)'

@@ -7,12 +7,12 @@ Feature: AoC 2021 Day 13: Transparent Origami
   Scenario: part01 examples
     Given example input in file "input_example.txt"
      When solve part01 with variable length args
-     Then answer = 17
+     Then expected answer = 17
   
   Scenario: part01
     Given input in file "input.txt"
      When solve part01 with variable length args
-     Then answer = 664
+     Then expected answer = 664
 
   Scenario: part02 examples
     Given example input in file "input_example.txt"
