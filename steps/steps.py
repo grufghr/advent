@@ -55,13 +55,6 @@ def given_input(context, input_data):
     context.input_data = input_data
 
 
-@given('expected answer is list')
-def step_expected_as_list(context):
-    # ToDo: move to @Then
-    expected = str(context.text).replace('\n', '').strip()
-    context.expected = json.loads(expected)
-
-
 @when('solve part01')
 def when_solve01(context):
     puzzle = context.puzzle
@@ -129,9 +122,10 @@ def then_answer(context, answer):
     assert context.answer == answer, f'answer {context.answer} != {answer} (expected)'
 
 
-@then('answer matches expected')
-def step_answer_matches_list(context):
-    expected = context.expected
+@then('expected answer is list')
+def step_expected_as_list(context):
+    expected_text = str(context.text).replace('\n', '').strip()
+    expected = json.loads(expected_text)
     answer = context.answer
     assert type(answer) == type(expected), f'answer {type(answer)} != {type(expected)} (expected)'
     assert answer == expected, f'answer {answer} != {expected} (expected)'

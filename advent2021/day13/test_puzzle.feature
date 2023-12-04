@@ -16,7 +16,8 @@ Feature: AoC 2021 Day 13: Transparent Origami
 
   Scenario: part02 examples
     Given example input in file "input_example.txt"
-      And expected answer is list
+     When solve part02 with variable length args
+     Then expected answer is list
       """
       [
         "#####",
@@ -26,12 +27,11 @@ Feature: AoC 2021 Day 13: Transparent Origami
         "#####"
         ]
       """
-     When solve part02 with variable length args
-     Then answer matches expected
 
   Scenario: part02
     Given input in file "input.txt"
-      And expected answer is list
+     When solve part02 with variable length args
+     Then expected answer is list
       """
       [
         "####.####...##.#..#.####.#....###..#...",
@@ -42,6 +42,4 @@ Feature: AoC 2021 Day 13: Transparent Origami
         "####.#.....##..#..#.####.####.###..####"
         ]
       """
-     When solve part02 with variable length args
-     Then answer matches expected
       And execution time < 1 secs
