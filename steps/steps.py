@@ -56,8 +56,8 @@ def when_solve01(context, part):
         raise Exception(f'unknown function {part}')
 
 
-@then('expected answer = {expected}')
-def then_answer(context, expected):
+@then('expected {part} answer = {expected}')
+def then_answer(context, part, expected):
     if expected == 'None':
         expected = None
 
@@ -71,8 +71,8 @@ def then_answer(context, expected):
     assert answer == expected, f'answer {answer} != {expected} (expected)'
 
 
-@then('expected answer is list')
-def step_expected_as_list(context):
+@then('expected {part} answer is list')
+def step_expected_as_list(context, part):
     expected = json.loads(str(context.text))
     answer = context.answer
     assert type(answer) == type(expected), f'answer {type(answer)} != {type(expected)} (expected)'

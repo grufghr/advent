@@ -9,9 +9,8 @@ import advent2022.day21.puzzle as puzzle
 
 class PuzzleTest(unittest.TestCase):
     example1_answer01 = 152
-    example1_answer02 = 301
-
     example2_answer01 = 34
+    example1_answer02 = 301
     example2_answer02 = 19
 
     answer01 = 21120928600114

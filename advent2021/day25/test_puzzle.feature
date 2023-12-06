@@ -2,10 +2,15 @@ Feature: AoC 2021 Day 25: Sea Cucumber
 
   Background: Regression testing
     Given AoC puzzle
-     Then validate test feature name
+      Then validate test feature name
+
+  Scenario: part01 example
+    Given input in file "input_example.txt"
+     When solve part01
+     Then expected part01 answer = 58
 
   @slow
-  Scenario: part01 (execution time ~20 secs)
+  Scenario: part01
     Given input in file "input.txt"
      When solve part01
-     Then expected answer = 532
+     Then expected part01 answer = 532

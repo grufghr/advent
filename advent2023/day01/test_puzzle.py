@@ -17,7 +17,7 @@ class PuzzleTest(unittest.TestCase):
     execution_time = 1.0
 
     def test_001_example_01(self):
-        input_data = puzzle.load_data('input_example01.txt')
+        input_data = puzzle.load_data('input_example_01.txt')
         answer01 = puzzle.solve01(input_data)
         self.assertEqual(answer01, self.example_answer01)
 
@@ -27,7 +27,7 @@ class PuzzleTest(unittest.TestCase):
         self.assertEqual(answer01, self.answer01)
 
     def test_003_example_02(self):
-        input_data = puzzle.load_data('input_example02.txt')
+        input_data = puzzle.load_data('input_example_02.txt')
         answer02 = puzzle.solve02(input_data)
         self.assertEqual(answer02, self.example_answer02)
 
