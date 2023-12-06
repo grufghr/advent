@@ -49,8 +49,10 @@ def when_solve01(context, part):
     puzzle = context.puzzle
     input_data = context.input_data
     if part == 'part01':
+        context.part = 1
         context.answer = puzzle.solve01(input_data)
     elif part == 'part02':
+        context.part = 2
         context.answer = puzzle.solve02(input_data)
     else:
         raise Exception(f'unknown function {part}')

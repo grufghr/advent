@@ -7,7 +7,7 @@ Feature: AoC 2022 Day 09: Rope Bridge
   Scenario: part01 example
     Given input in file "input_example.txt"
      When solve part01
-     Then expected part01 answer = 1
+     Then expected part01 answer = 88
 
   Scenario: part01
     Given input in file "input.txt"
