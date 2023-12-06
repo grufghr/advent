@@ -1,4 +1,4 @@
-Feature: AoC 2021 Day 02: Dive!
+Feature: AoC 2017 Day 05: A Maze of Twisty Trampolines, All Alike
 
   Background: Regression testing
     Given AoC puzzle
@@ -7,9 +7,10 @@ Feature: AoC 2021 Day 02: Dive!
   Scenario: part01
     Given input in file "input.txt"
      When solve part01
-     Then expected answer = 1690020
+     Then expected answer = 378980
 
-  Scenario: part02
+  @slow
+  Scenario: part02 (execution time ~10 secs)
     Given input in file "input.txt"
      When solve part02
-     Then expected answer = 1408487760
+     Then expected answer = 26889114

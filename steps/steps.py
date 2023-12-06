@@ -3,10 +3,10 @@ Unit Test Scenario functions
 """
 # general imports
 from behave import *
-import importlib
-import time
 import re
 import json
+import importlib
+
 
 #
 # Background
@@ -33,17 +33,6 @@ def step_validate_feature(context):
 #
 # Scenario
 #
-@given('example input in file "{input_file}"')
-def given_example_input_file(context, input_file):
-    puzzle = context.puzzle
-    context.input_data = puzzle.load_data(input_file)
-
-
-@given('example input "{input_data}"')
-def given_example_input(context, input_data):
-    context.input_data = input_data
-
-
 @given('input in file "{input_file}"')
 def given_input_file(context, input_file):
     puzzle = context.puzzle
@@ -55,22 +44,16 @@ def given_input(context, input_data):
     context.input_data = input_data
 
 
-@when('solve part01')
-def when_solve01(context):
+@when('solve {part}')
+def when_solve01(context, part):
     puzzle = context.puzzle
     input_data = context.input_data
-    ts = time.time()
-    context.answer = puzzle.solve01(input_data)
-    context.time = time.time() - ts
-
-
-@when('solve part02')
-def step_when_solve02(context):
-    puzzle = context.puzzle
-    input_data = context.input_data
-    ts = time.time()
-    context.answer = puzzle.solve02(input_data)
-    context.time = time.time() - ts
+    if part == 'part01':
+        context.answer = puzzle.solve01(input_data)
+    elif part == 'part02':
+        context.answer = puzzle.solve02(input_data)
+    else:
+        raise Exception(f'unknown function {part}')
 
 
 @then('expected answer = {expected}')
@@ -94,8 +77,3 @@ def step_expected_as_list(context):
     answer = context.answer
     assert type(answer) == type(expected), f'answer {type(answer)} != {type(expected)} (expected)'
     assert answer == expected, f'answer {answer} != {expected} (expected)'
-
-
-@then('execution time < {time} secs')
-def then_execution_time(context, time):
-    assert context.time < float(time), f'puzzle took {context.time} secs'

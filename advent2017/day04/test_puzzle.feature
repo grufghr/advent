@@ -1,4 +1,4 @@
-Feature: AoC 2021 Day 02: Dive!
+Feature: AoC 2017 Day 04: High-Entropy Passphrases
 
   Background: Regression testing
     Given AoC puzzle
@@ -7,9 +7,9 @@ Feature: AoC 2021 Day 02: Dive!
   Scenario: part01
     Given input in file "input.txt"
      When solve part01
-     Then expected answer = 1690020
+     Then expected answer = 325
 
   Scenario: part02
     Given input in file "input.txt"
      When solve part02
-     Then expected answer = 1408487760
+     Then expected answer = 119
