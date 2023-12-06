@@ -8,9 +8,6 @@ import advent2022.day15.puzzle as puzzle
 
 
 class PuzzleTest(unittest.TestCase):
-    input_row_example = 10
-    input_row = 2000000
-
     example_answer01 = 26
     example_answer02 = 56000011
 
@@ -21,12 +18,12 @@ class PuzzleTest(unittest.TestCase):
 
     def test_001_example_01(self):
         input_data = puzzle.load_data('input_example.txt')
-        answer01 = puzzle.solve01(input_data, self.input_row_example)
+        answer01 = puzzle.solve01(input_data)
         self.assertEqual(answer01, self.example_answer01)
 
     def test_002_solve_01(self):
         input_data = puzzle.load_data('input.txt')
-        answer01 = puzzle.solve01(input_data, self.input_row)
+        answer01 = puzzle.solve01(input_data)
         self.assertEqual(answer01, self.answer01)
 
     def test_003_example_02(self):

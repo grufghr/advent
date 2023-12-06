@@ -7,8 +7,8 @@ import os
 import numpy as np
 
 
-def solve01(sonar_depth_np):
-    # part 01 -
+def solve01(input_data):
+    sonar_depth_np = input_data
 
     # find the difference between consecutive elements
     sonar_depth_delta = np.diff(sonar_depth_np)
@@ -19,8 +19,8 @@ def solve01(sonar_depth_np):
     return sonar_depth_increase_count
 
 
-def solve02(sonar_depth_np):
-    # part 02 -
+def solve02(input_data):
+    sonar_depth_np = input_data
 
     # rolling sum of 3 consecutive elements in list
     sonar_depth_data_conseq3 = np.convolve(sonar_depth_np, np.ones(3), mode='valid')

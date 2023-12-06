@@ -124,8 +124,9 @@ def best_geodes(blueprint, end_cycle):
     return state.best_geodes[end_cycle]
 
 
-def solve01(blueprints_map):
-    # part 01 - Description
+def solve01(input_data):
+    blueprints_map = input_data
+
     minutes = 24
 
     blueprint_quality_list = []
@@ -139,8 +140,9 @@ def solve01(blueprints_map):
     return quality_sum
 
 
-def solve02(blueprints_map):
-    # part 02 - Description
+def solve02(input_data):
+    blueprints_map = input_data
+
     minutes = 32
 
     blueprints_first3 = list(blueprints_map.values())[:3]

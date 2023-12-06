@@ -16,7 +16,9 @@ def chunk_list(lst, n):
         yield lst[i : i + n]
 
 
-def solve01(rucksack_data):
+def solve01(input_data):
+    rucksack_data = input_data
+
     common_list = []
     for rucksack in rucksack_data:
         compartment1 = rucksack[: len(rucksack) // 2]
@@ -33,8 +35,9 @@ def solve01(rucksack_data):
     return priority_list_sum
 
 
-def solve02(rucksack_data):
-    # part 02
+def solve02(input_data):
+    rucksack_data = input_data
+
     badge_list = []
     for group in chunk_list(rucksack_data, 3):
         badge = list(set(group[0]).intersection(group[1]).intersection(group[2]))

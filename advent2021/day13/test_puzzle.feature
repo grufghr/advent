@@ -6,17 +6,17 @@ Feature: AoC 2021 Day 13: Transparent Origami
 
   Scenario: part01 examples
     Given example input in file "input_example.txt"
-     When solve part01 with variable length args
+     When solve part01
      Then expected answer = 17
   
   Scenario: part01
     Given input in file "input.txt"
-     When solve part01 with variable length args
+     When solve part01
      Then expected answer = 664
 
   Scenario: part02 examples
     Given example input in file "input_example.txt"
-     When solve part02 with variable length args
+     When solve part02
      Then expected answer is list
       """
       ["#####",
@@ -28,7 +28,7 @@ Feature: AoC 2021 Day 13: Transparent Origami
 
   Scenario: part02
     Given input in file "input.txt"
-     When solve part02 with variable length args
+     When solve part02
      Then expected answer is list
       """
       ["####.####...##.#..#.####.#....###..#...",

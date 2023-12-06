@@ -35,12 +35,14 @@ def visualise_grove(elves_list):
         print(line)
 
 
-def solve01(grove_map_list):
+def solve01(input_data):
+    grove_map_list = input_data
     answer = solve(grove_map_list, 10)
     return answer[0]
 
 
-def solve02(grove_map_list):
+def solve02(input_data):
+    grove_map_list = input_data
     answer = solve(grove_map_list, 1500)
     return answer[1]
 

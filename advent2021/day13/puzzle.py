@@ -11,7 +11,8 @@ COORD_REGEX = re.compile(r'^(\d+),(\d+)')
 FOLD_REGEX = re.compile(r'^fold along (x|y)=(\d+)')
 
 
-def solve01(grid, fold_list):
+def solve01(input_data):
+    grid, fold_list = input_data
     # only process first instruction to fold paper
     axis, fold = fold_list[0]
     grid = _fold_paper(grid, axis, fold)
@@ -20,7 +21,9 @@ def solve01(grid, fold_list):
     return dots
 
 
-def solve02(grid, fold_list):
+def solve02(input_data):
+    grid, fold_list = input_data
+
     # complete all paper fold instructions
     for axis, fold in fold_list:
         grid = _fold_paper(grid, axis, fold)
@@ -92,9 +95,9 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(*input_data)
+    answer01 = solve01(input_data)
     print(f'part01 - dots after first folder = {answer01}')
 
-    answer02 = solve02(*input_data)
+    answer02 = solve02(input_data)
     print('part02 - code =')
     _print_code(answer02)

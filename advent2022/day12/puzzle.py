@@ -99,17 +99,8 @@ class GridMap:
         return None
 
 
-def convert_height(hc):
-    if hc == 'S':
-        return 0
-    elif hc == 'E':
-        return ord('z') - ord('a') + 2
-    else:
-        return ord(hc) - ord('a') + 1
-
-
-def solve01(height_map_text):
-    # part 01
+def solve01(input_data):
+    height_map_text = input_data
 
     # convert map into 2d array on heights (int)
     grid_map = GridMap([list(map(convert_height, i)) for i in height_map_text.splitlines()])
@@ -118,7 +109,8 @@ def solve01(height_map_text):
     return distance
 
 
-def solve02(height_map_text):
+def solve02(input_data):
+    height_map_text = input_data
     # part 02
 
     # convert map into 2d array on heights (int)
@@ -137,6 +129,15 @@ def solve02(height_map_text):
     distance_s = min(distance_l)
 
     return distance_s
+
+
+def convert_height(hc):
+    if hc == 'S':
+        return 0
+    elif hc == 'E':
+        return ord('z') - ord('a') + 2
+    else:
+        return ord(hc) - ord('a') + 1
 
 
 def load_data(filename):

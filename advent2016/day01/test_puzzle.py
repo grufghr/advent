@@ -21,7 +21,7 @@ class PuzzleTest(unittest.TestCase):
             yield tc, input_data_tc
 
     def test_001_example_01(self):
-        input_data = puzzle.load_data('input_example.txt')
+        input_data = puzzle.load_data('input_example_tc.txt')
         for tc, input_data_tc in self._input_data_iter(input_data):
             answer01 = puzzle.solve01(input_data_tc)
             self.assertEqual(answer01, self.example_answer01[tc])
@@ -32,7 +32,7 @@ class PuzzleTest(unittest.TestCase):
         self.assertEqual(answer01, self.answer01)
 
     def test_003_example_02(self):
-        input_data = puzzle.load_data('input_example.txt')
+        input_data = puzzle.load_data('input_example_tc.txt')
         for tc, input_data_tc in self._input_data_iter(input_data):
             answer02 = puzzle.solve02(input_data_tc)
             self.assertEqual(answer02, self.example_answer02[tc])

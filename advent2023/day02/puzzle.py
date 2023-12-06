@@ -11,7 +11,8 @@ import math
 POSSIBLE = {'red': 12, 'green': 13, 'blue': 14}
 
 
-def solve01(game_stats):
+def solve01(input_data):
+    game_stats = input_data
     # for each game create merged with maximum count
     game_max = max_stats(game_stats)
 
@@ -25,7 +26,8 @@ def solve01(game_stats):
     return game_sum
 
 
-def solve02(game_stats):
+def solve02(input_data):
+    game_stats = input_data
     # for each game create merged with maximum count
     game_max = max_stats(game_stats)
 

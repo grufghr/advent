@@ -7,8 +7,10 @@ import os
 import hashlib
 
 
-def solve01(door_id):
+def solve01(input_data):
     # part 01 - calculate door password
+    door_id = input_data
+
     door_pwd = ''
 
     lowest_positive_number = 0
@@ -29,8 +31,10 @@ def solve01(door_id):
     return door_pwd
 
 
-def solve02(door_id):
+def solve02(input_data):
     # part 02 - calculate door password
+    door_id = input_data
+
     door_pwd = '--------'
 
     lowest_positive_number = 0

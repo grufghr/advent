@@ -8,7 +8,8 @@ import pandas as pd
 import numpy as np
 
 
-def solve01(dimension_pd):
+def solve01(input_data):
+    dimension_pd = input_data
     # part 01
     dimension_pd[3], dimension_pd[4] = np.sort(dimension_pd, axis=1)[:, :2].T
     dimension_pd['paper'] = dimension_pd.apply(
@@ -21,7 +22,8 @@ def solve01(dimension_pd):
     return int(wrapping_paper_total)
 
 
-def solve02(dimension_pd):
+def solve02(input_data):
+    dimension_pd = input_data
     # part 02
     dimension_pd[3], dimension_pd[4] = np.sort(dimension_pd, axis=1)[:, :2].T
 

@@ -66,14 +66,16 @@ def calc_score_part02(r):
     return score
 
 
-def solve01(strategy_data):
+def solve01(input_data):
+    strategy_data = input_data
     # part 01
     startegy_scores_array = [calc_score_part01(row) for row in strategy_data]
     startegy_score = sum(startegy_scores_array)
     return startegy_score
 
 
-def solve02(strategy_data):
+def solve02(input_data):
+    strategy_data = input_data
     # part 02
     startegy_scores_array = [calc_score_part02(row) for row in strategy_data]
     startegy_score = sum(startegy_scores_array)

@@ -9,8 +9,8 @@ import re
 INPUT_REGEX = re.compile(r'(.*) can fly (\d+) km/s for (\d+) seconds, but then must rest for (\d+) seconds\.')
 
 
-def solve01(input_data, seconds):
-    reindeer_stats = input_data
+def solve01(input_data):
+    reindeer_stats, seconds = input_data
 
     reindeer_dist = []
     for r, stats_r in reindeer_stats.items():
@@ -21,8 +21,8 @@ def solve01(input_data, seconds):
     return max(reindeer_dist)
 
 
-def solve02(input_data, seconds):
-    reindeer_stats = input_data
+def solve02(input_data):
+    reindeer_stats, seconds = input_data
 
     reindeer_dist = {r: 0 for r in reindeer_stats.keys()}
     reindeer_score = {r: 0 for r in reindeer_stats.keys()}
@@ -58,11 +58,14 @@ def calc_dist(stats_r, seconds):
 def parse_data(input_data):
     reindeer_stats = {}
     for line_text in input_data.splitlines():
-        match_m = re.findall(INPUT_REGEX, line_text)[0]
-        reindeer_stats[match_m[0]] = (int(match_m[1]), int(match_m[2]), int(match_m[3]))
+        if line_text.startswith('Seconds:'):
+            seconds = int(re.findall(r'(\d+)', line_text)[0])
+        else:
+            match_m = re.findall(INPUT_REGEX, line_text)[0]
+            reindeer_stats[match_m[0]] = (int(match_m[1]), int(match_m[2]), int(match_m[3]))
 
     # reindeer stats
-    return reindeer_stats
+    return (reindeer_stats, seconds)
 
 
 def load_data(filename):
@@ -77,8 +80,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data, 2503)
+    answer01 = solve01(input_data)
     print(f'part01 - winning reindeer traveled = {answer01}')
 
-    answer02 = solve02(input_data, 2503)
+    answer02 = solve02(input_data)
     print(f'part02 - winning reindeer score = {answer02}')

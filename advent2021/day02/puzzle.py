@@ -6,8 +6,9 @@ Advent of Code 2021 Day 02: Dive!
 import os
 
 
-def solve01(command_list):
-    # part 01 -
+def solve01(input_data):
+    command_list = input_data
+
     horizontal = 0
     depth = 0
 
@@ -24,8 +25,9 @@ def solve01(command_list):
     return distance
 
 
-def solve02(command_list):
-    # part 02 -
+def solve02(input_data):
+    command_list = input_data
+
     aim = 0
     horizontal = 0
     depth = 0

@@ -10,15 +10,18 @@ import re
 LINE_SENSOR_READING = re.compile(r'Sensor at x=(-?\d+), y=(-?\d+)\: closest beacon is at x=(-?\d+), y=(-?\d+)')
 
 
-def solve01(sensor_data, row):
-    row = int(row)
+def solve01(input_data):
+    sensor_data, row = input_data
+
     al = [x - abs(row - y) + md for (x, y), md in sensor_data.items()]
     bl = [x + abs(row - y) - md for (x, y), md in sensor_data.items()]
     free_positons = max(al) - min(bl)
     return free_positons
 
 
-def solve02(sensor_data):
+def solve02(input_data):
+    sensor_data, row = input_data
+
     sensor_list = sensor_data.keys()
 
     acoeffs, bcoeffs = set(), set()
@@ -48,14 +51,16 @@ def manhatten_distance(a, b):
 
 
 def parse_data(input_data):
-    sensor_text = input_data.splitlines()
+    row = None
     sensor_list = {}
-    for sensor_reading in sensor_text:
-        if match := LINE_SENSOR_READING.search(sensor_reading):
+    for line_text in input_data.splitlines():
+        if line_text.startswith(r'row:'):
+            row = int(re.findall(r'(\d+)', line_text)[0])
+        elif match := LINE_SENSOR_READING.search(line_text):
             loc_s = (int(match.group(1)), int(match.group(2)))
             loc_b = (int(match.group(3)), int(match.group(4)))
             sensor_list[loc_s] = manhatten_distance(loc_s, loc_b)
-    return sensor_list
+    return (sensor_list, row)
 
 
 def load_data(filename):
@@ -71,7 +76,7 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data, 2000000)
+    answer01 = solve01(input_data)
     print(f'part01 - Positions without beacon = {answer01}')
 
     answer02 = solve02(input_data)

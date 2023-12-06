@@ -7,8 +7,9 @@ import os
 import numpy as np
 
 
-def solve01(diag_report_np):
-    # part 01 -
+def solve01(input_data):
+    diag_report_np = input_data
+
     (r_size, c_size) = diag_report_np.shape
 
     gamma_binary = ''
@@ -31,8 +32,9 @@ def solve01(diag_report_np):
     return power_consumption
 
 
-def solve02(diag_report_np):
-    # part 02 -
+def solve02(input_data):
+    diag_report_np = input_data
+    
     (r_size, c_size) = diag_report_np.shape
 
     ox_filter_list = diag_report_np.copy()

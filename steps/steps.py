@@ -64,48 +64,12 @@ def when_solve01(context):
     context.time = time.time() - ts
 
 
-@when('solve part01 with param {param}')
-def when_solve01_with_param(context, param):
-    puzzle = context.puzzle
-    input_data = context.input_data
-    ts = time.time()
-    context.answer = puzzle.solve01(input_data, param)
-    context.time = time.time() - ts
-
-
-@when('solve part01 with variable length args')
-def when_solve01_with_args(context):
-    puzzle = context.puzzle
-    input_data = context.input_data
-    ts = time.time()
-    context.answer = puzzle.solve01(*input_data)
-    context.time = time.time() - ts
-
-
 @when('solve part02')
 def step_when_solve02(context):
     puzzle = context.puzzle
     input_data = context.input_data
     ts = time.time()
     context.answer = puzzle.solve02(input_data)
-    context.time = time.time() - ts
-
-
-@when('solve part02 with param {param}')
-def step_when_solve02_param(context, param):
-    puzzle = context.puzzle
-    input_data = context.input_data
-    ts = time.time()
-    context.answer = puzzle.solve02(input_data, param)
-    context.time = time.time() - ts
-
-
-@when('solve part02 with variable length args')
-def step_when_solve02_with_args(context):
-    puzzle = context.puzzle
-    input_data = context.input_data
-    ts = time.time()
-    context.answer = puzzle.solve02(*input_data)
     context.time = time.time() - ts
 
 

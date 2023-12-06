@@ -45,16 +45,16 @@ def calc_exposed_surface(cube_list):
     return area
 
 
-def solve01(cube_list):
-    # part 01 - total area exposed
+def solve01(input_data):
+    cube_list = input_data
 
     exposed_surface = calc_exposed_surface(cube_list)
 
     return exposed_surface
 
 
-def solve02(cube_list):
-    # part 02 - deduct trapped space
+def solve02(input_data):
+    cube_list = input_data
 
     # create 3d array
     x, y, z = zip(*cube_list)

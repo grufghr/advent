@@ -9,10 +9,10 @@ VOWELS = 'aeiou'
 PAIR_LIST = ['ab', 'cd', 'pq', 'xy']
 
 
-def solve01(input_data_list):
+def solve01(input_data):
     nice_count = 0
 
-    for text in input_data_list:
+    for text in input_data:
         # rule 1 - vowels_count >= 3
         vowel_count = len([c for c in text if c in VOWELS])
         # rule 2 - duplicate pairs (e.g. aa, bb, cc)
@@ -35,10 +35,10 @@ def solve01(input_data_list):
     return nice_count
 
 
-def solve02(input_data_list):
+def solve02(input_data):
     nice_count = 0
 
-    for text in input_data_list:
+    for text in input_data:
         # rule 1 - non-overlapping duplicate pairs (e.g. ...xy...xy...), but not 'aaa'
         has_duplicate = False
         for i in range(1, len(text)):

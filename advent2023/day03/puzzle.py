@@ -8,7 +8,9 @@ import re
 import math
 
 
-def solve01(schematic):
+def solve01(input_data):
+    schematic = input_data
+
     # create coords of symbols
     symbol_list = []
     for r, row in enumerate(schematic):
@@ -34,7 +36,9 @@ def solve01(schematic):
     return part_sum
 
 
-def solve02(schematic):
+def solve02(input_data):
+    schematic = input_data
+    
     # create coords of gears
     gears_list = []
     for r, row in enumerate(schematic):

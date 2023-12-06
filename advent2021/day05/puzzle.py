@@ -7,12 +7,12 @@ import os
 import numpy as np
 
 
-def solve01(coord_np):
-    return solve(coord_np)
+def solve01(input_data):
+    return solve(input_data)
 
 
-def solve02(coord_np):
-    return solve(coord_np, True)
+def solve02(input_data):
+    return solve(input_data, True)
 
 
 def solve(coord_np, include_diag=False):

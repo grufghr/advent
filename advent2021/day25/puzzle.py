@@ -7,7 +7,9 @@ import os
 import numpy as np
 
 
-def solve01(cucumber_grid):
+def solve01(input_data):
+    cucumber_grid = input_data
+
     # create new empty grid
     r_size, c_size = cucumber_grid.shape
 
@@ -51,19 +53,22 @@ def solve01(cucumber_grid):
     return step
 
 
+def parse_data(input_data):
+    # parse data
+    # split data into 2d array
+    cucumber_map_text = [list(i) for i in input_data.splitlines()]
+    # convert into numpy array
+    cucumber_grid = np.array(cucumber_map_text)
+    return cucumber_grid
+
+
 def load_data(filename):
     input_data_file = os.path.join(os.path.dirname(__file__), filename)
 
     with open(input_data_file, 'r') as filehandle:
         input_data = filehandle.read()
 
-    # parse data
-    # split data into 2d array
-    cucumber_map_text = [list(i) for i in input_data.splitlines()]
-    # convert into numpy array
-    cucumber_grid = np.array(cucumber_map_text)
-
-    return cucumber_grid
+    return parse_data(input_data)
 
 
 if __name__ == '__main__':

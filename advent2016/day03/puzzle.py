@@ -6,14 +6,8 @@ Advent of Code 2016 Day 03: Squares With Three Sides
 import os
 
 
-def is_triangle(edge_list):
-    longest = max(edge_list)
-    edge_list.sort()
-    shortest = edge_list[0:2]
-    return sum(shortest) > longest
-
-
-def solve01(edges_text_list):
+def solve01(input_data):
+    edges_text_list = input_data
     # part 01 - count triangles by row
     triangle_count = 0
     for edges in edges_text_list:
@@ -25,7 +19,8 @@ def solve01(edges_text_list):
     return triangle_count
 
 
-def solve02(edges_text_list):
+def solve02(input_data):
+    edges_text_list = input_data
     # part 02 - count triangles by col
     triangle_count = 0
     step = 3
@@ -46,6 +41,13 @@ def solve02(edges_text_list):
         triangle_count += sum(triangle_list)
 
     return triangle_count
+
+
+def is_triangle(edge_list):
+    longest = max(edge_list)
+    edge_list.sort()
+    shortest = edge_list[0:2]
+    return sum(shortest) > longest
 
 
 def parse_data(input_data):
