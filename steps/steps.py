@@ -58,6 +58,11 @@ def when_solve01(context, part):
         raise Exception(f'unknown function {part}')
 
 
+@then('expected answer = {expected}')
+def then_expected_answer(context, expected):
+    then_answer(context, 'n/a', expected)
+
+
 @then('expected {part} answer = {expected}')
 def then_answer(context, part, expected):
     if expected == 'None':
