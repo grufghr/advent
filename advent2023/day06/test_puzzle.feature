@@ -1,13 +1,11 @@
 Feature: AoC 2023 Day 06: Wait For It
 
-  Background: Regression testing
-    Given AoC puzzle
-     Then validate test feature name
-
   Scenario Outline: solve puzzle
-    Given input in file <filename>
+    Given AoC puzzle
+      And input in file <filename>
      When solve <part>
-     Then expected answer = <expected>
+     Then validate test feature name
+      And expected answer = <expected>
       And execution time < 1 secs
     Examples:
       | name | part   | filename            | expected |

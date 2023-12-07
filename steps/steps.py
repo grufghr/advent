@@ -9,13 +9,8 @@ import importlib
 import time
 
 
-#
-# Background
-#
-
-
 @given('AoC puzzle')
-def step_given_aoc(context):
+def given_aoc(context):
     regex_result = re.findall(r'(\d+)', context.feature.filename)
     context.year = regex_result[0]
     context.day = regex_result[1]
@@ -23,17 +18,6 @@ def step_given_aoc(context):
     context.puzzle = importlib.import_module(puzzle_name)
 
 
-@then('validate test feature name')
-def step_validate_feature(context):
-    regex_result = re.match(r'AoC (?P<year>\d+) Day (?P<day>\d+):', context.feature.name)
-    result = regex_result.groupdict()
-    assert context.year == result['year'], f'wrong year in feature name {context.feature.filename}'
-    assert context.day == result['day'], f'wrong day in feature name {context.feature.filename}'
-
-
-#
-# Scenario
-#
 @given('input in file "{input_file}"')
 def given_input_file(context, input_file):
     puzzle = context.puzzle
@@ -59,6 +43,14 @@ def when_solve01(context, part):
     context.time = time.time() - ts
 
 
+@then('validate test feature name')
+def step_validate_feature(context):
+    regex_result = re.match(r'AoC (?P<year>\d+) Day (?P<day>\d+):', context.feature.name)
+    result = regex_result.groupdict()
+    assert context.year == result['year'], f'wrong year in feature name {context.feature.filename}'
+    assert context.day == result['day'], f'wrong day in feature name {context.feature.filename}'
+
+
 @then('expected answer = {expected}')
 def then_expected_answer(context, expected):
     then_answer(context, 'n/a', expected)
@@ -66,6 +58,7 @@ def then_expected_answer(context, expected):
 
 @then('expected {part} answer = {expected}')
 def then_answer(context, part, expected):
+    # ToDo: merge into then_expected_answer
     if expected == 'None':
         expected = None
 
