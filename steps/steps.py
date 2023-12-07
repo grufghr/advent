@@ -1,11 +1,12 @@
 """
-Unit Test Scenario functions
+Feature Test Scenario functions
 """
 # general imports
 from behave import *
 import re
 import json
 import importlib
+import time
 
 
 #
@@ -48,14 +49,14 @@ def given_input(context, input_data):
 def when_solve01(context, part):
     puzzle = context.puzzle
     input_data = context.input_data
+    ts = time.time()
     if part == 'part01':
-        context.part = 1
         context.answer = puzzle.solve01(input_data)
     elif part == 'part02':
-        context.part = 2
         context.answer = puzzle.solve02(input_data)
     else:
         raise Exception(f'unknown function {part}')
+    context.time = time.time() - ts
 
 
 @then('expected answer = {expected}')
@@ -73,14 +74,21 @@ def then_answer(context, part, expected):
     elif not isinstance(context.answer, str):
         print(f'answer is {type(context.answer)}')
 
-    answer = context.answer
-    assert type(answer) == type(expected), f'answer {type(answer)} != {type(expected)} (expected)'
-    assert answer == expected, f'answer {answer} != {expected} (expected)'
+    validate_expected(context, expected)
 
 
 @then('expected {part} answer is list')
 def step_expected_as_list(context, part):
     expected = json.loads(str(context.text))
+    validate_expected(context, expected)
+
+
+def validate_expected(context, expected):
     answer = context.answer
     assert type(answer) == type(expected), f'answer {type(answer)} != {type(expected)} (expected)'
     assert answer == expected, f'answer {answer} != {expected} (expected)'
+
+
+@then('execution time < {time} secs')
+def then_execution_time(context, time):
+    assert context.time < float(time), f'puzzle took {context.time} secs'

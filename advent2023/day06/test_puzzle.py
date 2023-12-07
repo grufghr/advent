@@ -6,36 +6,29 @@ import time
 
 import advent2023.day06.puzzle as puzzle
 
+# fmt: off
+TEST_DATA = [
+    ('tc01', 'part01', 'input_example.txt', 288),
+    ('tc02', 'part01', 'input.txt',         625968),
+    ('tc03', 'part02', 'input_example.txt', 71503),
+    ('tc04', 'part02', 'input.txt',         43663323),
+]
+EXECUTION_TIME = 1.0
+# fmt: on
+
 
 class PuzzleTest(unittest.TestCase):
-    example_answer01 = 288
-    example_answer02 = 71503
-
-    answer01 = 625968
-    answer02 = 43663323
-
-    execution_time = 1.0
-
-    def test_001_example_01(self):
-        input_data = puzzle.load_data('input_example.txt')
-        answer01 = puzzle.solve01(input_data)
-        self.assertEqual(answer01, self.example_answer01)
-
-    def test_002_solve_01(self):
-        input_data = puzzle.load_data('input.txt')
-        answer01 = puzzle.solve01(input_data)
-        self.assertEqual(answer01, self.answer01)
-
-    def test_003_example_02(self):
-        input_data = puzzle.load_data('input_example.txt')
-        answer02 = puzzle.solve02(input_data)
-        self.assertEqual(answer02, self.example_answer02)
-
-    def test_004_solve_02(self):
-        input_data = puzzle.load_data('input.txt')
-        ts = time.time()
-        answer02 = puzzle.solve02(input_data)
-        t = time.time() - ts
-        self.assertEqual(answer02, self.answer02)
-        self.assertLess(t, self.execution_time, f'part02 {t:2.5f} secs')
-        print(f'execution_time {t:2.5f} secs')
+    def test_solve_puzzle(self):
+        for name, part, input_data_file, expected_answer in TEST_DATA:
+            with self.subTest(name):
+                input_data = puzzle.load_data(input_data_file)
+                ts = time.time()
+                if part == 'part01':
+                    answer = puzzle.solve01(input_data)
+                elif part == 'part02':
+                    answer = puzzle.solve02(input_data)
+                else:
+                    raise Exception(f'unknown function {part}')
+                ts = time.time() - ts
+                self.assertEqual(answer, expected_answer, 'answer not expected')
+                self.assertLess(ts, EXECUTION_TIME, f'part02 {ts:2.5f} secs')
