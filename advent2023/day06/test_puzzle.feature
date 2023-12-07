@@ -4,7 +4,7 @@ Feature: AoC 2023 Day 06: Wait For It
     Given AoC puzzle
       And input in file <filename>
      When solve <part>
-     Then validate test feature name
+     Then correct test feature name
       And expected answer = <expected>
       And execution time < 1 secs
     Examples:

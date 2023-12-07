@@ -2,7 +2,7 @@ Feature: AoC 2020 Day 01: Report Repair
 
   Background: Regression testing
     Given AoC puzzle
-      Then validate test feature name
+      Then correct test feature name
 
   Scenario: part01 example
     Given input in file "input_example.txt"

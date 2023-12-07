@@ -18,7 +18,7 @@ EXECUTION_TIME = 1.0
 
 
 class PuzzleTest(unittest.TestCase):
-    def test_solve_puzzle(self):
+    def test_advent2023_day06(self):
         for name, part, input_data_file, expected_answer in TEST_DATA:
             with self.subTest(name):
                 input_data = puzzle.load_data(input_data_file)

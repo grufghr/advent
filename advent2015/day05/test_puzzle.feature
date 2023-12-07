@@ -2,7 +2,7 @@ Feature: AoC 2015 Day 05: Doesn't He Have Intern-Elves For This?
 
   Background: Regression testing
     Given AoC puzzle
-      Then validate test feature name
+      Then correct test feature name
 
   Scenario: part01 example
     Given input in file "input_example.txt"

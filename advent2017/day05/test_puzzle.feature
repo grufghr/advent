@@ -2,7 +2,7 @@ Feature: AoC 2017 Day 05: A Maze of Twisty Trampolines, All Alike
 
   Background: Regression testing
     Given AoC puzzle
-      Then validate test feature name
+      Then correct test feature name
 
   Scenario: part01 example
     Given input in file "input_example.txt"

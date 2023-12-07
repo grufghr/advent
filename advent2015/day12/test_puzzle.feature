@@ -2,7 +2,7 @@ Feature: AoC 2015 Day 12: JSAbacusFramework.io
 
   Background: Regression testing
     Given AoC puzzle
-      Then validate test feature name
+      Then correct test feature name
 
   Scenario: part01 example
     Given input in file "input_example.txt"
