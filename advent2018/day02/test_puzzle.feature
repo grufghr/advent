@@ -1,25 +1,16 @@
 Feature: AoC 2018 Day 02: Inventory Management System
 
-  Background: Regression testing
+  Scenario Outline: solve puzzle
     Given AoC puzzle
-      Then correct test feature name
+      And input in file <filename>
+     When solve <part>
+     Then correct test feature name
+      And expected answer = <expected>
+      And execution time < 1 secs
+    Examples:
+      | name | part   | filename               | expected                  |
+      | tc01 | part01 | "input_example_01.txt" | 12                        |
+      | tc02 | part01 | "input.txt"            | 7163                      |
+      | tc03 | part02 | "input_example_02.txt" | fgij                      |
+      | tc04 | part02 | "input.txt"            | ighfbyijnoumxjlxevacpwqtr |
 
-  Scenario: part01 example
-    Given input in file "input_example_01.txt"
-     When solve part01
-     Then expected part01 answer = 12
-
-  Scenario: part01
-    Given input in file "input.txt"
-     When solve part01
-     Then expected part01 answer = 7163
-
-  Scenario: part02 example
-    Given input in file "input_example_02.txt"
-     When solve part02
-     Then expected part02 answer = fgij
-
-  Scenario: part02
-    Given input in file "input.txt"
-     When solve part02
-     Then expected part02 answer = ighfbyijnoumxjlxevacpwqtr
