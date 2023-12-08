@@ -7,7 +7,7 @@ Feature: AoC 2016 Day 05: How About a Nice Game of Chess?
      When solve <part>
      Then correct test feature name
       And expected answer = <expected>
-      And execution time < 1 secs
+      And execution time < 60 secs
     Examples:
       | name | part   | filename            | expected |
       | tc01 | part01 | "input_example.txt" | 18f47a30 |

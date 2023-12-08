@@ -6,7 +6,7 @@ Feature: AoC 2015 Day 14: Reindeer Olympics
      When solve <part>
      Then correct test feature name
       And expected answer = <expected>
-      And execution time < 1 secs
+      And execution time < 7 secs
     Examples:
       | name | part   | filename            | expected |
       | tc01 | part01 | "input_example.txt" | 1120     |

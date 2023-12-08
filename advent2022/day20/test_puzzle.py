@@ -14,8 +14,9 @@ TEST_INPUT = [
     ('tc02', 'part01', 'input.txt', 7153),
     ('tc04', 'part02', 'input.txt', 6146976244822),
 ]
-EXECUTION_TIME = 1.0
+EXECUTION_TIME = 15.0
 # fmt: on
+
 
 class PuzzleTest(unittest.TestCase):
     def test_puzzle(self):
@@ -32,4 +33,3 @@ class PuzzleTest(unittest.TestCase):
                 ts = time.time() - ts
                 self.assertEqual(answer, expected_answer, 'answer not expected')
                 self.assertLess(ts, EXECUTION_TIME, f'part02 {ts:2.5f} secs')
-

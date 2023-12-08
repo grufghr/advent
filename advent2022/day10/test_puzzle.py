@@ -9,49 +9,41 @@ import advent2022.day10.puzzle as puzzle
 
 # fmt: off
 TEST_INPUT = [
-    # fmt: off
     ('tc01', 'part01', 'input_example.txt', 13140),
-    ('tc03', 'part02', 'input_example.txt', ['##..##..##..##..##..##..##..##..##..##..',),
-                        '###...###...###...###...###...###...###.',
-                        '####....####....####....####....####....',
-                        '#####.....#####.....#####.....#####.....',
-                        '######......######......######......###.',
-                        '#######.......#######.......#######....#',
-                        '........................................']
     ('tc02', 'part01', 'input.txt', 14360),
-    ('tc04', 'part02', 'input.txt', ['###...##..#..#..##..####.###..####.####.',),
-                '#..#.#..#.#.#..#..#.#....#..#.#.......#.',
-                '###..#....##...#..#.###..#..#.###....#..',
-                '#..#.#.##.#.#..####.#....###..#.....#...',
-                '#..#.#..#.#.#..#..#.#....#.#..#....#....',
-                '###...###.#..#.#..#.####.#..#.####.####.',
-                '........................................']
-    # fmt: off
-
+    ('tc03', 'part02', 'input_example.txt', [
+        '##..##..##..##..##..##..##..##..##..##..',
+        '###...###...###...###...###...###...###.',
+        '####....####....####....####....####....',
+        '#####.....#####.....#####.....#####.....',
+        '######......######......######......###.',
+        '#######.......#######.......#######....#',
+        '........................................']),
+    ('tc04', 'part02', 'input.txt', [
+        '###...##..#..#..##..####.###..####.####.',
+        '#..#.#..#.#.#..#..#.#....#..#.#.......#.',
+        '###..#....##...#..#.###..#..#.###....#..',
+        '#..#.#.##.#.#..####.#....###..#.....#...',
+        '#..#.#..#.#.#..#..#.#....#.#..#....#....',
+        '###...###.#..#.#..#.####.#..#.####.####.',
+        '........................................']),
 ]
 EXECUTION_TIME = 1.0
 # fmt: on
 
-    def test_001_example_01(self):
-        input_data = puzzle.load_data('input_example.txt')
-        ('tc02', 'part01', 'input.txt', puzzle.part01(input_data)),
-        self.assertEqual(answer01, self.example_answer01)
 
-    def test_002_solve_01(self):
-        input_data = puzzle.load_data('input.txt')
-        ('tc02', 'part01', 'input.txt', puzzle.part01(input_data)),
-        self.assertEqual(answer01, self.answer01)
-
-    def test_003_example_02(self):
-        input_data = puzzle.load_data('input_example.txt')
-        ('tc04', 'part02', 'input.txt', puzzle.part02(input_data)),
-        self.assertEqual(answer02, self.example_answer02)
-
-    def test_004_solve_02(self):
-        input_data = puzzle.load_data('input.txt')
-        ts = time.time()
-        ('tc04', 'part02', 'input.txt', puzzle.part02(input_data)),
-        t = time.time() - ts
-        self.assertEqual(answer02, self.answer02)
-        self.assertLess(t, self.execution_time, f"part02 {t:2.5f} secs")
-        print(f"execution_time {t:2.5f} secs")
+class PuzzleTest(unittest.TestCase):
+    def test_puzzle(self):
+        for name, part, input_data_file, expected_answer in TEST_INPUT:
+            with self.subTest(name):
+                input_data = puzzle.load_data(input_data_file)
+                ts = time.time()
+                if part == 'part01':
+                    answer = puzzle.part01(input_data)
+                elif part == 'part02':
+                    answer = puzzle.part02(input_data)
+                else:
+                    raise Exception(f'unknown function {part}')
+                ts = time.time() - ts
+                self.assertEqual(answer, expected_answer, 'answer not expected')
+                self.assertLess(ts, EXECUTION_TIME, f'part02 {ts:2.5f} secs')

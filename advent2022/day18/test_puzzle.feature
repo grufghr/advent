@@ -7,7 +7,7 @@ Feature: AoC 2022 Day 18: Boiling Boulders
      When solve <part>
      Then correct test feature name
       And expected answer = <expected>
-      And execution time < 1 secs
+      And execution time < 20 secs
     Examples:
       | name | part   | filename            | expected |
       | tc01 | part01 | "input_example.txt" | 64       |

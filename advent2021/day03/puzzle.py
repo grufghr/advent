@@ -34,7 +34,7 @@ def part01(input_data):
 
 def part02(input_data):
     diag_report_np = input_data
-    
+
     (r_size, c_size) = diag_report_np.shape
 
     ox_filter_list = diag_report_np.copy()

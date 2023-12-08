@@ -27,7 +27,7 @@ def part02(input_data):
     # adjust input for bad kerning
     race_time = int(''.join(list(map(str, race_time))))
     race_distance = int(''.join(list(map(str, race_distance))))
-    
+
     winning_ways = calc_winning_ways(race_time, race_distance)
     return winning_ways
 

@@ -38,7 +38,7 @@ def part01(input_data):
 
 def part02(input_data):
     schematic = input_data
-    
+
     # create coords of gears
     gears_list = []
     for r, row in enumerate(schematic):
