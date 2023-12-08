@@ -1,25 +1,15 @@
 Feature: AoC 2022 Day 15: Beacon Exclusion Zone
 
-  Background: Regression testing
+  Scenario Outline: solve puzzle
     Given AoC puzzle
-      Then correct test feature name
-
-  Scenario: part01 example
-    Given input in file "input_example.txt"
-     When solve part01
-     Then expected part01 answer = 26
-
-  Scenario: part01
-    Given input in file "input.txt"
-     When solve part01
-     Then expected part01 answer = 5716881
-
-  Scenario: part02 example
-    Given input in file "input_example.txt"
-     When solve part02
-     Then expected part02 answer = 56000011
-
-  Scenario: part02
-    Given input in file "input.txt"
-     When solve part02
-     Then expected part02 answer = 10852583132904
+      And input in file <filename>
+     When solve <part>
+     Then correct test feature name
+      And expected answer = <expected>
+      And execution time < 1 secs
+    Examples:
+      | name | part   | filename            | expected       |
+      | tc01 | part01 | "input_example.txt" | 26             |
+      | tc02 | part01 | "input.txt"         | 5716881        |
+      | tc03 | part02 | "input_example.txt" | 56000011       |
+      | tc04 | part02 | "input.txt"         | 10852583132904 |

@@ -44,7 +44,7 @@ def when_solve01(context, part):
 
 
 @then('correct test feature name')
-def step_validate_feature(context):
+def then_validate_feature(context):
     regex_result = re.match(r'AoC (?P<year>\d+) Day (?P<day>\d+):', context.feature.name)
     result = regex_result.groupdict()
     assert context.year == result['year'], f'wrong year in feature name {context.feature.filename}'
@@ -53,12 +53,6 @@ def step_validate_feature(context):
 
 @then('expected answer = {expected}')
 def then_expected_answer(context, expected):
-    then_answer(context, 'n/a', expected)
-
-
-@then('expected {part} answer = {expected}')
-def then_answer(context, part, expected):
-    # ToDo: merge into then_expected_answer
     if expected == 'None':
         expected = None
 
@@ -70,8 +64,8 @@ def then_answer(context, part, expected):
     validate_expected(context, expected)
 
 
-@then('expected {part} answer is list')
-def step_expected_as_list(context, part):
+@then('expected answer is list')
+def then_expected_is_list(context):
     expected = json.loads(str(context.text))
     validate_expected(context, expected)
 
@@ -84,4 +78,5 @@ def validate_expected(context, expected):
 
 @then('execution time < {time} secs')
 def then_execution_time(context, time):
-    assert context.time < float(time), f'puzzle took {context.time} secs'
+    if 'slow' not in context.tags:
+        assert context.time < float(time), f'puzzle took {context.time} secs'

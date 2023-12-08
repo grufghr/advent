@@ -7,7 +7,7 @@ Feature: AoC 2015 Day 11: Corporate Policy
      When solve <part>
      Then correct test feature name
       And expected answer = <expected>
-      And execution time < 3 secs
+      And execution time < 1 secs
     Examples:
       | name | part   | filename            | expected |
       | tc01 | part01 | "input_example.txt" | abcdffaa |
@@ -20,7 +20,7 @@ Feature: AoC 2015 Day 11: Corporate Policy
      When solve <part>
      Then correct test feature name
       And expected answer = <expected>
-      And execution time < 7 secs
+      And execution time < 1 secs
     Examples:
       | name | part   | input      | expected |
       | tc03 | part02 | "cqjxjnds" | cqjxxyzz |

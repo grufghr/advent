@@ -1,25 +1,18 @@
 Feature: AoC 2021 Day 09: Smoke Basin
 
-  Background: Regression testing
+  Scenario Outline: solve puzzle
     Given AoC puzzle
-      Then correct test feature name
+      And input in file <filename>
+     When solve <part>
+     Then correct test feature name
+      And expected answer = <expected>
+      And execution time < 1 secs
+    Examples:
+      | name | part   | filename            | expected |
+      | tc01 | part01 | "input_example.txt" | 15     |
 
-  Scenario: part01 example
-    Given input in file "input_example.txt"
-     When solve part01
-     Then expected part01 answer = 15
+      | tc02 | part01 | "input.txt"         | 518  |
 
-  Scenario: part01
-    Given input in file "input.txt"
-     When solve part01
-     Then expected part01 answer = 518
+      | tc03 | part02 | "input_example.txt" | 1134  |
 
-  Scenario: part02 example
-    Given input in file "input_example.txt"
-     When solve part02
-     Then expected part02 answer = 1134
-
-  Scenario: part02
-    Given input in file "input.txt"
-     When solve part02
-     Then expected part02 answer = 949905
+      | tc04 | part02 | "input.txt"         | 949905  |

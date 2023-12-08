@@ -1,28 +1,16 @@
 Feature: AoC 2016 Day 05: How About a Nice Game of Chess?
 
-  Background: Regression testing
+  @slow
+  Scenario Outline: solve puzzle
     Given AoC puzzle
-      Then correct test feature name
-
-  Scenario: part01 example
-    Given input in file "input_example.txt"
-     When solve part01
-     Then expected part01 answer = 18f47a30
-
-  @slow
-  Scenario: part01
-    Given input in file "input.txt"
-     When solve part01
-     Then expected part01 answer = f97c354d
-
-  @slow
-  Scenario: part02 example
-    Given input in file "input_example.txt"
-     When solve part02
-     Then expected part02 answer = 05ace8e3
-
-  @slow
-  Scenario: part02
-    Given input in file "input.txt"
-     When solve part02
-     Then expected part02 answer = 863dde27
+      And input in file <filename>
+     When solve <part>
+     Then correct test feature name
+      And expected answer = <expected>
+      And execution time < 1 secs
+    Examples:
+      | name | part   | filename            | expected |
+      | tc01 | part01 | "input_example.txt" | 18f47a30 |
+      | tc02 | part01 | "input.txt"         | f97c354d |
+      | tc03 | part02 | "input_example.txt" | 05ace8e3 |
+      | tc04 | part02 | "input.txt"         | 863dde27 |

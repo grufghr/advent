@@ -1,26 +1,16 @@
 Feature: AoC 2022 Day 20: Grove Positioning System
 
-  Background: Regression testing
-    Given AoC puzzle
-      Then correct test feature name
-
-  Scenario: part01 example
-    Given input in file "input_example.txt"
-     When solve part01
-     Then expected part01 answer = 3
-
-  Scenario: part01
-    Given input in file "input.txt"
-     When solve part01
-     Then expected part01 answer = 7153
-
-  Scenario: part02 example
-    Given input in file "input_example.txt"
-     When solve part02
-     Then expected part02 answer = 1623178306
-
   @slow
-  Scenario: part02
-    Given input in file "input.txt"
-     When solve part02
-     Then expected part02 answer = 6146976244822
+  Scenario Outline: solve puzzle
+    Given AoC puzzle
+      And input in file <filename>
+     When solve <part>
+     Then correct test feature name
+      And expected answer = <expected>
+      And execution time < 1 secs
+    Examples:
+      | name | part   | filename            | expected      |
+      | tc01 | part01 | "input_example.txt" | 3             |
+      | tc02 | part01 | "input.txt"         | 7153          |
+      | tc03 | part02 | "input_example.txt" | 1623178306    |
+      | tc04 | part02 | "input.txt"         | 6146976244822 |

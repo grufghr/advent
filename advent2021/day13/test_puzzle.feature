@@ -1,23 +1,23 @@
 Feature: AoC 2021 Day 13: Transparent Origami
 
-  Background: Regression testing
+  Scenario Outline: solve puzzle
     Given AoC puzzle
-      Then correct test feature name
+      And input in file <filename>
+     When solve <part>
+     Then correct test feature name
+      And expected answer = <expected>
+      And execution time < 1 secs
+    Examples:
+      | name | part   | filename            | expected |
+      | tc01 | part01 | "input_example.txt" | 17     |
+      | tc02 | part01 | "input.txt"         | 664  |
 
-  Scenario: part01 example
-    Given input in file "input_example.txt"
-     When solve part01
-     Then expected part01 answer = 17
-
-  Scenario: part01
-    Given input in file "input.txt"
-     When solve part01
-     Then expected part01 answer = 664
-
-  Scenario: part02 example
-    Given input in file "input_example.txt"
+  Scenario: solve puzzle example
+    Given AoC puzzle
+      And input in file "input_example.txt"
      When solve part02
-     Then expected part02 answer is list
+     Then correct test feature name
+      And expected answer is list
       """
       ["#####",
        "#...#",
@@ -25,11 +25,14 @@ Feature: AoC 2021 Day 13: Transparent Origami
        "#...#",
        "#####"]
       """
+      And execution time < 1 secs
 
-  Scenario: part02
-    Given input in file "input.txt"
+  Scenario: solve puzzle
+    Given AoC puzzle
+      And input in file "input.txt"
      When solve part02
-     Then expected part02 answer is list
+     Then correct test feature name
+      And expected answer is list
       """
       ["####.####...##.#..#.####.#....###..#...",
        "#....#.......#.#.#.....#.#....#..#.#...",
@@ -38,3 +41,4 @@ Feature: AoC 2021 Day 13: Transparent Origami
        "#....#....#..#.#.#..#....#....#..#.#...",
        "####.#.....##..#..#.####.####.###..####"]
       """
+      And execution time < 1 secs

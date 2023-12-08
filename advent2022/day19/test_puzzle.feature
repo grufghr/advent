@@ -1,27 +1,16 @@
 Feature: AoC 2022 Day 19: Not Enough Minerals
 
-  Background: Regression testing
+  @slow
+  Scenario Outline: solve puzzle
     Given AoC puzzle
+      And input in file <filename>
+     When solve <part>
      Then correct test feature name
-
-  Scenario: part01 example
-    Given input in file "input_example.txt"
-     When solve part01
-     Then expected part01 answer = 33
-
-  @slow
-  Scenario: part01
-    Given input in file "input.txt"
-     When solve part01
-     Then expected part01 answer = 790
-
-  Scenario: part02 example
-    Given input in file "input_example.txt"
-     When solve part02
-     Then expected part02 answer = 2604
-
-  @slow
-  Scenario: part02
-    Given input in file "input.txt"
-     When solve part02
-     Then expected part02 answer = 7350
+      And expected answer = <expected>
+      And execution time < 1 secs
+    Examples:
+      | name | part   | filename            | expected |
+      | tc01 | part01 | "input_example.txt" | 33       |
+      | tc02 | part01 | "input.txt"         | 790      |
+      | tc03 | part02 | "input_example.txt" | 2604     |
+      | tc04 | part02 | "input.txt"         | 7350     |

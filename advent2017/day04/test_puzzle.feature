@@ -1,25 +1,18 @@
 Feature: AoC 2017 Day 04: High-Entropy Passphrases
 
-  Background: Regression testing
+  Scenario Outline: solve puzzle
     Given AoC puzzle
-      Then correct test feature name
+      And input in file <filename>
+     When solve <part>
+     Then correct test feature name
+      And expected answer = <expected>
+      And execution time < 1 secs
+    Examples:
+      | name | part   | filename            | expected |
+      | tc01 | part01 | "input_example.txt" | 1     |
 
-  Scenario: part01 example
-    Given input in file "input_example.txt"
-     When solve part01
-     Then expected part01 answer = 1
+      | tc02 | part01 | "input.txt"         | 325  |
 
-  Scenario: part01
-    Given input in file "input.txt"
-     When solve part01
-     Then expected part01 answer = 325
+      | tc03 | part02 | "input_example.txt" | 0  |
 
-  Scenario: part02 example
-    Given input in file "input_example.txt"
-     When solve part02
-     Then expected part02 answer = 0
-
-  Scenario: part02
-    Given input in file "input.txt"
-     When solve part02
-     Then expected part02 answer = 119
+      | tc04 | part02 | "input.txt"         | 119  |
