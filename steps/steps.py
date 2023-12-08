@@ -29,17 +29,14 @@ def given_input(context, input_data):
     context.input_data = input_data
 
 
-@when('solve {part}')
-def when_part01(context, part):
-    puzzle = context.puzzle
-    input_data = context.input_data
+@when('solve {funcname}')
+def when_part01(context, funcname):
+    func = getattr(context.puzzle, funcname)
+    # will raise AttributeError if function not found
+
     ts = time.time()
-    if part == 'part01':
-        context.answer = puzzle.part01(input_data)
-    elif part == 'part02':
-        context.answer = puzzle.part02(input_data)
-    else:
-        raise Exception(f'unknown function {part}')
+    # call function
+    context.answer = func(context.input_data)
     context.time = time.time() - ts
 
 

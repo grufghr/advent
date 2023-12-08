@@ -14,8 +14,8 @@ TEST_INPUT = [
     ('tc03', 'part02', 'input_example.txt',   19),
     ('tc04', 'part02', 'input.txt',           3453748220116),
     
-    ('tc05', 'part01', 'input_example01.txt', 152),
-    ('tc06', 'part02', 'input_example01.txt', 301),
+    ('tc05', 'part01', 'input_exampleA.txt', 152),
+    ('tc06', 'part02', 'input_exampleA.txt', 301),
 ]
 EXECUTION_TIME = 1.0
 # fmt: on
@@ -23,16 +23,12 @@ EXECUTION_TIME = 1.0
 
 class PuzzleTest(unittest.TestCase):
     def test_puzzle(self):
-        for name, part, input_data_file, expected_answer in TEST_INPUT:
+        for name, funcname, input_data_file, expected_answer in TEST_INPUT:
             with self.subTest(name):
-                input_data = puzzle.load_data(input_data_file)
+                input_data = puzzle.load_data(input_data_file)                
+                func = getattr(puzzle, funcname)
                 ts = time.time()
-                if part == 'part01':
-                    answer = puzzle.part01(input_data)
-                elif part == 'part02':
-                    answer = puzzle.part02(input_data)
-                else:
-                    raise Exception(f'unknown function {part}')
+                answer = func(input_data)
                 ts = time.time() - ts
                 self.assertEqual(answer, expected_answer, 'answer not expected')
                 self.assertLess(ts, EXECUTION_TIME, f'part02 {ts:2.5f} secs')

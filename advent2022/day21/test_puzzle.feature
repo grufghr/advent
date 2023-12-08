@@ -14,6 +14,6 @@ Feature: AoC 2022 Day 21: Monkey Math
       | tc03 | part02 | "input_example.txt"   | 19             |
       | tc04 | part02 | "input.txt"           | 3453748220116  |
 
-      | tc05 | part01 | "input_example01.txt" | 152            |
-      | tc06 | part02 | "input_example01.txt" | 301            |
+      | tc05 | part01 | "input_exampleA.txt" | 152            |
+      | tc06 | part02 | "input_exampleA.txt" | 301            |
   

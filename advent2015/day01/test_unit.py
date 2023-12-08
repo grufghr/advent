@@ -39,15 +39,11 @@ EXECUTION_TIME = 1.0
 
 class PuzzleUnit(unittest.TestCase):
     def test_unit(self):
-        for name, part, input_data, expected_answer in TEST_DATA:
+        for name, funcname, input_data, expected_answer in TEST_DATA:
             with self.subTest(name):
+                func = getattr(puzzle, funcname)
                 ts = time.time()
-                if part == 'part01':
-                    answer = puzzle.part01(input_data)
-                elif part == 'part02':
-                    answer = puzzle.part02(input_data)
-                else:
-                    raise Exception(f'unknown function {part}')
+                answer = func(input_data)
                 ts = time.time() - ts
                 self.assertEqual(answer, expected_answer, 'answer not expected')
                 self.assertLess(ts, EXECUTION_TIME, f'part02 {ts:2.5f} secs')
