@@ -4,25 +4,28 @@ Advent of Code - Test
 import unittest
 import time
 
-import advent2021.day09.puzzle as puzzle
-
+import advent2016.day01.puzzle as puzzle
 
 # fmt: off
-TEST_INPUT = [
-    ('tc01', 'part01', 'input_example.txt', 15),
-    ('tc02', 'part01', 'input.txt',         518),
-    ('tc03', 'part02', 'input_example.txt', 1134),
-    ('tc04', 'part02', 'input.txt',         949905),
+TEST_DATA = [
+    ('tc01', 'part01', 'R2, L3',         5),
+    ('tc02', 'part01', 'R2, R2, R2',     2),
+    ('tc03', 'part01', 'R5, L5, R5, R3', 12),
+    ('tc04', 'part01', 'R8, R4, R4, R8', 8),
+
+    ('tc01', 'part02', 'R2, L3',         None),
+    ('tc02', 'part02', 'R2, R2, R2',     None),
+    ('tc03', 'part02', 'R5, L5, R5, R3', None),
+    ('tc04', 'part02', 'R8, R4, R4, R8', 4),
 ]
-EXECUTION_TIME = 1.0
+EXECUTION_TIME = 15.0
 # fmt: on
 
 
-class PuzzleTest(unittest.TestCase):
-    def test_puzzle(self):
-        for name, part, input_data_file, expected_answer in TEST_INPUT:
+class PuzzleUnit(unittest.TestCase):
+    def test_unit(self):
+        for name, part, input_data, expected_answer in TEST_DATA:
             with self.subTest(name):
-                input_data = puzzle.load_data(input_data_file)
                 ts = time.time()
                 if part == 'part01':
                     answer = puzzle.solve01(input_data)

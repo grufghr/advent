@@ -7,7 +7,7 @@ import time
 import advent2023.day07.puzzle as puzzle
 
 # fmt: off
-TEST_DATA = [
+TEST_INPUT = [
     ('tc01', 'part01', 'input_example.txt', 6440),
     ('tc02', 'part01', 'input.txt',         250232501),
     ('tc03', 'part02', 'input_example.txt', 5905),
@@ -18,8 +18,8 @@ EXECUTION_TIME = 1.0
 
 
 class PuzzleTest(unittest.TestCase):
-    def test_advent2023_day07(self):
-        for name, part, input_data_file, expected_answer in TEST_DATA:
+    def test_puzzle(self):
+        for name, part, input_data_file, expected_answer in TEST_INPUT:
             with self.subTest(name):
                 input_data = puzzle.load_data(input_data_file)
                 ts = time.time()

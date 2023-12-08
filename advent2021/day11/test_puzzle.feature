@@ -10,9 +10,6 @@ Feature: AoC 2021 Day 11: Dumbo Octopus
     Examples:
       | name | part   | filename            | expected |
       | tc01 | part01 | "input_example.txt" | 1656     |
-
-      | tc02 | part01 | "input.txt"         | 1637  |
-
-      | tc03 | part02 | "input_example.txt" | 195  |
-
-      | tc04 | part02 | "input.txt"         | 242  |
+      | tc02 | part01 | "input.txt"         | 1637     |
+      | tc03 | part02 | "input_example.txt" | 195      |
+      | tc04 | part02 | "input.txt"         | 242      |

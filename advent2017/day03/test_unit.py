@@ -4,25 +4,23 @@ Advent of Code - Test
 import unittest
 import time
 
-import advent2021.day09.puzzle as puzzle
-
+import advent2017.day03.puzzle as puzzle
 
 # fmt: off
-TEST_INPUT = [
-    ('tc01', 'part01', 'input_example.txt', 15),
-    ('tc02', 'part01', 'input.txt',         518),
-    ('tc03', 'part02', 'input_example.txt', 1134),
-    ('tc04', 'part02', 'input.txt',         949905),
+TEST_DATA = [
+    ('tc01', 'part01', 1,    0),
+    ('tc02', 'part01', 12,   3),
+    ('tc03', 'part01', 23,   2),
+    ('tc04', 'part01', 1024, 31),
 ]
 EXECUTION_TIME = 1.0
 # fmt: on
 
 
-class PuzzleTest(unittest.TestCase):
-    def test_puzzle(self):
-        for name, part, input_data_file, expected_answer in TEST_INPUT:
+class PuzzleUnit(unittest.TestCase):
+    def test_unit(self):
+        for name, part, input_data, expected_answer in TEST_DATA:
             with self.subTest(name):
-                input_data = puzzle.load_data(input_data_file)
                 ts = time.time()
                 if part == 'part01':
                     answer = puzzle.solve01(input_data)

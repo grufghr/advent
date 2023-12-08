@@ -9,8 +9,8 @@ Feature: AoC 2021 Day 13: Transparent Origami
       And execution time < 1 secs
     Examples:
       | name | part   | filename            | expected |
-      | tc01 | part01 | "input_example.txt" | 17     |
-      | tc02 | part01 | "input.txt"         | 664  |
+      | tc01 | part01 | "input_example.txt" | 17       |
+      | tc02 | part01 | "input.txt"         | 664      |
 
   Scenario: solve puzzle example
     Given AoC puzzle

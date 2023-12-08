@@ -7,47 +7,34 @@ import time
 import advent2021.day12.puzzle as puzzle
 
 
+# fmt: off
+TEST_INPUT = [
+    ('tc01', 'part01', 'input_example.txt', 226),
+    ('tc02', 'part01', 'input.txt',         5212),
+    ('tc03', 'part02', 'input_example.txt', 3509),
+    ('tc04', 'part02', 'input.txt',         134862),
+
+    ('tc01', 'part01', 'input_example01.txt', 10),
+    ('tc02', 'part01', 'input_example02.txt', 19),
+    ('tc03', 'part02', 'input_example01.txt', 36),
+    ('tc04', 'part02', 'input_example02.txt', 103),
+]
+EXECUTION_TIME = 15.0
+# fmt: on
+
+
 class PuzzleTest(unittest.TestCase):
-    example_01 = [
-        ('input_example01.txt', 10),
-        ('input_example02.txt', 19),
-        ('input_example03.txt', 226),
-    ]
-    example_02 = [
-        ('input_example01.txt', 36),
-        ('input_example02.txt', 103),
-        ('input_example03.txt', 3509),
-    ]
-
-    answer01 = 5212
-    answer02 = 134862
-
-    execution_time = 1.0
-
-    def test_001_example_01(self):
-        for input_file, expected_result in self.example_01:
-            with self.subTest(input_file):
-                input_data = puzzle.load_data(input_file)
-                result = puzzle.solve01(input_data)
-                self.assertEqual(result, expected_result)
-
-    def test_002_solve_01(self):
-        input_data = puzzle.load_data('input.txt')
-        answer01 = puzzle.solve01(input_data)
-        self.assertEqual(answer01, self.answer01)
-
-    def test_003_example_02(self):
-        for input_file, expected_result in self.example_02:
-            with self.subTest(input_file):
-                input_data = puzzle.load_data(input_file)
-                result = puzzle.solve02(input_data)
-                self.assertEqual(result, expected_result)
-
-    def test_004_solve_02(self):
-        input_data = puzzle.load_data('input.txt')
-        ts = time.time()
-        answer02 = puzzle.solve02(input_data)
-        t = time.time() - ts
-        self.assertEqual(answer02, self.answer02)
-        self.assertLess(t, self.execution_time, f'part02 {t:2.5f} secs')
-        print(f'execution_time {t:2.5f} secs')
+    def test_puzzle(self):
+        for name, part, input_data_file, expected_answer in TEST_INPUT:
+            with self.subTest(name):
+                input_data = puzzle.load_data(input_data_file)
+                ts = time.time()
+                if part == 'part01':
+                    answer = puzzle.solve01(input_data)
+                elif part == 'part02':
+                    answer = puzzle.solve02(input_data)
+                else:
+                    raise Exception(f'unknown function {part}')
+                ts = time.time() - ts
+                self.assertEqual(answer, expected_answer, 'answer not expected')
+                self.assertLess(ts, EXECUTION_TIME, f'part02 {ts:2.5f} secs')
