@@ -14,7 +14,7 @@ TEST_INPUT = [
     ('tc03', 'part02', 'input_example.txt',   9),
     ('tc04', 'part02', 'input.txt',           308),
 
-    ('tc01', 'part01', 'input_example_b.txt', 18),
+    ('tc01', 'part01', 'input_exampleA.txt', 18),
     ]
 EXECUTION_TIME = 1.0
 # fmt: on
