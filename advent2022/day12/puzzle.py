@@ -99,7 +99,7 @@ class GridMap:
         return None
 
 
-def solve01(input_data):
+def part01(input_data):
     height_map_text = input_data
 
     # convert map into 2d array on heights (int)
@@ -109,7 +109,7 @@ def solve01(input_data):
     return distance
 
 
-def solve02(input_data):
+def part02(input_data):
     height_map_text = input_data
     # part 02
 
@@ -153,8 +153,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - Path reaches the goal in {answer01} move.')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f"part02 - Shortest path from elevation 'a' is {answer02} move.")

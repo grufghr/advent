@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np
 
 
-def solve01(input_data):
+def part01(input_data):
     dimension_pd = input_data
     # part 01
     dimension_pd[3], dimension_pd[4] = np.sort(dimension_pd, axis=1)[:, :2].T
@@ -22,7 +22,7 @@ def solve01(input_data):
     return int(wrapping_paper_total)
 
 
-def solve02(input_data):
+def part02(input_data):
     dimension_pd = input_data
     # part 02
     dimension_pd[3], dimension_pd[4] = np.sort(dimension_pd, axis=1)[:, :2].T
@@ -47,8 +47,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - Wrapping paper required = {answer01} sq feet')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - Ribbon required = {answer02} feet')

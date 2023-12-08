@@ -39,12 +39,12 @@ class Board:
         return self.board.__repr__()
 
 
-def solve01(input_data):
+def part01(input_data):
     answers = solve(input_data[0], input_data[1])
     return int(answers[0])
 
 
-def solve02(input_data):
+def part02(input_data):
     answers = solve(input_data[0], input_data[1])
     return int(answers[1])
 
@@ -99,8 +99,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - Winning bingo card score = {answer01}.')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - Last winning card score = {answer02}.')

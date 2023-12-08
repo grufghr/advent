@@ -9,7 +9,7 @@ from collections import deque
 import numpy as np
 
 
-def solve01(input_data):
+def part01(input_data):
     # part 01 - find local minimum in gridmap
 
     grid = np.array(input_data)
@@ -26,7 +26,7 @@ def solve01(input_data):
     return int(risk_sum)
 
 
-def solve02(input_data):
+def part02(input_data):
     # part 02 - find basins in gridmap
     grid = np.array(input_data)
     lowest_loc_list = []
@@ -99,8 +99,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - sum of risk levels = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - product of three largest basins = {answer02}')

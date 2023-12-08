@@ -19,7 +19,7 @@ NUM_WORDS = {
 }
 
 
-def solve01(input_text):
+def part01(input_text):
     calibration_list = []
 
     for input_line in input_text.splitlines():
@@ -30,12 +30,12 @@ def solve01(input_text):
     return sum(calibration_list)
 
 
-def solve02(input_text):
+def part02(input_text):
     # replace all numers
     for word, word_r in NUM_WORDS.items():
         input_text = input_text.replace(word, word_r)
 
-    return solve01(input_text)
+    return part01(input_text)
 
 
 def load_data(filename):
@@ -50,8 +50,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - calibration values sum = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - calibration values sum = {answer02}')

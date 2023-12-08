@@ -10,7 +10,7 @@ import re
 LINE_SENSOR_READING = re.compile(r'Sensor at x=(-?\d+), y=(-?\d+)\: closest beacon is at x=(-?\d+), y=(-?\d+)')
 
 
-def solve01(input_data):
+def part01(input_data):
     sensor_data, row = input_data
 
     al = [x - abs(row - y) + md for (x, y), md in sensor_data.items()]
@@ -19,7 +19,7 @@ def solve01(input_data):
     return free_positons
 
 
-def solve02(input_data):
+def part02(input_data):
     sensor_data, row = input_data
 
     sensor_list = sensor_data.keys()
@@ -76,8 +76,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - Positions without beacon = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - Tuning frequency = {answer02}')

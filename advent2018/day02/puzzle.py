@@ -7,7 +7,7 @@ import os
 from collections import Counter
 
 
-def solve01(input_data):
+def part01(input_data):
     # part 01 - box id list checksum
     valid_2 = 0
     valid_3 = 0
@@ -20,7 +20,7 @@ def solve01(input_data):
     return checksum
 
 
-def solve02(input_data):
+def part02(input_data):
     # part 02 - common letters of closest box ids
     closest = 0
     common = None
@@ -53,8 +53,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - box id list checksum = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - common letters of closest box ids = {answer02}')

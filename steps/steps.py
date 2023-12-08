@@ -30,14 +30,14 @@ def given_input(context, input_data):
 
 
 @when('solve {part}')
-def when_solve01(context, part):
+def when_part01(context, part):
     puzzle = context.puzzle
     input_data = context.input_data
     ts = time.time()
     if part == 'part01':
-        context.answer = puzzle.solve01(input_data)
+        context.answer = puzzle.part01(input_data)
     elif part == 'part02':
-        context.answer = puzzle.solve02(input_data)
+        context.answer = puzzle.part02(input_data)
     else:
         raise Exception(f'unknown function {part}')
     context.time = time.time() - ts

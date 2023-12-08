@@ -16,7 +16,7 @@ def chunk_list(lst, n):
         yield lst[i : i + n]
 
 
-def solve01(input_data):
+def part01(input_data):
     rucksack_data = input_data
 
     common_list = []
@@ -35,7 +35,7 @@ def solve01(input_data):
     return priority_list_sum
 
 
-def solve02(input_data):
+def part02(input_data):
     rucksack_data = input_data
 
     badge_list = []
@@ -66,8 +66,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - Sum of the item priorities = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - Sum of the group badges item priorities = {answer02}')

@@ -7,7 +7,7 @@ import os
 import numpy as np
 
 
-def solve01(input_data):
+def part01(input_data):
     cucumber_grid = input_data
 
     # create new empty grid
@@ -74,5 +74,5 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - First step on which no sea cucumbers moved = {answer01}')

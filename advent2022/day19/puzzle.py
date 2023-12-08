@@ -124,7 +124,7 @@ def best_geodes(blueprint, end_cycle):
     return state.best_geodes[end_cycle]
 
 
-def solve01(input_data):
+def part01(input_data):
     blueprints_map = input_data
 
     minutes = 24
@@ -140,7 +140,7 @@ def solve01(input_data):
     return quality_sum
 
 
-def solve02(input_data):
+def part02(input_data):
     blueprints_map = input_data
 
     minutes = 32
@@ -188,8 +188,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - Blueprint quality sum (24 mins) = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - Top 3 Blueprint quality sum (32 mins) = {answer02}')

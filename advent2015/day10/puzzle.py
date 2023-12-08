@@ -9,7 +9,7 @@ import re
 LS_REGEX = re.compile(r'(1+|2+|3+|4+|5+|6+|7+|8+|9+|0+)')
 
 
-def solve01(input_data):
+def part01(input_data):
     number = input_data
     for step in range(0, 40):
         number_n = ''
@@ -20,7 +20,7 @@ def solve01(input_data):
     return len(number)
 
 
-def solve02(input_data):
+def part02(input_data):
     number = input_data
     for step in range(0, 50):
         number_n = ''
@@ -43,8 +43,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - look-and-say after 40 iteratons = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - look-and-say after 50 iteratons = {answer02}')

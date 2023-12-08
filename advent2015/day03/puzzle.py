@@ -7,11 +7,11 @@ import os
 import numpy as np
 
 
-def solve01(input_data):
+def part01(input_data):
     return solve(input_data)
 
 
-def solve02(input_data):
+def part02(input_data):
     return solve(input_data, 2)
 
 
@@ -78,8 +78,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - Houses visited with santa = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - Houses visited with santa & robot = {answer02}')

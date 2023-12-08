@@ -6,7 +6,7 @@ Advent of Code 2017 Day 05: A Maze of Twisty Trampolines, All Alike
 import os
 
 
-def solve01(input_data):
+def part01(input_data):
     instructions = input_data.copy()
     pos = 0
     step = 0
@@ -18,7 +18,7 @@ def solve01(input_data):
     return step
 
 
-def solve02(input_data):
+def part02(input_data):
     instructions = input_data.copy()
     pos = 0
     step = 0
@@ -45,8 +45,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - steps to exit = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - steps to exit = {answer02}')

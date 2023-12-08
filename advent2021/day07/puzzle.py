@@ -7,7 +7,7 @@ import os
 import math
 
 
-def solve01(input_data):
+def part01(input_data):
     # part 01 - find min cost when cost calculated with calc_cost
     def calc_cost(x, i):
         return abs(x - i)
@@ -15,7 +15,7 @@ def solve01(input_data):
     return solve(input_data, calc_cost)
 
 
-def solve02(input_data):
+def part02(input_data):
     # part 02 - find min cost when cost calculated with calc_cost
     def calc_cost(x, i):
         n = abs(x - i)
@@ -51,8 +51,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - least fuel to align = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - least fuel to align = {answer02}')

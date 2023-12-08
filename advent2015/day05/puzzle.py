@@ -9,7 +9,7 @@ VOWELS = 'aeiou'
 PAIR_LIST = ['ab', 'cd', 'pq', 'xy']
 
 
-def solve01(input_data):
+def part01(input_data):
     nice_count = 0
 
     for text in input_data:
@@ -35,7 +35,7 @@ def solve01(input_data):
     return nice_count
 
 
-def solve02(input_data):
+def part02(input_data):
     nice_count = 0
 
     for text in input_data:
@@ -78,8 +78,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - Nice string count = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - Nice string count = {answer02}')

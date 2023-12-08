@@ -7,7 +7,7 @@ import os
 from collections import deque
 
 
-def solve01(input_data):
+def part01(input_data):
     program = input_data
 
     # replace 1202 error
@@ -18,7 +18,7 @@ def solve01(input_data):
     return result
 
 
-def solve02(input_data):
+def part02(input_data):
     # add zeros to avoid index range exceptions
     program = input_data + ([0] * 100)
 
@@ -70,8 +70,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - value at position 0 = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - 100 * verb + noun = {answer02}')

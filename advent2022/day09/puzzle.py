@@ -51,12 +51,12 @@ def move_rope(head, rope):
     return rope_n
 
 
-def solve01(input_data):
+def part01(input_data):
     answer = solve(input_data, 2)
     return answer
 
 
-def solve02(input_data):
+def part02(input_data):
     answer = solve(input_data, 10)
     return answer
 
@@ -103,8 +103,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - Positions tail visited = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - Positions tail visited = {answer02}')

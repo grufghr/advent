@@ -15,12 +15,12 @@ LINE_TEST = re.compile(r'Test: divisible by (\d+)')
 LINE_IF = re.compile(r'If (true|false): throw to monkey (\d+)')
 
 
-def solve01(input_data):
+def part01(input_data):
     answer = solve(input_data, 20)
     return answer
 
 
-def solve02(input_data):
+def part02(input_data):
     answer = solve(input_data, 10000, True)
     return answer
 
@@ -147,8 +147,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - level of monkey business after 20 rounds = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - level of monkey business after 10000 rounds = {answer02}')

@@ -9,7 +9,7 @@ import math
 from collections import deque
 
 
-def solve01(input_data):
+def part01(input_data):
     # calcuate total points on all cards
     total_points = 0
     for c, card, winning_nums in input_data:
@@ -22,7 +22,7 @@ def solve01(input_data):
     return total_points
 
 
-def solve02(input_data):
+def part02(input_data):
     card_list = input_data
 
     # calcuate number of cards at end (count)
@@ -61,8 +61,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - total points = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - total scratchcards = {answer02}')

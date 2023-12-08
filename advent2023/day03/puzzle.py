@@ -8,7 +8,7 @@ import re
 import math
 
 
-def solve01(input_data):
+def part01(input_data):
     schematic = input_data
 
     # create coords of symbols
@@ -36,7 +36,7 @@ def solve01(input_data):
     return part_sum
 
 
-def solve02(input_data):
+def part02(input_data):
     schematic = input_data
     
     # create coords of gears
@@ -90,8 +90,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - part numbers sum = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - gear ratio sum = {answer02}')

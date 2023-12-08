@@ -24,9 +24,9 @@ class PuzzleTest(unittest.TestCase):
                 input_data = puzzle.load_data(input_data_file)
                 ts = time.time()
                 if part == 'part01':
-                    answer = puzzle.solve01(input_data)
+                    answer = puzzle.part01(input_data)
                 elif part == 'part02':
-                    answer = puzzle.solve02(input_data)
+                    answer = puzzle.part02(input_data)
                 else:
                     raise Exception(f'unknown function {part}')
                 ts = time.time() - ts

@@ -8,15 +8,15 @@ from itertools import groupby
 from string import ascii_lowercase
 
 
-def solve01(input_data):
+def part01(input_data):
     password = next_password(input_data)
     while not is_valid(password):
         password = next_password(password)
     return password
 
 
-def solve02(input_data):
-    return solve01(input_data)
+def part02(input_data):
+    return part01(input_data)
 
 
 def is_valid(password):
@@ -58,9 +58,9 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - santas next password = {answer01}')
 
     # note: pass part01 answer to part02
-    answer02 = solve01(answer01)
+    answer02 = part01(answer01)
     print(f'part02 - santas next password = {answer02}')

@@ -6,7 +6,7 @@ Advent of Code 2022 Day 01: Calorie Counting
 import os
 
 
-def solve01(input_data):
+def part01(input_data):
     # part 01
 
     # create array of totals of each elf inventory
@@ -17,7 +17,7 @@ def solve01(input_data):
     return inventory_max
 
 
-def solve02(input_data):
+def part02(input_data):
     # part 02
 
     # create array of totals of each elf inventory
@@ -56,8 +56,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - Total Calories strongest Elf = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - Total Calories top three Elves = {answer02}')

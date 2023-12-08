@@ -49,12 +49,12 @@ class Folder:
         return size
 
 
-def solve01(input_data):
+def part01(input_data):
     answer = solve(input_data)
     return answer[0]
 
 
-def solve02(input_data):
+def part02(input_data):
     answer = solve(input_data)
     return answer[1]
 

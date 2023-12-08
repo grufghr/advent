@@ -7,7 +7,7 @@ import os
 from itertools import product
 
 
-def solve01(input_data):
+def part01(input_data):
     # part 01 - find the 2 entries that sum to 2020
     # pairs = [(x, y) for x, y in product(input_data, repeat=2) if x + y == 2020]
     for a, b in product(input_data, repeat=2):
@@ -16,7 +16,7 @@ def solve01(input_data):
     return None
 
 
-def solve02(input_data):
+def part02(input_data):
     # part 02 - find the 3 entries that sum to 2020
     for a, b, c in product(input_data, repeat=3):
         if a + b + c == 2020:
@@ -41,8 +41,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - product of 2 entries sum to 2020 = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - product of 3 entries sum to 2020 = {answer02}')

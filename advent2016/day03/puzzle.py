@@ -6,7 +6,7 @@ Advent of Code 2016 Day 03: Squares With Three Sides
 import os
 
 
-def solve01(input_data):
+def part01(input_data):
     edges_text_list = input_data
     # part 01 - count triangles by row
     triangle_count = 0
@@ -19,7 +19,7 @@ def solve01(input_data):
     return triangle_count
 
 
-def solve02(input_data):
+def part02(input_data):
     edges_text_list = input_data
     # part 02 - count triangles by col
     triangle_count = 0
@@ -67,8 +67,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - triangle count = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - triangle count = {answer02}')

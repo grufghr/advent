@@ -9,7 +9,7 @@ import re
 INPUT_REGEX = re.compile(r'(.*) can fly (\d+) km/s for (\d+) seconds, but then must rest for (\d+) seconds\.')
 
 
-def solve01(input_data):
+def part01(input_data):
     reindeer_stats, seconds = input_data
 
     reindeer_dist = []
@@ -21,7 +21,7 @@ def solve01(input_data):
     return max(reindeer_dist)
 
 
-def solve02(input_data):
+def part02(input_data):
     reindeer_stats, seconds = input_data
 
     reindeer_dist = {r: 0 for r in reindeer_stats.keys()}
@@ -80,8 +80,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - winning reindeer traveled = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - winning reindeer score = {answer02}')

@@ -52,7 +52,7 @@ def check_order_comparator(check_order):
     return compare
 
 
-def solve01(input_data):
+def part01(input_data):
     # Part 01 - Test Comparator
 
     # create list from first and second line in every three lines
@@ -73,7 +73,7 @@ def solve01(input_data):
     return correct_pair_idx_sum
 
 
-def solve02(input_data):
+def part02(input_data):
     # Part 02 - Use Comparator to find decoder key in message
 
     # create list from first and second line in every three lines
@@ -118,8 +118,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 = sum of the indices of correct pairs = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 = distress signal decoder key = {answer02}')

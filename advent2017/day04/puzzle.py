@@ -6,7 +6,7 @@ Advent of Code 2017 Day 04: High-Entropy Passphrases
 import os
 
 
-def solve01(input_data):
+def part01(input_data):
     valid_count = 0
     for passphrase in input_data:
         if policy01(passphrase):
@@ -14,7 +14,7 @@ def solve01(input_data):
     return valid_count
 
 
-def solve02(input_data):
+def part02(input_data):
     valid_count = 0
     for passphrase in input_data:
         if policy01(passphrase) and policy02(passphrase):
@@ -54,8 +54,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - valid passphrases (policy 01) = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - valid passphrases (policy 01 & 02) = {answer02}')

@@ -66,7 +66,7 @@ def calc_score_part02(r):
     return score
 
 
-def solve01(input_data):
+def part01(input_data):
     strategy_data = input_data
     # part 01
     startegy_scores_array = [calc_score_part01(row) for row in strategy_data]
@@ -74,7 +74,7 @@ def solve01(input_data):
     return startegy_score
 
 
-def solve02(input_data):
+def part02(input_data):
     strategy_data = input_data
     # part 02
     startegy_scores_array = [calc_score_part02(row) for row in strategy_data]
@@ -94,8 +94,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - Rock-Paper-Scissors score = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - Rock-Paper-Scissors score = {answer02}')

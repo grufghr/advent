@@ -7,7 +7,7 @@ import os
 import numpy as np
 
 
-def solve01(input_data):
+def part01(input_data):
     diag_report_np = input_data
 
     (r_size, c_size) = diag_report_np.shape
@@ -32,7 +32,7 @@ def solve01(input_data):
     return power_consumption
 
 
-def solve02(input_data):
+def part02(input_data):
     diag_report_np = input_data
     
     (r_size, c_size) = diag_report_np.shape
@@ -74,7 +74,7 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - Power consumption = {answer01}')
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - Life support rating = {answer02}')

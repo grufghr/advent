@@ -6,7 +6,7 @@ Advent of Code 2017 Day 01: Inverse Captcha
 import os
 
 
-def solve01(input_data):
+def part01(input_data):
     digit_sum = 0
     digit = input_data[-1]
     for digit_n in input_data:
@@ -16,7 +16,7 @@ def solve01(input_data):
     return digit_sum
 
 
-def solve02(input_data):
+def part02(input_data):
     digit_sum = 0
     idx = len(input_data) // 2
     for digit_n in input_data:
@@ -40,8 +40,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - captcha solution = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - captcha solution = {answer02}')

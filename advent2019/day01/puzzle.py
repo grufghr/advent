@@ -6,7 +6,7 @@ Advent of Code 2019 Day 01: The Tyranny of the Rocket Equation
 import os
 
 
-def solve01(input_data):
+def part01(input_data):
     # part 01 - calculate fuel required for all modules
     fuel_tot = 0
     for mass in input_data:
@@ -15,7 +15,7 @@ def solve01(input_data):
     return fuel_tot
 
 
-def solve02(input_data):
+def part02(input_data):
     # part 02 - calculate fuel required for all modules (including fuel)
     fuel_tot = 0
     for mass_m in input_data:
@@ -50,8 +50,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - fuel needs = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - fuel needs (including fuel needs) = {answer02}')

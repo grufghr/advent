@@ -9,7 +9,7 @@ import math
 from itertools import islice
 
 
-def solve01(input_data):
+def part01(input_data):
     seeds, almanac = input_data
 
     location_min = math.inf
@@ -21,7 +21,7 @@ def solve01(input_data):
     return location_min
 
 
-def solve02(input_data):
+def part02(input_data):
     seeds, almanac = input_data
 
     # range search all ranges to find closest match
@@ -162,8 +162,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - lowest location = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - lowest location = {answer02}')

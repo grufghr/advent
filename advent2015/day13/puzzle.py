@@ -10,7 +10,7 @@ import itertools
 INPUT_REGEX = re.compile(r'(.*) would (gain|lose) (\d+) happiness units by sitting next to (.*)\.')
 
 
-def solve01(input_data):
+def part01(input_data):
     guest_pref = input_data
 
     # create table layout permutations
@@ -32,7 +32,7 @@ def solve01(input_data):
     return max(table_happiness)
 
 
-def solve02(input_data):
+def part02(input_data):
     guest_pref = input_data.copy()
 
     # add myself to guest list
@@ -41,7 +41,7 @@ def solve02(input_data):
         guest_pref[('#me', g)] = 0
         guest_pref[(g, '#me')] = 0
 
-    return solve01(guest_pref)
+    return part01(guest_pref)
 
 
 def parse_data(input_data):
@@ -71,8 +71,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - total change in happiness = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - total change in happiness (with #me) = {answer02}')

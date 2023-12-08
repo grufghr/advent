@@ -8,7 +8,7 @@ import re
 import math
 
 
-def solve01(input_data):
+def part01(input_data):
     race_time, race_distance = input_data
 
     winning_ways = []
@@ -22,7 +22,7 @@ def solve01(input_data):
     return winning_product
 
 
-def solve02(input_data):
+def part02(input_data):
     race_time, race_distance = input_data
     # adjust input for bad kerning
     race_time = int(''.join(list(map(str, race_time))))
@@ -68,8 +68,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - product of winning ways = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - winning ways = {answer02}')

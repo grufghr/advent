@@ -11,7 +11,7 @@ from collections import deque
 LINE_REGEX = re.compile(r'([a-zA-Z]+) to ([a-zA-Z]+) = (\d+)')
 
 
-def solve01(input_data):
+def part01(input_data):
     # part 01 - sortest path between two points (visit all once only)
 
     path_all = find_all_paths(input_data)
@@ -20,7 +20,7 @@ def solve01(input_data):
     return shortest_distance
 
 
-def solve02(input_data):
+def part02(input_data):
     # part 02 - longest path between two points (visit all once only)
 
     path_all = find_all_paths(input_data)
@@ -86,8 +86,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - shortest route distance = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - longest route distance = {answer02}')

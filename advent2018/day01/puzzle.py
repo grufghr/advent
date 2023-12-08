@@ -7,12 +7,12 @@ import os
 from itertools import cycle
 
 
-def solve01(input_data):
+def part01(input_data):
     freq = sum(input_data)
     return freq
 
 
-def solve02(input_data):
+def part02(input_data):
     freq = 0
     freq_list = set([freq])
     for change in cycle(input_data):
@@ -40,8 +40,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - resulting frequency = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - first frequency reached twice = {answer02}')

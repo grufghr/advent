@@ -35,13 +35,13 @@ def visualise_grove(elves_list):
         print(line)
 
 
-def solve01(input_data):
+def part01(input_data):
     grove_map_list = input_data
     answer = solve(grove_map_list, 10)
     return answer[0]
 
 
-def solve02(input_data):
+def part02(input_data):
     grove_map_list = input_data
     answer = solve(grove_map_list, 1500)
     return answer[1]
@@ -128,8 +128,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - empty ground = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - round nothing moved = {answer02}')

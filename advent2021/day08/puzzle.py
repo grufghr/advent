@@ -9,7 +9,7 @@ import re
 SEGMENT_REGEX = re.compile(r'([a-g]+)')
 
 
-def solve01(input_data):
+def part01(input_data):
     # part 01 - count number of times 1, 4, 7 or 8 appear in output_value
     total_unique_count = 0
 
@@ -21,7 +21,7 @@ def solve01(input_data):
     return total_unique_count
 
 
-def solve02(input_data):
+def part02(input_data):
     # part 02 - determine output values
 
     value_list = []
@@ -110,8 +110,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - times 1, 4, 7, or 8 appear in segments = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - output value sum = {answer02}')

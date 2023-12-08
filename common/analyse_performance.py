@@ -17,7 +17,7 @@ if __name__ == "__main__":
     pr.enable()
 
     # ... do something ...
-    answer = puzzle.solve02(input_data)
+    answer = puzzle.part02(input_data)
     print(answer)
 
     pr.disable()

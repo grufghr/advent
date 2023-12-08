@@ -11,7 +11,7 @@ import math
 POSSIBLE = {'red': 12, 'green': 13, 'blue': 14}
 
 
-def solve01(input_data):
+def part01(input_data):
     game_stats = input_data
     # for each game create merged with maximum count
     game_max = max_stats(game_stats)
@@ -26,7 +26,7 @@ def solve01(input_data):
     return game_sum
 
 
-def solve02(input_data):
+def part02(input_data):
     game_stats = input_data
     # for each game create merged with maximum count
     game_max = max_stats(game_stats)
@@ -85,8 +85,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - sum of possible games = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - sum of the powers = {answer02}')

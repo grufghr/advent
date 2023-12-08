@@ -12,14 +12,14 @@ TYPE2_REGEX = re.compile(r'^(NOT) (\d+|[a-z]+) -> ([a-z]+)')
 TYPE3_REGEX = re.compile(r'^(\d+|[a-z]+) (AND|OR|LSHIFT|RSHIFT) (\d+|[a-z]+) -> ([a-z]+)')
 
 
-def solve01(input_data):
+def part01(input_data):
     # part 01 - find wire 'a' signal
 
     signals = solve_signals(input_data)
     return signals['a']
 
 
-def solve02(input_data):
+def part02(input_data):
     # part 02 - replace 'b' with 'a' part 01 and recalculate
 
     signals = solve_signals(input_data)
@@ -108,8 +108,8 @@ def load_data(filename):
 if __name__ == '__main__':
     input_data = load_data('input.txt')
 
-    answer01 = solve01(input_data)
+    answer01 = part01(input_data)
     print(f'part01 - a = {answer01}')
 
-    answer02 = solve02(input_data)
+    answer02 = part02(input_data)
     print(f'part02 - a = {answer02}')
