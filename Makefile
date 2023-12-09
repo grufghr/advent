@@ -7,6 +7,12 @@ puzzle:
 	test $(day)
 	./advent$(year)/day$(day)/puzzle.py
 
+test:
+	test $(year)
+	test $(day)
+	behave ./advent$(year)/day$(day)
+	python -m unittest discover -v ./advent$(year)/day$(day)
+
 test-unit:
 	test $(year)
 	test $(day)
