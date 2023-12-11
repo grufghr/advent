@@ -4,20 +4,14 @@
 Advent of Code 2023 Day 10: Pipe Maze
 """
 import os
-
-# import numpy as np
 from collections import deque
-
-SPACE = 0
-PIPE = 1
-FLOOD = 2
 
 
 def part01(input_data):
     field = input_data
 
     start = get_start(field)
-    pipes = get_pipes(field, start)
+    pipes = get_pipes_distance(field, start)
     distance = max(pipes.values())
 
     return distance
@@ -28,7 +22,7 @@ def part02(input_data):
 
     # find pipes
     start = get_start(field)
-    pipes = get_pipes(field, start)
+    pipes = get_pipes_distance(field, start)
     pipes = set(pipes.keys())
 
     # If you shoot a ray in any direction from the pixel
@@ -62,28 +56,6 @@ def part02(input_data):
     return enclosed
 
 
-def floodfill(matrix, start):
-    q = deque([start])
-    while q:
-        coords = q.popleft()
-        r, c = coords
-
-        if matrix[coords] == SPACE:
-            matrix[coords] = FLOOD
-            # N
-            if r > 0:
-                q.append((r - 1, c))
-            # s
-            if r < matrix.shape[0] - 1:
-                q.append((r + 1, c))
-            # W
-            if c > 0:
-                q.append((r, c - 1))
-            # E
-            if c < matrix.shape[1] - 1:
-                q.append((r, c + 1))
-
-
 def get_start(field):
     for r in range(len(field)):
         for c in range(len(field[0])):
@@ -92,7 +64,7 @@ def get_start(field):
     return None
 
 
-def get_pipes(field, start):
+def get_pipes_distance(field, start):
     d = 0
     visited = {}
     q = deque([(start, 0)])
