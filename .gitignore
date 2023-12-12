@@ -9,4 +9,4 @@
 ruff.toml
 
 # AOC
-**/**/input.txt
+#**/**/input.txt
