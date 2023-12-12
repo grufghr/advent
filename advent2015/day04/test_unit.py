@@ -15,7 +15,7 @@ TEST_DATA = [
     ('tc03', 'part02', 'abcdef',  6742839),
     ('tc04', 'part02', 'pqrstuv', 5714438),
 ]
-EXECUTION_TIME = 15.0
+EXECUTION_TIME = 10.0
 # fmt: on
 
 

@@ -52,8 +52,8 @@ def man_dist(a, b):
 
 def parse_data(input_data):
     galaxy_map = []
-    for r, input_text in enumerate(input_data.splitlines()):
-        for c, reading in enumerate([*input_text]):
+    for r, line_text in enumerate(input_data.splitlines()):
+        for c, reading in enumerate([*line_text]):
             if reading == '#':
                 galaxy_map.append((r, c))
     return galaxy_map

@@ -18,20 +18,14 @@ def part02(input_data):
 
 
 def solve(input_text, n):
-    lowest_positive_number = 0
     n_zeroes = '0' * n
 
-    found = False
-    while (not found) and (lowest_positive_number < 99999999):
-        lowest_positive_number += 1
-
-        text = input_text + str(lowest_positive_number)
-
+    for n in range(100000000):
+        text = input_text + str(n)
         hash_text = str(hashlib.md5(text.encode('utf-8')).hexdigest())
         if hash_text.startswith(n_zeroes):
-            found = True
-
-    return lowest_positive_number
+            break
+    return n
 
 
 def load_data(filename):
