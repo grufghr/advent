@@ -59,7 +59,6 @@ def calc_basin_size(grid, loc_s):
         adj_basin = [x for x in adj if x not in visited and grid[x] != 9]
         q.extend(adj_basin)
 
-    # TODO answer is = 911400
     return len(visited)
 
 

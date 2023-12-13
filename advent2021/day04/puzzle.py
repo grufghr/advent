@@ -14,7 +14,6 @@ class Board:
         self.match = np.zeros(self.shape)
         self.done = False
 
-    # TODO - improve performance function
     def dab(self, num):
         board_flat = self.board.flatten()
         board_match_num = np.where(board_flat == num)
