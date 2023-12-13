@@ -14,7 +14,7 @@ TEST_INPUT = [
     ('tc02', 'part01', 'input.txt', 23028),
     ('tc04', 'part02', 'input.txt', 9236992),
 ]
-EXECUTION_TIME = 25.0
+EXECUTION_TIME = 7.0
 # fmt: on
 
 
