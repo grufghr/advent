@@ -6,7 +6,7 @@ Advent of Code 2023 Day 08: Haunted Wasteland
 import os
 import re
 import math
-from collections import deque
+from itertools import cycle
 
 
 def part01(input_data):
@@ -31,18 +31,13 @@ def part02(input_data):
 
 
 def traverse_network(pos, navigation, network_map):
-    step_count = 0
-
-    q = deque(navigation)
-    while q and step_count < 25000:
-        move = q.popleft()
-        q.append(move)
-        step_count += 1
+    nav_cycle = cycle(navigation)
+    for step_count in range(1, 25000):
+        move = next(nav_cycle)
         pos = network_map[pos][move]
-
         if pos[2:3] == 'Z':
-            return step_count
-    return None
+            break
+    return step_count
 
 
 def parse_data(input_data):
