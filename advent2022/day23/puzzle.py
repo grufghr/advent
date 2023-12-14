@@ -17,46 +17,20 @@ dirs = {
 direction_all = set(dirs['N'] + dirs['S'] + dirs['W'] + dirs['E'])
 
 
-def add(t1, t2):
-    return tuple(map(operator.add, t1, t2))
-
-
-def visualise_grove(elves_list):
-    x_vals = [x for x, y in elves_list]
-    y_vals = [y for x, y in elves_list]
-
-    for y in range(min(y_vals) - 1, max(y_vals) + 1):
-        line = ''
-        for x in range(min(x_vals) - 1, max(x_vals) + 1):
-            if (x, y) in elves_list:
-                line += '#'
-            else:
-                line += '.'
-        print(line)
-
-
 def part01(input_data):
-    grove_map_list = input_data
-    answer = solve(grove_map_list, 10)
+    elves_list = input_data
+    answer = solve(elves_list, 10)
     return answer[0]
 
 
 def part02(input_data):
-    grove_map_list = input_data
-    answer = solve(grove_map_list, 1500)
+    elves_list = input_data
+    answer = solve(elves_list, 1500)
     return answer[1]
 
 
-def solve(grove_map_list, max_rounds):
+def solve(elves_list, max_rounds):
     direction_order = ['N', 'S', 'W', 'E']
-
-    # parse input
-    elves_list = []
-    for y, line in enumerate(grove_map_list):
-        for x, grid in enumerate(line):
-            if grid == '#':
-                elf = (x, y)
-                elves_list.append(elf)
 
     # visualise_grove(elves_list)
 
@@ -64,9 +38,8 @@ def solve(grove_map_list, max_rounds):
     # part 02 - round when no elves move
     round_num = 0
     movement = True
-    while round_num < max_rounds and movement:
+    while movement and round_num < max_rounds:
         round_num += 1
-        # print("round ", round_num)
 
         # note: "x in y" is faster with sets than list
         # with set takes 0.317 secs
@@ -111,8 +84,34 @@ def solve(grove_map_list, max_rounds):
     return (empty_grids, round_num)
 
 
+def add(t1, t2):
+    return tuple(map(operator.add, t1, t2))
+
+
+def visualise_grove(elves_list):
+    x_vals = [x for x, y in elves_list]
+    y_vals = [y for x, y in elves_list]
+
+    for y in range(min(y_vals) - 1, max(y_vals) + 1):
+        line = ''
+        for x in range(min(x_vals) - 1, max(x_vals) + 1):
+            if (x, y) in elves_list:
+                line += '#'
+            else:
+                line += '.'
+        print(line)
+
+
 def parse_data(input_data):
-    return input_data.splitlines()
+    elves_list = []
+    for y, line in enumerate(input_data.splitlines()):
+        for x, grid in enumerate(line):
+            if grid == '#':
+                elf = (x, y)
+                elves_list.append(elf)
+
+    # list of tuples (x,y) representing elf positions in map
+    return elves_list
 
 
 def load_data(filename):
