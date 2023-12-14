@@ -29,7 +29,7 @@ def part02(input_data):
     spin_cycle = ['N', 'W', 'S', 'E']
 
     count = 0
-    count_test = 200 # input requires 137 count (when break occurs)
+    count_test = 200  # input requires 137 count (when break occurs)
     seen = dict()
     seq = []
     while count < count_test:
@@ -72,7 +72,7 @@ def part02(input_data):
     weight = seen[seq[seq_pos]][2]
 
     if count == count_test:
-        print("Warning: Need to increase count test > ", count)
+        print('Warning: Need to increase count test > ', count)
 
     return weight
 
