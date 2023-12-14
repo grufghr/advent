@@ -5,7 +5,7 @@ Feature: AoC 2023 Day 04: Scratchcards
     Given AoC puzzle
       And input in file <filename>
      When solve <part>
-     Then correct test feature name
+     Then test feature name is correct
       And expected answer = <expected>
       And execution time < 7 secs
     Examples:

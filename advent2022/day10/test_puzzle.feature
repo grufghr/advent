@@ -4,7 +4,7 @@ Feature: AoC 2022 Day 10: Cathode-Ray Tube
     Given AoC puzzle
       And input in file <filename>
      When solve <part>
-     Then correct test feature name
+     Then test feature name is correct
       And expected answer = <expected>
       And execution time < 1 secs
     Examples:
@@ -16,7 +16,7 @@ Feature: AoC 2022 Day 10: Cathode-Ray Tube
     Given AoC puzzle
       And input in file "input_example.txt"
      When solve part02
-     Then correct test feature name
+     Then test feature name is correct
       And expected answer is list
      """
      ["##..##..##..##..##..##..##..##..##..##..",
@@ -33,7 +33,7 @@ Feature: AoC 2022 Day 10: Cathode-Ray Tube
     Given AoC puzzle
       And input in file "input.txt"
      When solve part02
-     Then correct test feature name
+     Then test feature name is correct
       And expected answer is list
       """
       ["###...##..#..#..##..####.###..####.####.",

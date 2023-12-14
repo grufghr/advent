@@ -5,7 +5,7 @@ Feature: AoC 2017 Day 05: A Maze of Twisty Trampolines, All Alike
     Given AoC puzzle
       And input in file <filename>
      When solve <part>
-     Then correct test feature name
+     Then test feature name is correct
       And expected answer = <expected>
       And execution time < 15 secs
     Examples:

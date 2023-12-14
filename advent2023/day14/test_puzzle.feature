@@ -5,7 +5,7 @@ Feature: AoC 2023 Day 14: Parabolic Reflector Dish
     Given AoC puzzle
       And input in file <filename>
      When solve <part>
-     Then correct test feature name
+     Then test feature name is correct
       And expected answer = <expected>
       And execution time < 10 secs
     Examples:

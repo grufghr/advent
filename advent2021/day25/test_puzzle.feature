@@ -5,7 +5,7 @@ Feature: AoC 2021 Day 25: Sea Cucumber
     Given AoC puzzle
       And input in file <filename>
      When solve <part>
-     Then correct test feature name
+     Then test feature name is correct
       And expected answer = <expected>
       And execution time < 20 secs
     Examples:

@@ -40,7 +40,7 @@ def when_part01(context, funcname):
     context.time = time.time() - ts
 
 
-@then('correct test feature name')
+@then('test feature name is correct')
 def then_validate_feature(context):
     regex_result = re.match(r'AoC (?P<year>\d+) Day (?P<day>\d+):', context.feature.name)
     result = regex_result.groupdict()

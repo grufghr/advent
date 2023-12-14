@@ -5,7 +5,7 @@ Feature: AoC 2016 Day 05: How About a Nice Game of Chess?
     Given AoC puzzle
       And input in file <filename>
      When solve <part>
-     Then correct test feature name
+     Then test feature name is correct
       And expected answer = <expected>
       And execution time < 60 secs
     Examples:

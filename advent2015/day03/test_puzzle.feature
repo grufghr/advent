@@ -4,7 +4,7 @@ Feature: AoC 2015 Day 03: Perfectly Spherical Houses in a Vacuum
     Given AoC puzzle
       And input in file <filename>
      When solve <part>
-     Then correct test feature name
+     Then test feature name is correct
       And expected answer = <expected>
       And execution time < 1 secs
     Examples:

@@ -5,7 +5,7 @@ Feature: AoC 2023 Day 12: Hot Springs
     Given AoC puzzle
       And input in file <filename>
      When solve <part>
-     Then correct test feature name
+     Then test feature name is correct
       And expected answer = <expected>
       And execution time < 3 secs
     Examples:
