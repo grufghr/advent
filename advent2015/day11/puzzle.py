@@ -7,6 +7,8 @@ import os
 from itertools import groupby
 from string import ascii_lowercase
 
+SET_IOL = set('iol')
+
 
 def part01(input_data):
     password = next_password(input_data)
@@ -22,15 +24,15 @@ def part02(input_data):
 def is_valid(password):
     # fmt: off
     # cannot contain i, o, l
-    if len(set('iol') & set(password)) > 0:
-        return False
-
-    # must contain 3 sequential i.e. abc
-    if not any([ascii_lowercase[n: n + 3] in password for n in range(24)]):
+    if len(set(password) & SET_IOL) > 0:
         return False
 
     # contains two non-overlapping pairs
     if sum([2 if len(list(group)) >= 4 else 1 for letter, group in groupby(password) if len(list(group)) >= 2]) < 2:
+        return False
+
+    # must contain 3 sequential i.e. abc
+    if not any([ascii_lowercase[n: n + 3] in password for n in range(24)]):
         return False
 
     # fmt: on

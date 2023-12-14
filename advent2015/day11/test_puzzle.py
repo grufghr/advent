@@ -13,7 +13,7 @@ TEST_INPUT = [
     ('tc02', 'part01', 'input.txt',         'cqjxxyzz'),
     # note, part02 covered in unit test
 ]
-EXECUTION_TIME = 15.0
+EXECUTION_TIME = 4.0
 # fmt: on
 
 
