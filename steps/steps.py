@@ -2,7 +2,7 @@
 Feature Test Scenario functions
 """
 # general imports
-from behave import *
+from behave import given, when, then
 import re
 import json
 import importlib
