@@ -5,17 +5,8 @@ Advent of Code 2023 Day 14: Parabolic Reflector Dish
 """
 import os
 
+CACHE = {}
 
-def calc_size(dish):
-    return (max([p[0] for p in dish.keys()]), max([p[1] for p in dish.keys()]))
-    
-
-def calc_weight(dish_size, rocks):
-    return sum([dish_size[0] - r[0] + 1 for r in rocks])
-    
-
-def calc_state(dish_size, rocks):
-    return sum([((r[1] * (dish_size[0] + 1)) + r[0]) for r in rocks])
 
 def part01(input_data):
     dish = input_data
@@ -23,7 +14,7 @@ def part01(input_data):
     rocks = set(k for k, t in dish.items() if t == 'O')
     cubes = set(k for k, t in dish.items() if t == '#')
 
-    rocks = tilt(rocks, cubes, 'N', dish_size)
+    rocks = tilt_cached(rocks, cubes, 'N', dish_size)
     weight = calc_weight(dish_size, rocks)
 
     return weight
@@ -35,23 +26,19 @@ def part02(input_data):
     rocks = set(k for k, t in dish.items() if t == 'O')
     cubes = set(k for k, t in dish.items() if t == '#')
 
-    tilt_cycle = ['N', 'W', 'S', 'E']
-
-    #print('Starting position:')
-    #print_dish(dish_size, rocks, cubes)
+    spin_cycle = ['N', 'W', 'S', 'E']
 
     count = 0
-    count_test = 500
+    count_test = 200 # input requires 137 count (when break occurs)
     seen = dict()
     seq = []
     while count < count_test:
         count += 1
 
         # spin cycle
-        for direction in tilt_cycle:
-            rocks = tilt(rocks, cubes, direction, dish_size)
+        for direction in spin_cycle:
+            rocks = tilt_cached(rocks, cubes, direction, dish_size)
 
-        
         # seen[state] = (occurence, first seen, weight)
         state = calc_state(dish_size, rocks)
         if state in seen:
@@ -71,27 +58,51 @@ def part02(input_data):
             # reset sequence
             seq = []
             seen[state] = (0, count, weight)
-        
+
         # append state to sequence
         seq.append(state)
 
     # extrapolate cycle count
     count_ex = 1000000000
-    
+
     # repeating sequence starts
     seq_start = max([c[1] for c in seen.values()])
-    
+
     seq_pos = (count_ex - seq_start) % len(seq)
     weight = seen[seq[seq_pos]][2]
-    
+
+    if count == count_test:
+        print("Warning: Need to increase count test > ", count)
+
     return weight
 
 
+def calc_size(dish):
+    return (max([p[0] for p in dish.keys()]), max([p[1] for p in dish.keys()]))
+
+
+def calc_weight(dish_size, rocks):
+    return sum([dish_size[0] - r[0] + 1 for r in rocks])
+
+
+def calc_state(dish_size, rocks):
+    return sum([((r[1] * (dish_size[0] + 1)) + r[0]) for r in rocks])
+
+
+def tilt_cached(rocks, cubes, direction, dish_size):
+    # caching state saves ~6 secs (part02)
+    state = direction + str(calc_state(dish_size, rocks))
+    if state in CACHE:
+        return CACHE[state]
+    CACHE[state] = tilt(rocks, cubes, direction, dish_size)
+    return CACHE[state]
+
+
 def tilt(rocks, cubes, direction, dish_size):
-    
     rock_roll = True
     while rock_roll:
         rock_roll = False
+        # using dict() not set() saves about ~10 secs (part02)
         rocks_n = dict()
         for pos in rocks:
             if direction == 'N':
@@ -105,28 +116,14 @@ def tilt(rocks, cubes, direction, dish_size):
 
             if pos_n not in cubes and pos_n not in rocks:
                 rock_roll = True
-                rocks_n[pos_n] = True
+                rocks_n[pos_n] = 0
             else:
-                rocks_n[pos] = False
+                rocks_n[pos] = 1
+
         rocks = rocks_n
 
-    return list(rocks.keys())
+    return set(rocks.keys())
 
-
-def print_dish(dish_size, rocks, cubes):
-    for r in range(1, dish_size[0] + 1):
-        row = []
-        for c in range(1, dish_size[1] + 1):
-            if (r, c) in rocks:
-                row.append('O')
-            elif (r, c) in cubes:
-                row.append('#')
-            else:
-                row.append('.')
-        print(''.join(row))
-    #print("check rocks", len(rocks))
-    #print(rocks)
-    #print(dish_size)
 
 def parse_data(input_data):
     dish = {}
@@ -148,7 +145,7 @@ def load_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = load_data('input_example.txt')
+    input_data = load_data('input.txt')
 
     answer01 = part01(input_data)
     print(f'part01 - north beam load = {answer01}')
