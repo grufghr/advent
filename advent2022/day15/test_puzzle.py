@@ -10,9 +10,9 @@ import advent2022.day15.puzzle as puzzle
 # fmt: off
 TEST_INPUT = [
     ('tc01', 'part01', 'input_example.txt', 26),
+    ('tc02', 'part01', 'input.txt',         5716881),
     ('tc03', 'part02', 'input_example.txt', 56000011),
-    ('tc02', 'part01', 'input.txt', 5716881),
-    ('tc04', 'part02', 'input.txt', 10852583132904),
+    ('tc04', 'part02', 'input.txt',         10852583132904),
 ]
 EXECUTION_TIME = 1.0
 # fmt: on
