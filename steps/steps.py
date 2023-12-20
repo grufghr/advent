@@ -1,5 +1,5 @@
 """
-Feature Test Scenario functions
+Feature Test Scenario Step functions
 """
 # general imports
 from behave import given, when, then
@@ -20,24 +20,26 @@ def given_aoc(context):
 
 @given('input in file "{input_file}"')
 def given_input_file(context, input_file):
+    context.input_file = input_file
     puzzle = context.puzzle
     context.input_data = puzzle.load_data(input_file)
 
 
 @given('input "{input_data}"')
 def given_input(context, input_data):
+    context.input_file = None
     context.input_data = input_data
 
 
 @when('solve {funcname}')
-def when_part01(context, funcname):
+def when_solve(context, funcname):
+    context.funcname = funcname
     func = getattr(context.puzzle, funcname)
     # will raise AttributeError if function not found
 
     ts = time.time()
-    # call function
     context.answer = func(context.input_data)
-    context.time = time.time() - ts
+    context.timer = time.time() - ts
 
 
 @then('test feature name is correct')
@@ -76,4 +78,4 @@ def validate_expected(context, expected):
 @then('execution time < {time} secs')
 def then_execution_time(context, time):
     if 'slow' not in context.tags:
-        assert context.time < float(time), f'puzzle took {context.time} secs'
+        assert context.timer < float(time), f'puzzle took {context.timer} secs'
