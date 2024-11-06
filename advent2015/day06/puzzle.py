@@ -3,6 +3,7 @@
 """
 Advent of Code 2015 Day 06: Probably a Fire Hazard
 """
+
 import os
 import re
 import numpy as np
@@ -74,7 +75,7 @@ if __name__ == '__main__':
     input_data = load_data('input.txt')
 
     answer01 = part01(input_data)
-    print(f'part01 - lights on = {answer01}')
+    print(f'part01 answer = {answer01}')
 
     answer02 = part02(input_data)
-    print(f'part02 - brightness sum = {answer02}')
+    print(f'part02 answer = {answer02}')

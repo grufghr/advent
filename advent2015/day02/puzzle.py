@@ -3,6 +3,7 @@
 """
 Advent of Code 2015 Day 02: I Was Told There Would Be No Math
 """
+
 import os
 import pandas as pd
 import numpy as np
@@ -48,7 +49,7 @@ if __name__ == '__main__':
     input_data = load_data('input.txt')
 
     answer01 = part01(input_data)
-    print(f'part01 - Wrapping paper required = {answer01} sq feet')
+    print(f'part01 answer = {answer01}')
 
     answer02 = part02(input_data)
-    print(f'part02 - Ribbon required = {answer02} feet')
+    print(f'part02 answer = {answer02}')

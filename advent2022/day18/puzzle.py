@@ -104,7 +104,7 @@ if __name__ == '__main__':
     input_data = load_data('input.txt')
 
     answer01 = part01(input_data)
-    print(f'part01 - scanned lava droplet surface area  = {answer01}')
+    print(f'part01 answer = {answer01}')
 
     answer02 = part02(input_data)
-    print(f'part02 - exterior surface area  = {answer02}')
+    print(f'part02 answer = {answer02}')

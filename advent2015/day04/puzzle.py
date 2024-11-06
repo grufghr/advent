@@ -3,6 +3,7 @@
 """
 Advent of Code 2015 Day 04: The Ideal Stocking Stuffer
 """
+
 import os
 import hashlib
 
@@ -41,7 +42,7 @@ if __name__ == '__main__':
     input_data = load_data('input.txt')
 
     answer01 = part01(input_data)
-    print(f'part01 - lowest_positive_number = {answer01}')
+    print(f'part01 answer = {answer01}')
 
     answer02 = part02(input_data)
-    print(f'part02 - lowest_positive_number = {answer02}')
+    print(f'part02 answer = {answer02}')

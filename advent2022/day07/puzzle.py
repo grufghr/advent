@@ -122,7 +122,7 @@ if __name__ == '__main__':
     input_data = load_data('input.txt')
 
     answer = solve(input_data)
-    print(f'part01 - Total sizes of those directories less than 100000 is {answer[0]}')
+    print(f'part01 answer = {answer[0]}')
 
     # answer = solve(input_data)
-    print(f'part02 - Size of smallest directory to free space = {answer[1]}')
+    print(f'part02 answer = {answer[1]}')

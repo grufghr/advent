@@ -3,6 +3,7 @@
 """
 Advent of Code 2015 Day 03: Perfectly Spherical Houses in a Vacuum
 """
+
 import os
 import numpy as np
 
@@ -79,7 +80,7 @@ if __name__ == '__main__':
     input_data = load_data('input.txt')
 
     answer01 = part01(input_data)
-    print(f'part01 - Houses visited with santa = {answer01}')
+    print(f'part01 answer = {answer01}')
 
     answer02 = part02(input_data)
-    print(f'part02 - Houses visited with santa & robot = {answer02}')
+    print(f'part02 answer = {answer02}')

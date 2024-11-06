@@ -101,7 +101,7 @@ if __name__ == '__main__':
     input_data = load_data('input.txt')
 
     answer01 = part01(input_data)
-    print(f'part01 - Stack top Crates with CrateMover 9000 = {answer01}')
+    print(f'part01 answer = {answer01}')
 
     answer02 = part02(input_data)
-    print(f'part01 - Stack top Crates with CrateMover 9001 = {answer02}')
+    print(f'part01 answer = {answer02}')

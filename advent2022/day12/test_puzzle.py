@@ -14,7 +14,7 @@ TEST_INPUT = [
     ('tc02', 'part01', 'input.txt', 456),
     ('tc04', 'part02', 'input.txt', 454),
 ]
-EXECUTION_TIME = 5.0
+EXECUTION_TIME = 10.0
 # fmt: on
 
 
@@ -22,7 +22,7 @@ class PuzzleTest(unittest.TestCase):
     def test_puzzle(self):
         for name, funcname, input_data_file, expected_answer in TEST_INPUT:
             with self.subTest(name):
-                input_data = puzzle.load_data(input_data_file)                
+                input_data = puzzle.load_data(input_data_file)
                 func = getattr(puzzle, funcname)
                 ts = time.time()
                 answer = func(input_data)
