@@ -7,6 +7,11 @@ puzzle:
 	test $(day)
 	./advent$(year)/day$(day)/puzzle.py
 
+analyse:
+	test $(year)
+	test $(day)
+	cd ./advent$(year)/day$(day) && ./analyse_performance.py
+	
 test:
 	test $(year)
 	test $(day)
