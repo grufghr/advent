@@ -5,7 +5,7 @@ endif
 puzzle:
 	test $(year)
 	test $(day)
-	./advent$(year)/day$(day)/puzzle.py
+	poetry run python ./advent$(year)/day$(day)/puzzle.py
 
 analyse:
 	test $(year)
@@ -16,19 +16,19 @@ test:
 	test $(year)
 	test $(day)
 	behave ./advent$(year)/day$(day)
-	python -m unittest discover -v ./advent$(year)/day$(day)
+	poetry run python -m unittest discover -v ./advent$(year)/day$(day)
 
 test-unit:
 	test $(year)
 	test $(day)
-	python -m unittest discover -v ./advent$(year)/day$(day)
+	poetry run python -m unittest discover -v ./advent$(year)/day$(day)
 
 test-unit-year:
 	test $(year)
-	python -m unittest discover -v ./advent$(year)
+	poetry run python -m unittest discover -v ./advent$(year)
 
 test-unit-all:
-	python -m unittest discover -v ./
+	poetry run python -m unittest discover -v ./
 
 test-feature:
 	test $(year)

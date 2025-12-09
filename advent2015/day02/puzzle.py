@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Advent of Code 2015 Day 02: I Was Told There Would Be No Math
 """

@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Advent of Code 2019 Day 01: The Tyranny of the Rocket Equation
 """

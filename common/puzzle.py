@@ -1,29 +1,23 @@
 """
-Advent of Code 2018 Day 01: Chronal Calibration
+Advent of Code 2023 Day nn: Puzzle Name
 """
 import os
-from itertools import cycle
 
 
 def part01(input_data):
-    freq = sum(input_data)
-    return freq
+    print(input_data)
+    return 'tbc'
 
 
 def part02(input_data):
-    freq = 0
-    freq_list = set([freq])
-    for change in cycle(input_data):
-        freq += change
-        if freq in freq_list:
-            return freq
-        freq_list.add(freq)
-    return None
+    return 'tbc'
 
 
 def parse_data(input_data):
-    input_data = input_data.splitlines()
-    return [int(x) for x in input_data]
+    data = []
+    for line_text in input_data.splitlines():
+        data.append(line_text)
+    return data
 
 
 def load_data(filename):
@@ -36,7 +30,7 @@ def load_data(filename):
 
 
 if __name__ == '__main__':
-    input_data = load_data('input.txt')
+    input_data = load_data('input_example.txt')
 
     answer01 = part01(input_data)
     print(f'part01 answer = {answer01}')
