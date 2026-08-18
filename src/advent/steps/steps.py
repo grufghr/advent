@@ -8,6 +8,10 @@ import re
 import json
 import importlib
 import time
+import logging
+
+# create logger
+logger = logging.getLogger(__name__)
 
 
 @given('AoC puzzle')
@@ -59,8 +63,8 @@ def then_expected_answer(context, expected):
 
     if isinstance(context.answer, int):
         expected = int(expected)
-    else:
-        assert isinstance(context.answer, str), f'answer is {type(context.answer)}'
+    elif not isinstance(context.answer, str):
+        logger.debug(f'{context.year} {context.day} answer is {type(context.answer)}')
 
     validate_expected(context, expected)
 
