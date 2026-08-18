@@ -1,0 +1,48 @@
+"""
+Advent of Code 2022 Day 06: Tuning Trouble
+"""
+
+import os
+
+
+def part01(input_data):
+    answer = solve(input_data, 4)
+    return answer
+
+
+def part02(input_data):
+    answer = solve(input_data, 14)
+    return answer
+
+
+def solve(datastream, marker_len):
+    marker_start = None
+
+    for s in range(0, len(datastream) - 1):
+        e = s + marker_len
+        text_marker = datastream[s:e]
+        if len(set(text_marker)) == len(text_marker):
+            # print(e, text_marker, datastream)
+            marker_start = e
+            break
+
+    return marker_start
+
+
+def load_data(filename):
+    input_data_file = os.path.join(os.path.dirname(__file__), filename)
+
+    with open(input_data_file, 'r') as filehandle:
+        input_data = filehandle.read()
+
+    return input_data
+
+
+if __name__ == '__main__':
+    input_data = load_data('input.txt')
+
+    answer01 = part01(input_data)
+    print(f'part01 answer = {answer01}')
+
+    answer02 = part02(input_data)
+    print(f'part02 answer = {answer02}')

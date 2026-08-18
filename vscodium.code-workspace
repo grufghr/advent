@@ -1,17 +1,7 @@
 {
-	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "../everybodycodes"
-		}
-	],
-	"settings": {
-		"files.exclude": {
-			"**/.pytest_cache": true,
-			"**/.venv": true
-		},
-		"ruff.enable": true
-	}
+    "folders": [
+        {
+            "path": "."
+        }
+    ]
 }

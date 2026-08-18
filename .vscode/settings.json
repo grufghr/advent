@@ -1,0 +1,30 @@
+{
+    "files.exclude": {
+        "**/.vscode/": true,
+        "**/__pycache__": true,
+        "**/.pytest_cache/": true,
+        "**/.venv/": true,
+        "**/*.egg-info/": true,
+        "**/build/": true,
+        "**/dist/": true,
+        "**/.ruff_cache": true,
+        ".coverage": true
+    },
+    "files.watcherExclude": {
+        "**/.venv": true
+    },
+    "python.defaultInterpreterPath": "python",
+    "python.terminal.useEnvFile": true,
+    "pylint.enabled": false,
+    "ruff.enable": true,
+    "ruff.importStrategy": "fromEnvironment",
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": false,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.ruff": "explicit",
+            "source.organizeImports.ruff": "never"
+        }
+    },
+    "yaml.format.singleQuote": true
+}
